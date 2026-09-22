@@ -1,0 +1,484 @@
+/* ═══ Edits Gallery — V4 "Contact Sheet": stacked photo deck of featured edits ═══
+   Prints keep their own shape — portrait (3:4) and landscape (16:10) edits share the
+   stage height; the active shot sits flat while neighbors tilt underneath like a
+   photographer's light table. Active print carries the cyan tape marker. */
+.edits-gallery {
+    padding: 7rem 2rem;
+    background-color: var(--background-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.edits-gallery__container {
+    max-width: min(90%, 1760px);
+    margin-inline: auto;
+}
+
+.edits-gallery__eyebrow {
+    display: block;
+    text-align: center;
+    font-family: 'NavBarFont', sans-serif;
+    font-size: 0.82rem;
+    font-weight: bold;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--brand-primary);
+    text-shadow: 0 0 14px rgba(34, 205, 218, 0.55);
+    margin-bottom: 1.2rem;
+}
+
+.edits-gallery__title {
+    font-family: 'NavBarFont', sans-serif;
+    font-weight: normal;
+    font-size: clamp(2.3rem, 4.2vw, 3.4rem);
+    line-height: 1.12;
+    margin-bottom: 2.4rem;
+    color: var(--text-color);
+    text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* ── Carousel stage ── */
+.edits-gallery__carousel {
+    position: relative;
+}
+
+.edits-gallery__track {
+    position: relative;
+    /* Height scales with viewport width so prints grow monotonically from laptop
+       up. On big screens the vh guards take over first, keeping the deck to about
+       six tenths of the viewport; the freed room is dressed by the side accents.
+       One continuous rule — photos never shrink as the screen widens. */
+    height: min(clamp(430px, 44vw, 700px), 60vh);
+}
+
+/* Prints keep their own shape (portrait = 3/4, landscape = 16/10), all sharing
+   the stage height — a true mixed light table with zero cropping.
+   Side prints stay fully opaque so nothing shows through the overlaps —
+   depth comes from brightness/blur, like real stacked photos. */
+.edits-gallery__slide {
+    margin: 0;
+    position: absolute;
+    top: 2.5%;
+    bottom: auto;
+    left: 50%;
+    right: auto;
+    height: 95%;
+    width: auto;
+    aspect-ratio: 16 / 10;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #0d0d0f;
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+                opacity 0.55s ease,
+                filter 0.6s ease;
+}
+
+/* Floor accent beneath the stack: a cyan pool of light in dark mode,
+   swapped to a soft drop shadow in light mode (see theme overrides). */
+.edits-gallery__track::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -3%;
+    transform: translateX(-50%);
+    width: 72%;
+    height: 38px;
+    background: radial-gradient(ellipse at center, rgba(34, 205, 218, 0.4), transparent 70%);
+    filter: blur(10px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.edits-gallery__slide--portrait {
+    aspect-ratio: 3 / 4;
+}
+
+.edits-gallery__slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Side offsets are viewport-driven clamps, so portrait and landscape
+   neighbors sit at the same depth */
+.edits-gallery__slide.is-active {
+    transform: translateX(-50%) rotate(0deg) translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 4;
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.55), 0 0 34px rgba(34, 205, 218, 0.25);
+}
+
+.edits-gallery__slide.is-prev {
+    transform: translateX(-50%) rotate(-5deg) translate(-46px, 16px) scale(0.94);
+    opacity: 1;
+    filter: brightness(0.65) blur(3px);
+    z-index: 3;
+}
+
+.edits-gallery__slide.is-next {
+    transform: translateX(-50%) rotate(4.5deg) translate(46px, 12px) scale(0.94);
+    opacity: 1;
+    filter: brightness(0.65) blur(3px);
+    z-index: 2;
+}
+
+.edits-gallery__slide.is-far {
+    transform: translateX(-50%) rotate(0) translate(0, 30px) scale(0.86);
+    opacity: 0;
+    z-index: 1;
+}
+
+.edits-gallery__slide.is-prev.is-far-side,
+.edits-gallery__slide.is-next.is-far-side {
+    opacity: 0;
+}
+
+/* ── P1 accent: dot-matrix voids ──
+   Grids of cyan dots fill the blank space beside the deck and dissolve toward
+   the edges. Two stacked layers — a soft halo under a crisp core — so the
+   dots glow off the dark background. Sits at z-index 0, behind all content. */
+.edits-gallery__dots-accent {
+    position: absolute;
+    top: 4%;
+    bottom: 4%;
+    width: clamp(60px, 9vw, 200px);
+    background-image:
+        radial-gradient(circle, rgba(34, 205, 218, 0.4) 3px, transparent 4.6px),
+        radial-gradient(circle, #22cdda 1.5px, transparent 2.1px);
+    background-size: 16px 16px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 60%);
+    mask-image: radial-gradient(ellipse at center, #000 20%, transparent 60%);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.edits-gallery__dots-accent--l { left: clamp(-20px, -1vw, 0px); }
+.edits-gallery__dots-accent--r { right: clamp(-20px, -1vw, 0px); }
+
+/* Text layers always render above the dot field */
+.edits-gallery__eyebrow,
+.edits-gallery__title,
+.edits-gallery__controls {
+    position: relative;
+    z-index: 2;
+}
+
+/* Cyan tape marker on the active print */
+.edits-gallery__slide::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-2deg);
+    width: 110px;
+    height: 26px;
+    background: rgba(34, 205, 218, 0.16);
+    border: 1px solid rgba(34, 205, 218, 0.35);
+    z-index: 2;
+    transition: opacity 0.4s ease;
+}
+
+/* Caption sits on a bottom gradient, fades with its print */
+.edits-gallery__slide figcaption {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem 1.4rem 1rem;
+    background: linear-gradient(180deg, transparent, rgba(10, 10, 12, 0.9));
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.8rem;
+}
+
+.edits-gallery__name {
+    font-family: 'CardHeaderFont', sans-serif;
+    font-size: 1.1rem;
+    color: #f2f4f7;
+}
+
+.edits-gallery__tag {
+    font-family: 'NavBarFont', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--brand-primary);
+    white-space: nowrap;
+}
+
+/* ── Controls row — arrows flank the progress pills below the deck ──
+   One consistent arrangement on every screen size. */
+.edits-gallery__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.4rem;
+    margin-top: 1.6rem;
+}
+
+/* ── Arrows ── */
+.edits-gallery__arrow {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1px solid rgba(34, 205, 218, 0.4);
+    background: rgba(20, 20, 22, 0.72);
+    color: var(--brand-primary);
+    font-size: 1.15rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.edits-gallery__arrow:hover {
+    background: rgba(34, 205, 218, 0.14);
+    box-shadow: 0 0 18px rgba(34, 205, 218, 0.45);
+    border-color: var(--brand-primary);
+}
+
+/* ── Dots — progress pills, same fill-clock pattern as the spotlight ──
+   The active pill fills over --edits-interval; when the fill completes
+   (animationend) the deck advances. Pausing freezes the animation mid-fill. */
+.edits-gallery__dots {
+    display: flex;
+    gap: 0.55rem;
+    justify-content: center;
+}
+
+.edits-gallery__dot {
+    width: 2.8rem;
+    height: 0.28rem;
+    border-radius: 1rem;
+    border: none;
+    padding: 0;
+    background: rgba(232, 232, 232, 0.18);
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.edits-gallery__dot:hover {
+    background: rgba(232, 232, 232, 0.32);
+}
+
+.edits-gallery__dot .fill {
+    position: absolute;
+    inset: 0;
+    width: 0;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--brand-primary-dark), var(--brand-primary));
+    box-shadow: 0 0 8px rgba(34, 205, 218, 0.6);
+}
+
+.edits-gallery__dot.is-active .fill {
+    animation: editsDotFill var(--edits-interval, 5s) linear forwards;
+}
+
+/* Pause the fill along with autoplay when the deck is hovered */
+.edits-gallery__dot.is-active:hover .fill,
+.edits-gallery--paused .edits-gallery__dot.is-active .fill {
+    animation-play-state: paused;
+}
+
+@keyframes editsDotFill {
+    to { width: 100%; }
+}
+
+/* ═══ Responsive ═══ */
+
+/* ≤768px — mobile-optimized layout:
+   The track holds a FIXED height sized to the tallest shape (a full-width
+   portrait), so the section never jumps when the carousel moves between
+   portrait and landscape edits. Prints stay width-driven and are vertically
+   centered in the stage; sides hide, and the deck motion becomes a simple
+   horizontal card slide (next print enters from the right, previous from the
+   left) — the natural gesture language for a one-card-at-a-time view. */
+@media (max-width: 768px) {
+    .edits-gallery {
+        padding: 4.5rem 1.25rem;
+    }
+
+    .edits-gallery__container {
+        max-width: 100%;
+    }
+
+    .edits-gallery__title {
+        margin-bottom: 1.8rem;
+    }
+
+    .edits-gallery__track {
+        /* Fixed stage: portrait max height = width × 4/3, width = min(container, 340px).
+           Landscape prints center in the same stage — no height change, ever. */
+        height: calc(min(100vw - 2.5rem, 340px) * 4 / 3);
+    }
+
+    .edits-gallery__slide {
+        top: 50%;
+        bottom: auto;
+        height: auto;
+        width: min(100%, 340px);
+        transform: translate(-50%, -50%);
+    }
+
+    /* Single-card motion: active sits flat and centered, incoming/outgoing
+       prints slide horizontally with a fade — no tilt on mobile */
+    .edits-gallery__slide.is-active {
+        transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    }
+
+    .edits-gallery__slide.is-prev {
+        transform: translate(calc(-50% - 56px), -50%) rotate(0deg) scale(0.94);
+    }
+
+    .edits-gallery__slide.is-next {
+        transform: translate(calc(-50% + 56px), -50%) rotate(0deg) scale(0.94);
+    }
+
+    .edits-gallery__slide.is-far {
+        transform: translate(-50%, -50%) rotate(0deg) scale(0.9);
+    }
+
+    .edits-gallery__slide.is-prev,
+    .edits-gallery__slide.is-next,
+    .edits-gallery__slide.is-far-side {
+        opacity: 0 !important;
+    }
+
+    /* Caption stacks centered — reads cleanly on narrow prints */
+    .edits-gallery__slide figcaption {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.35rem;
+        padding: 1.6rem 1rem 0.9rem;
+    }
+
+    .edits-gallery__name {
+        font-size: 1rem;
+    }
+
+    .edits-gallery__tag {
+        font-size: 0.55rem;
+    }
+
+    /* Small screens: the print fills the width — no voids to dress */
+    .edits-gallery__dots-accent {
+        display: none;
+    }
+
+    /* Same controls row, thumb-scaled */
+    .edits-gallery__controls {
+        gap: 0.9rem;
+        margin-top: 1.2rem;
+    }
+
+    .edits-gallery__arrow {
+        width: 40px;
+        height: 40px;
+    }
+
+    .edits-gallery__dots {
+        gap: 0.5rem;
+    }
+
+    .edits-gallery__dot {
+        width: 2.2rem;
+        height: 0.26rem;
+    }
+}
+
+/* ═══ Light mode ═══ */
+body.light-mode .edits-gallery__eyebrow {
+    color: var(--brand-primary-dark);
+    text-shadow: 0 0 10px rgba(0, 79, 210, 0.3);
+}
+
+body.light-mode .edits-gallery__title {
+    text-shadow: none;
+}
+
+body.light-mode .edits-gallery__eyebrow {
+    text-shadow: none;
+}
+
+/* Light mode: the floor glow becomes a grounded shadow, prints carry
+   layered paper shadows, and the active print casts the deepest one */
+body.light-mode .edits-gallery__slide {
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.22), 0 6px 14px rgba(0, 0, 0, 0.12);
+    background: #f1f1f1;
+}
+
+body.light-mode .edits-gallery__slide.is-active {
+    box-shadow: 0 26px 50px rgba(0, 0, 0, 0.26), 0 10px 18px rgba(0, 0, 0, 0.14);
+}
+
+body.light-mode .edits-gallery__slide.is-prev,
+body.light-mode .edits-gallery__slide.is-next {
+    filter: brightness(0.78) blur(3px);
+}
+
+body.light-mode .edits-gallery__track::after {
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3), transparent 70%);
+}
+
+body.light-mode .edits-gallery__slide::before {
+    background: rgba(0, 79, 210, 0.12);
+    border-color: rgba(0, 79, 210, 0.35);
+}
+
+body.light-mode .edits-gallery__arrow {
+    border-color: rgba(0, 79, 210, 0.55);
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--brand-primary-dark);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+body.light-mode .edits-gallery__arrow:hover {
+    background: #ffffff;
+    box-shadow: 0 0 18px rgba(0, 79, 210, 0.45);
+    border-color: var(--brand-primary-dark);
+}
+
+body.light-mode .edits-gallery__dots-accent {
+    background-image:
+        radial-gradient(circle, rgba(0, 79, 210, 0.3) 3px, transparent 4.6px),
+        radial-gradient(circle, rgba(0, 79, 210, 0.85) 1.5px, transparent 2.1px);
+}
+
+body.light-mode .edits-gallery__dot {
+    background: rgba(0, 0, 0, 0.18);
+}
+
+/* Active pill keeps a neutral track in light mode — the blue comes from the
+   animated fill, not the pill's own background */
+body.light-mode .edits-gallery__dot.is-active {
+    background: rgba(0, 0, 0, 0.28);
+}
+
+/* ═══ Reduced motion ═══ */
+@media (prefers-reduced-motion: reduce) {
+    .edits-gallery__slide,
+    .edits-gallery__slide::before,
+    .edits-gallery__arrow,
+    .edits-gallery__dot {
+        transition: none;
+    }
+
+    /* No fill animation — the active pill just sits full */
+    .edits-gallery__dot.is-active .fill {
+        animation: none;
+        width: 100%;
+    }
+}

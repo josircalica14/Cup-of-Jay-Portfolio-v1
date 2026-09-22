@@ -6,6 +6,7 @@
     <meta name="description" content="Cup of Jay - Creative Developer & Designer portfolio">
     <link rel="stylesheet" href="style.css?v=6">
     <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="edits.css?v=4">
     <link rel="stylesheet" href="theme-toggle.css">
     <title>Cup of Jay | Creative Developer & Designer</title>
     <script>
@@ -198,6 +199,64 @@
                 <h2 class="about-section__title">Developer &amp; Photo Editor</h2>
                 <p class="about-section__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl. Sed euismod, nisl nec ultricies lacinia, nisl nisl aliquet nisl, eget aliquam nisl nisl sit amet nisl.</p>
                 <a href="#" class="about-section__link">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-separator">
+
+    <!-- Edits Gallery — V4 "Contact Sheet": stacked photo deck of featured edits.
+         Portrait edits get class="edits-gallery__slide edits-gallery__slide--portrait",
+         landscape edits just class="edits-gallery__slide". -->
+    <section class="edits-gallery" id="edits-gallery">
+        <span class="edits-gallery__dots-accent edits-gallery__dots-accent--l" aria-hidden="true"></span>
+        <span class="edits-gallery__dots-accent edits-gallery__dots-accent--r" aria-hidden="true"></span>
+        <div class="edits-gallery__container">
+            <div class="edits-gallery__eyebrow">Edits Gallery</div>
+            <h2 class="edits-gallery__title">Featured Edits</h2>
+            <div class="edits-gallery__carousel" data-edits-carousel>
+                <div class="edits-gallery__track">
+                    <figure class="edits-gallery__slide edits-gallery__slide--portrait">
+                        <img src="https://picsum.photos/seed/edit-golden/700/933" alt="Golden Hour color grade" loading="lazy">
+                        <figcaption>
+                            <span class="edits-gallery__name">Golden Hour</span>
+                            <span class="edits-gallery__tag">Color Grade</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="edits-gallery__slide">
+                        <img src="https://picsum.photos/seed/edit-mono/1000/625" alt="Monochrome Study retouch" loading="lazy">
+                        <figcaption>
+                            <span class="edits-gallery__name">Monochrome Study</span>
+                            <span class="edits-gallery__tag">Retouch</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="edits-gallery__slide edits-gallery__slide--portrait">
+                        <img src="https://picsum.photos/seed/edit-neon/700/933" alt="Neon Nights composite" loading="lazy">
+                        <figcaption>
+                            <span class="edits-gallery__name">Neon Nights</span>
+                            <span class="edits-gallery__tag">Composite</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="edits-gallery__slide">
+                        <img src="https://picsum.photos/seed/edit-film/1000/625" alt="Kodak Summer film emulation" loading="lazy">
+                        <figcaption>
+                            <span class="edits-gallery__name">Kodak Summer</span>
+                            <span class="edits-gallery__tag">Film Emulation</span>
+                        </figcaption>
+                    </figure>
+                    <figure class="edits-gallery__slide edits-gallery__slide--portrait">
+                        <img src="https://picsum.photos/seed/edit-stage/700/933" alt="Front Row low-light edit" loading="lazy">
+                        <figcaption>
+                            <span class="edits-gallery__name">Front Row</span>
+                            <span class="edits-gallery__tag">Low-Light</span>
+                        </figcaption>
+                    </figure>
+                </div>
+                <div class="edits-gallery__controls">
+                    <button class="edits-gallery__arrow edits-gallery__arrow--prev" data-prev aria-label="Previous edit">&#8249;</button>
+                    <div class="edits-gallery__dots" data-dots></div>
+                    <button class="edits-gallery__arrow edits-gallery__arrow--next" data-next aria-label="Next edit">&#8250;</button>
+                </div>
             </div>
         </div>
     </section>
