@@ -98,6 +98,33 @@ export function setupEditsCarousel() {
     slide.addEventListener('pointerleave', startAutoplay);
   });
 
+  // ── Hover tilt (H2) ──
+  // Feed the cursor position into the CSS custom properties that drive the lift &
+  // pointer-tilt hover animation (see edits.css). --ry/--rx rotate the print toward
+  // the cursor; --gx/--gy park the glare sheen under it. Values reset on leave so
+  // the next hover starts from a level print. Hover-only pointers skip this.
+  if (window.matchMedia('(hover: hover)').matches) {
+    const TILT_MAX = 5;   // deg — gentle enough to keep the deck readable
+    slides.forEach((slide) => {
+      // .is-hover mirrors :hover so the effect also engages in engines whose
+      // :hover never computes from synthesized input; identical for real users.
+      slide.addEventListener('pointerenter', () => slide.classList.add('is-hover'));
+      slide.addEventListener('pointerleave', () => slide.classList.remove('is-hover'));
+      slide.addEventListener('pointermove', (e) => {
+        const r = slide.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        slide.style.setProperty('--ry', ((px - 0.5) * TILT_MAX).toFixed(2) + 'deg');
+        slide.style.setProperty('--rx', ((0.5 - py) * TILT_MAX * 0.8).toFixed(2) + 'deg');
+        slide.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+        slide.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+      });
+      slide.addEventListener('pointerleave', () => {
+        ['--rx', '--ry', '--gx', '--gy'].forEach(p => slide.style.removeProperty(p));
+      });
+    });
+  }
+
   // Freeze when the tab is hidden; resume when it's back.
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) stopAutoplay();

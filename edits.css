@@ -3,6 +3,7 @@
    stage height; the active shot sits flat while neighbors tilt underneath like a
    photographer's light table. Active print carries the cyan tape marker. */
 .edits-gallery {
+    --edits-interval: 3.5s; /* autoplay cadence — the active pill fills over this, then the deck advances */
     padding: 7rem 2rem;
     background-color: var(--background-color);
     position: relative;
@@ -138,6 +139,66 @@
 .edits-gallery__slide.is-prev.is-far-side,
 .edits-gallery__slide.is-next.is-far-side {
     opacity: 0;
+}
+
+/* ── Ambient Ken Burns drift (non-hover state) ──
+   The active print's photograph is always alive: a slow cinematic zoom-and-pan
+   that breathes while the deck sits still. Each newly-activated print starts
+   its drift from rest. Hovering freezes it mid-motion — the pointer-tilt
+   effect takes over a stable frame — and it resumes on leave. */
+@keyframes editsKenBurns {
+    from { transform: scale(1) translate(0, 0); }
+    to   { transform: scale(1.16) translate(-2%, -1.4%); }
+}
+
+.edits-gallery__slide.is-active img {
+    animation: editsKenBurns 18s ease-in-out infinite alternate;
+    will-change: transform;
+}
+
+/* ── H2 hover: Lift & Pointer Tilt ──
+   The active print lifts off the light table and tilts in 3D toward the cursor,
+   with a soft glare sheen tracking the pointer across the photo. CSS handles the
+   state; edits-carousel.js feeds the cursor position into --rx/--ry/--gx/--gy.
+   Desktop-only (hover-capable pointers) and disabled for reduced motion. */
+@media (hover: hover) {
+    .edits-gallery__slide.is-active {
+        transform-style: preserve-3d;
+        will-change: transform;
+    }
+
+    .edits-gallery__slide.is-active:hover,
+    .edits-gallery__slide.is-active.is-hover {
+        transform: translateX(-50%) perspective(1100px)
+                   rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg))
+                   translateY(-12px) scale(1.025);
+        transition: transform 0.15s ease-out, box-shadow 0.4s ease;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.62), 0 0 40px rgba(34, 205, 218, 0.3);
+    }
+
+    /* Glare sheen that follows the pointer */
+    .edits-gallery__slide.is-active::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(240px circle at var(--gx, 50%) var(--gy, 40%),
+                    rgba(255, 255, 255, 0.08), transparent 48%);
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        pointer-events: none;
+        z-index: 3;
+    }
+
+    .edits-gallery__slide.is-active:hover::after,
+    .edits-gallery__slide.is-active.is-hover::after {
+        opacity: 1;
+    }
+
+    /* While hovered the drift freezes so the tilt works on a stable frame */
+    .edits-gallery__slide.is-active:hover img,
+    .edits-gallery__slide.is-active.is-hover img {
+        animation-play-state: paused;
+    }
 }
 
 /* ── P1 accent: dot-matrix voids ──
@@ -424,6 +485,19 @@ body.light-mode .edits-gallery__slide.is-active {
     box-shadow: 0 26px 50px rgba(0, 0, 0, 0.26), 0 10px 18px rgba(0, 0, 0, 0.14);
 }
 
+/* Hover lift in light mode: same tilt, paper-appropriate shadow, brighter sheen */
+@media (hover: hover) {
+    body.light-mode .edits-gallery__slide.is-active:hover,
+    body.light-mode .edits-gallery__slide.is-active.is-hover {
+        box-shadow: 0 34px 64px rgba(0, 0, 0, 0.3), 0 12px 22px rgba(0, 0, 0, 0.16);
+    }
+
+    body.light-mode .edits-gallery__slide.is-active::after {
+        background: radial-gradient(240px circle at var(--gx, 50%) var(--gy, 40%),
+                    rgba(255, 255, 255, 0.18), transparent 48%);
+    }
+}
+
 body.light-mode .edits-gallery__slide.is-prev,
 body.light-mode .edits-gallery__slide.is-next {
     filter: brightness(0.78) blur(3px);
@@ -471,9 +545,24 @@ body.light-mode .edits-gallery__dot.is-active {
 @media (prefers-reduced-motion: reduce) {
     .edits-gallery__slide,
     .edits-gallery__slide::before,
+    .edits-gallery__slide::after,
     .edits-gallery__arrow,
     .edits-gallery__dot {
         transition: none;
+    }
+
+    /* No tilt on hover — the print stays put */
+    .edits-gallery__slide.is-active:hover {
+        transform: translateX(-50%) rotate(0deg) translateY(0);
+    }
+
+    .edits-gallery__slide.is-active::after {
+        display: none;
+    }
+
+    /* No ambient drift — photos sit still */
+    .edits-gallery__slide.is-active img {
+        animation: none;
     }
 
     /* No fill animation — the active pill just sits full */

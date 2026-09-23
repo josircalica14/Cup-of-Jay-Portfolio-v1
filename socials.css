@@ -1,0 +1,261 @@
+/* ═══ My Socials — S10 "True Colors Network" ═══
+   Monochrome brand marks at rest; each tile blooms into its official
+   brand color on hover (Instagram gets the real gradient). Underline
+   sweep + lift. Scroll-triggered staggered entrance via js/socials.js. */
+
+:root {
+    --socials-fb: #4d9bff;
+    --socials-ig: #e1568a;
+    --socials-th: #f2f2f2;
+    --socials-x: #d6d6d6;
+    --socials-dc: #7289ff;
+    --socials-li: #3d9bd6;
+}
+
+.socials {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 5.5rem 2rem 5.5rem;
+    overflow: hidden;
+}
+
+.socials__head {
+    text-align: center;
+    margin-bottom: 2.6rem;
+}
+
+.socials__eyebrow {
+    font-size: .68rem;
+    letter-spacing: .42em;
+    color: var(--brand-primary);
+    text-transform: uppercase;
+    text-shadow: 0 0 14px var(--accent-glow);
+}
+
+.socials__title {
+    font-family: 'CardHeaderFont', sans-serif;
+    font-weight: normal;
+    font-size: 2.2rem;
+    margin: .55rem 0 .45rem;
+    color: var(--dark-text-primary);
+}
+
+.socials__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.1rem;
+    max-width: 880px;
+    margin: 0 auto;
+}
+
+/* Tile */
+.socials__tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .7rem;
+    padding: 2rem 1rem 1.6rem;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, .09);
+    background: rgba(255, 255, 255, .025);
+    color: rgba(232, 232, 232, .82);
+    /* per-tile brand color + glow, overridden below */
+    --bc: var(--brand-primary);
+    --bc-glow: rgba(34, 205, 218, .3);
+    transition: transform .35s ease, border-color .35s ease, background .35s ease, box-shadow .35s ease;
+    /* entrance */
+    opacity: 0;
+    transform: translateY(18px);
+    transition: transform .5s ease, opacity .5s ease, border-color .35s ease, background .35s ease, box-shadow .35s ease;
+}
+
+.socials__tile.is-in {
+    opacity: 1;
+    transform: none;
+}
+
+.socials__tile .sib {
+    width: 34px;
+    height: 34px;
+    fill: currentColor;
+    display: block;
+    transition: fill .35s ease, transform .35s ease;
+}
+
+.socials__name {
+    font-family: 'CardHeaderFont', sans-serif;
+    font-size: 1.02rem;
+    color: var(--dark-text-primary);
+    transition: color .35s ease;
+}
+
+.socials__handle {
+    font-size: .62rem;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: rgba(224, 224, 224, .42);
+}
+
+/* Brand-colored underline sweep */
+.socials__tile::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 100%;
+    bottom: -1px;
+    height: 2px;
+    background: var(--bc);
+    transition: right .4s ease;
+}
+
+/* Hover bloom */
+.socials__tile:hover,
+.socials__tile:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--bc);
+    background: rgba(255, 255, 255, .045);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, .45), 0 0 26px var(--bc-glow);
+}
+
+.socials__tile:hover .sib,
+.socials__tile:focus-visible .sib {
+    fill: var(--bc);
+    transform: scale(1.1);
+}
+
+.socials__tile:hover .socials__name,
+.socials__tile:focus-visible .socials__name {
+    color: var(--bc);
+}
+
+.socials__tile:hover::after,
+.socials__tile:focus-visible::after {
+    right: 0;
+}
+
+/* Brand palettes */
+.socials__tile--fb { --bc: var(--socials-fb); --bc-glow: rgba(77, 155, 255, .35); }
+.socials__tile--ig { --bc: var(--socials-ig); --bc-glow: rgba(225, 86, 138, .35); }
+.socials__tile--ig:hover .sib,
+.socials__tile--ig:focus-visible .sib { fill: url(#socials-ig-grad); }
+.socials__tile--ig:hover .socials__name,
+.socials__tile--ig:focus-visible .socials__name {
+    background: linear-gradient(45deg, #f09433, #dc2743, #bc1888);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.socials__tile--th { --bc: var(--socials-th); --bc-glow: rgba(242, 242, 242, .28); }
+.socials__tile--x  { --bc: var(--socials-x);  --bc-glow: rgba(214, 214, 214, .26); }
+.socials__tile--dc { --bc: var(--socials-dc); --bc-glow: rgba(114, 137, 255, .4); }
+.socials__tile--li { --bc: var(--socials-li); --bc-glow: rgba(61, 155, 214, .4); }
+
+/* ═══ Light mode ═══ */
+body.light-mode .socials__eyebrow { text-shadow: none; }
+body.light-mode .socials__title { color: var(--light-text-primary); }
+body.light-mode .socials__tile {
+    border-color: rgba(0, 0, 0, .1);
+    background: #ffffff;
+    color: #3c3c3c;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+}
+body.light-mode .socials__name { color: var(--light-text-primary); }
+body.light-mode .socials__handle { color: rgba(34, 34, 34, .45); }
+body.light-mode .socials__tile:hover,
+body.light-mode .socials__tile:focus-visible {
+    transform: translateY(-6px);
+    border-color: var(--bc);
+    background: #ffffff;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, .14);
+}
+/* Official brand colors read better on white */
+body.light-mode {
+    --socials-fb: #1877f2;
+    --socials-ig: #d6249f;
+    --socials-th: #101010;
+    --socials-x: #0f1419;
+    --socials-dc: #5865f2;
+    --socials-li: #0a66c2;
+}
+body.light-mode .socials__tile--th { --bc-glow: rgba(16, 16, 16, .16); }
+body.light-mode .socials__tile--x  { --bc-glow: rgba(15, 20, 25, .16); }
+
+/* ═══ Bracket rail accents (A3) — anchored to the grid, centered on the tiles ═══ */
+.socials__grid {
+    position: relative;
+}
+
+.socials__rail {
+    position: absolute;
+    top: 50%;
+    width: 34px;
+    height: 76%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.socials__rail--l {
+    left: -58px; /* tile gap + rail width + breathing room */
+    border-left: 2px solid rgba(34, 205, 218, .55);
+    border-top: 2px solid rgba(34, 205, 218, .25);
+    border-bottom: 2px solid rgba(34, 205, 218, .25);
+}
+
+.socials__rail--r {
+    right: -58px;
+    border-right: 2px solid rgba(34, 205, 218, .55);
+    border-top: 2px solid rgba(34, 205, 218, .25);
+    border-bottom: 2px solid rgba(34, 205, 218, .25);
+}
+
+/* Pulsing node riding each rail, mirrored positions */
+.socials__rail::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background: var(--brand-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(34, 205, 218, .8);
+    transform: translateX(-50%);
+    animation: socialsNode 3.4s ease-in-out infinite;
+}
+
+.socials__rail--l::after { top: 18%; }
+.socials__rail--r::after { top: 64%; animation-delay: 1.7s; }
+
+@keyframes socialsNode {
+    0%, 100% { opacity: .35; }
+    50% { opacity: 1; }
+}
+
+/* ═══ Responsive ═══ */
+@media (max-width: 1180px) {
+    .socials__rail { display: none; }
+}
+
+@media (max-width: 860px) {
+    .socials__grid { grid-template-columns: repeat(2, 1fr); }
+    .socials { padding: 3.5rem 1.4rem 4rem; }
+}
+
+@media (max-width: 480px) {
+    .socials__grid { gap: .8rem; }
+    .socials__tile { padding: 1.5rem .8rem 1.2rem; }
+    .socials__title { font-size: 1.8rem; }
+}
+
+/* ═══ Reduced motion ═══ */
+@media (prefers-reduced-motion: reduce) {
+    .socials__rail::after { animation: none; }
+    .socials__tile,
+    .socials__tile .sib,
+    .socials__tile::after {
+        transition: none;
+    }
+    .socials__tile { opacity: 1; transform: none; }
+    .socials__tile:hover { transform: none; }
+}

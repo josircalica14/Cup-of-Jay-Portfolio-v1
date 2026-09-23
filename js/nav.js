@@ -4,7 +4,7 @@
 export const PAGES = [
   { label: 'Home', href: 'index.html' },
   { label: 'Projects', href: 'projects.html' },
-  { label: 'Gallery', href: null },   // null href = placeholder until the page exists
+  { label: 'Gallery', href: 'gallery.html' },
   { label: 'Blogs', href: null },
   { label: 'About', href: null },
   { label: 'Contact', href: null },

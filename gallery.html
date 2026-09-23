@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gallery of edits by Cup of Jay — color grading, retouching, and personal edits">
+    <title>Gallery | Cup of Jay</title>
+    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="gallery.css?v=7">
+    <link rel="stylesheet" href="theme-toggle.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark-mode';
+            document.documentElement.className = theme;
+        })();
+    </script>
+</head>
+<body class="dark-mode">
+    <!-- Mobile Navigation (outside hero so fixed positioning works correctly) -->
+    <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav__checkbox">
+
+    <!-- Mobile nav frosted bar (shown on scroll) -->
+    <div class="mobile-nav__bar"></div>
+
+    <!-- Mobile Logo -->
+    <div class="mobile-logo">
+        <img class="logo-light" src="./logo/logo1v2.png" alt="Cup of Jay">
+        <img class="logo-dark" src="./logo/logo1v1.png" alt="Cup of Jay">
+    </div>
+
+    <!-- Mobile Burger Menu -->
+    <label for="mobile-nav-toggle" class="mobile-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <!-- Mobile Nav Backdrop -->
+    <label for="mobile-nav-toggle" class="mobile-nav__backdrop"></label>
+
+    <!-- Full-width blur strip under the scrolled navbar -->
+    <div class="nav-blur-strip" aria-hidden="true"></div>
+
+    <!-- Mobile Nav Drawer -->
+    <nav class="mobile-nav__drawer" aria-label="Mobile navigation">
+        <div class="mobile-nav__header">
+            <img class="logo-light mobile-nav__header-logo" src="./logo/logo1v2.png" alt="Cup of Jay">
+            <img class="logo-dark mobile-nav__header-logo" src="./logo/logo1v1.png" alt="Cup of Jay">
+            <span class="mobile-nav__header-name">Cup of Jay</span>
+        </div>
+        <ul class="mobile-nav__list">
+            <!-- Rendered by js/nav.js from the single PAGES source -->
+        </ul>
+    </nav>
+
+    <!-- Desktop Navigation (outside hero so fixed positioning works correctly) -->
+    <nav class="nav" aria-label="Main navigation">
+        <!-- Logo floats above the nav, centered, out of flow -->
+        <div class="nav__logo-item">
+            <img class="nav__logo-image logo-light" src="./logo/logo1v2.png" alt="Cup of Jay">
+            <img class="nav__logo-image logo-dark" src="./logo/logo1v1.png" alt="Cup of Jay">
+        </div>
+        <ul class="nav__main-list">
+            <!-- Rendered by js/nav.js from the single PAGES source -->
+        </ul>
+    </nav>
+
+    <!-- Theme toggle — standalone, always visible -->
+    <div class="nav__toggle-item">
+        <div class="theme-toggle theme-toggle--nav">
+            <label class="switch" for="theme-checkbox" aria-label="Toggle theme">
+                <input type="checkbox" id="theme-checkbox" class="theme-toggle__input">
+                <span class="slider">
+                    <span class="stars">
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                    </span>
+                    <span class="moons-hole">
+                        <span class="moon-hole"></span>
+                        <span class="moon-hole"></span>
+                        <span class="moon-hole"></span>
+                    </span>
+                    <span class="black-clouds">
+                        <span class="black-cloud"></span>
+                        <span class="black-cloud"></span>
+                        <span class="black-cloud"></span>
+                    </span>
+                    <span class="clouds">
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                    </span>
+                </span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Gallery page — "Masonry Ledger": sticky section labels beside masonry
+         columns. Each section = one discipline. To add a print: drop a figure
+         into the section's .gallery-ledger__grid, set its aspect-ratio inline
+         (3/4 portrait, 4/3 landscape, 1 square) and match the img dimensions. -->
+    <header class="gallery-header">
+        <div class="gallery-header__text">
+            <div class="gallery-header__eyebrow">The Gallery</div>
+            <h1 class="gallery-header__title">Selected work,<br>kept &amp; filed.</h1>
+            <p class="gallery-header__subtitle">A living ledger of color grades, retouches and personal composites — newest additions first, everything one scroll away.</p>
+            <div class="gallery-header__stats">
+                <span class="gallery-header__stat"><b>21</b><span>Prints</span></span>
+                <span class="gallery-header__stat"><b>3</b><span>Disciplines</span></span>
+                <span class="gallery-header__stat"><b>&infin;</b><span>Experiments</span></span>
+            </div>
+        </div>
+        <div class="gallery-header__media">
+            <img src="https://picsum.photos/seed/g3hero/900/640" alt="Featured edit detail">
+        </div>
+    </header>
+
+    <main class="gallery-ledger">
+        <!-- 01 — Color Grading -->
+        <section class="gallery-ledger__section" id="color-grading">
+            <aside class="gallery-ledger__label">
+                <span class="gallery-ledger__num">01 / COLOR GRADING</span>
+                <h2>Color Grading</h2>
+                <p>Every grade chases a feeling — warm nostalgia, cool sci-fi, or silver silence.</p>
+                <span class="gallery-ledger__line" aria-hidden="true"></span>
+            </aside>
+            <div class="gallery-ledger__grid">
+                <figure class="gallery-ledger__print" style="aspect-ratio: 3/4">
+                    <img src="https://picsum.photos/seed/g1a/600/800" alt="Golden Hour color grade" loading="lazy">
+                    <figcaption><span>Golden Hour</span><span class="gallery-ledger__tag">Grade</span></figcaption>
+                </figure>
+                <figure class="gallery-ledger__print" style="aspect-ratio: 4/3">
+                    <img src="https://picsum.photos/seed/g1b/900/560" alt="Kodak Summer film emulation" loading="lazy">
+                    <figcaption><span>Kodak Summer</span><span class="gallery-ledger__tag">Film</span></figcaption>
+                </figure>
+                <figure class="gallery-ledger__print" style="aspect-ratio: 1">
+                    <img src="https://picsum.photos/seed/g1c/700/700" alt="Studio Warm grade" loading="lazy">
+                    <figcaption><span>Studio Warm</span><span class="gallery-ledger__tag">Grade</span></figcaption>
+                </figure>
+                <figure class="gallery-ledger__print" style="aspect-ratio: 4/3">
+                    <img src="https://picsum.photos/seed/g1d/900/560" alt="Dusk Patrol cinematic grade" loading="lazy">
+                    <figcaption><span>Dusk Patrol</span><span class="gallery-ledger__tag">Cinematic</span></figcaption>
+                </figure>
+            </div>
+            <div class="gallery-ledger__more-row">
+                <a class="gallery-ledger__more" href="color-grading.html">
+                    <span class="gallery-ledger__more-text">View all</span>
+                    <svg class="gallery-ledger__more-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 8 7 13.5 5.6 12.1 9.7 8 5.6 3.9 7 2.5Z" fill="currentColor"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- 02 — Retouching -->
+        <section class="gallery-ledger__section" id="retouching">
+            <aside class="gallery-ledger__label">
+                <span class="gallery-ledger__num">02 / RETOUCHING</span>
+                <h2>Retouching</h2>
+                <p>Cleanup, beauty work and restoration — the invisible craft.</p>
+                <span class="gallery-ledger__line" aria-hidden="true"></span>
+            </aside>
+            <div class="gallery-ledger__grid">
+                <figure class="gallery-ledger__print" style="aspect-ratio: 4/3">
+                    <img src="https://picsum.photos/seed/g2a/900/560" alt="Skin and tone retouch" loading="lazy">
+                    <figcaption><span>Skin &amp; Tone</span><span class="gallery-ledger__tag">Beauty</span></figcaption>
+                </figure>
+                <figure class="gallery-ledger__print" style="aspect-ratio: 1">
+                    <img src="https://picsum.photos/seed/g2b/700/700" alt="Product polish retouch" loading="lazy">
+                    <figcaption><span>Product Polish</span><span class="gallery-ledger__tag">Commercial</span></figcaption>
+                </figure>
+                <figure class="gallery-ledger__print" style="aspect-ratio: 3/4">
+                    <img src="https://picsum.photos/seed/g2c/600/800" alt="Portrait detail retouch" loading="lazy">
+                    <figcaption><span>Portrait Detail</span><span class="gallery-ledger__tag">Beauty</span></figcaption>
+                </figure>
+            </div>
+            <div class="gallery-ledger__more-row">
+                <a class="gallery-ledger__more" href="retouching.html">
+                    <span class="gallery-ledger__more-text">View all</span>
+                    <svg class="gallery-ledger__more-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 8 7 13.5 5.6 12.1 9.7 8 5.6 3.9 7 2.5Z" fill="currentColor"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- 03 — Personal Edits -->
+        <section class="gallery-ledger__section" id="personal-edits">
+            <aside class="gallery-ledger__label">
+                <span class="gallery-ledger__num">03 / PERSONAL EDITS</span>
+                <h2>Personal Edits</h2>
+                <p>Composites, film emulation, experiments without a client — pure play.</p>
+                <span class="gallery-ledger__line" aria-hidden="true"></span>
+            </aside>
+            <div class="gallery-ledger__grid">
+                <figure class="gallery-ledger__print" style="aspect-ratio: 3/4">
+                    <img src="https://picsum.photos/seed/g3a/600/800" alt="Neon Nights composite" loading="lazy">
+                    <figcaption><span>Neon Nights</span><span class="gallery-ledger__tag">Composite</span></figcaption>
+                </figure>
+                <figure class="gallery-ledger__print" style="aspect-ratio: 4/3">
+                    <img src="https://picsum.photos/seed/g3b/900/560" alt="Front Row low-light edit" loading="lazy">
+                    <figcaption><span>Front Row</span><span class="gallery-ledger__tag">Low-Light</span></figcaption>
+                </figure>
+                <figure class="gallery-ledger__print" style="aspect-ratio: 1">
+                    <img src="https://picsum.photos/seed/g3c/700/700" alt="Analog Heart film emulation" loading="lazy">
+                    <figcaption><span>Analog Heart</span><span class="gallery-ledger__tag">Film</span></figcaption>
+                </figure>
+            </div>
+            <div class="gallery-ledger__more-row">
+                <a class="gallery-ledger__more" href="personal-edits.html">
+                    <span class="gallery-ledger__more-text">View all</span>
+                    <svg class="gallery-ledger__more-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M12.5 8 7 13.5 5.6 12.1 9.7 8 5.6 3.9 7 2.5Z" fill="currentColor"/></svg>
+                </a>
+            </div>
+        </section>
+
+        <footer class="gallery-footer">END OF ROLL — CUP OF JAY</footer>
+    </main>
+
+    <script type="module" src="main.js?v=9"></script>
+    <script src="lib/libgif.js"></script>
+    <script src="lib/web-pet-engine.js"></script>
+</body>
+</html>
