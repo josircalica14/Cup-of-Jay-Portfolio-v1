@@ -285,6 +285,66 @@ body.light-mode .about-section__image-container:hover .about-section__image {
     box-shadow: 0 20px 48px rgba(0, 0, 0, 0.24);
 }
 
+/* ═══ Corner step lines (C6) — stepped 90° polylines at top-left +
+   bottom-right, like circuit traces meeting a knot at each corner pivot.
+   Cyan in dark mode, blue in light mode. Scales down with the viewport. ═══ */
+.about-corners {
+    --ab-c: var(--brand-primary);
+    --ab-c-soft: rgba(34, 205, 218, 0.42);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    /* scale factor steps down on smaller screens via media queries below */
+    --ab-scale: 1;
+}
+
+.ab-step {
+    position: absolute;
+    background: var(--ab-c);
+    opacity: 0.8;
+}
+
+.ab-step--h { height: 2px; }
+.ab-step--v { width: 2px; }
+
+/* Primary (long) segments — 90px at scale 1 */
+.tl-h1 { top: calc(28px * var(--ab-scale)); left: calc(28px * var(--ab-scale)); width: calc(90px * var(--ab-scale)); }
+.tl-v1 { top: calc(28px * var(--ab-scale)); left: calc(28px * var(--ab-scale)); height: calc(90px * var(--ab-scale)); }
+.br-h1 { bottom: calc(28px * var(--ab-scale)); right: calc(28px * var(--ab-scale)); width: calc(90px * var(--ab-scale)); }
+.br-v1 { bottom: calc(28px * var(--ab-scale)); right: calc(28px * var(--ab-scale)); height: calc(90px * var(--ab-scale)); }
+
+/* Echo (short) segments — 52px, softer */
+.tl-h2 { top: calc(46px * var(--ab-scale)); left: calc(28px * var(--ab-scale)); width: calc(52px * var(--ab-scale)); opacity: 0.45; }
+.tl-v2 { top: calc(28px * var(--ab-scale)); left: calc(46px * var(--ab-scale)); height: calc(52px * var(--ab-scale)); opacity: 0.45; }
+.br-h2 { bottom: calc(46px * var(--ab-scale)); right: calc(28px * var(--ab-scale)); width: calc(52px * var(--ab-scale)); opacity: 0.45; }
+.br-v2 { bottom: calc(28px * var(--ab-scale)); right: calc(46px * var(--ab-scale)); height: calc(52px * var(--ab-scale)); opacity: 0.45; }
+
+.ab-knot {
+    position: absolute;
+    width: calc(6px * var(--ab-scale));
+    height: calc(6px * var(--ab-scale));
+    border-radius: 50%;
+    background: var(--ab-c);
+    box-shadow: 0 0 calc(10px * var(--ab-scale)) var(--ab-c-soft);
+}
+
+.ab-knot--tl { top: calc(25px * var(--ab-scale)); left: calc(25px * var(--ab-scale)); }
+.ab-knot--br { bottom: calc(25px * var(--ab-scale)); right: calc(25px * var(--ab-scale)); }
+
+body.light-mode .about-corners {
+    --ab-c: var(--brand-primary-dark);
+    --ab-c-soft: rgba(0, 79, 210, 0.42);
+}
+
+@media (max-width: 900px) {
+    .about-corners { --ab-scale: 0.72; }
+}
+
+@media (max-width: 640px) {
+    .about-corners { --ab-scale: 0.55; }
+}
+
 /* ═══ Reduced motion ═══ */
 @media (prefers-reduced-motion: reduce) {
     .about-section__frame::before,

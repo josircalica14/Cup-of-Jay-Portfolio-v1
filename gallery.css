@@ -11,6 +11,7 @@
     --gallery-accent: var(--brand-primary);
     --gallery-accent-soft: rgba(34, 205, 218, 0.4);
     --gallery-accent-glow: rgba(34, 205, 218, 0.7);
+    --gallery-on-accent: #0e2a2d;
 }
 
 body.light-mode {
@@ -214,36 +215,39 @@ body.light-mode {
     }
 }
 
-/* ===== View all — centered link to the section's dedicated page ===== */
+/* ===== View all — spans both grid columns, centered on the page ===== */
 .gallery-ledger__more-row {
+    grid-column: 1 / -1;
     display: flex;
     justify-content: center;
-    margin-top: 1.4rem;
+    margin-top: 0.4rem;
 }
 
 .gallery-ledger__more {
     display: inline-flex;
     align-items: center;
     gap: 0.7rem;
-    padding: 0.62rem 1.6rem;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: rgba(224, 224, 224, 0.75);
+    padding: 0.72rem 1.9rem;
+    background: var(--gallery-accent-soft);
+    border: 1.5px solid var(--gallery-accent);
+    color: var(--gallery-accent);
     font-family: var(--gallery-mono);
-    font-size: 0.66rem;
+    font-size: 0.7rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     text-decoration: none;
     cursor: pointer;
-    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    box-shadow: 0 0 14px var(--gallery-accent-glow);
+    transition: color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease, transform 0.25s ease;
 }
 
 .gallery-ledger__more:hover,
 .gallery-ledger__more:focus-visible {
-    color: var(--gallery-accent);
+    color: var(--gallery-on-accent, #14282b);
+    background: var(--gallery-accent);
     border-color: var(--gallery-accent);
-    background: var(--gallery-accent-soft);
-    box-shadow: 0 0 16px var(--gallery-accent-soft);
+    box-shadow: 0 0 26px var(--gallery-accent-glow), 0 8px 20px rgba(0, 0, 0, 0.35);
+    transform: translateY(-2px);
     outline: none;
 }
 
@@ -577,9 +581,14 @@ body.light-mode .gallery-ledger__print figcaption span:first-child {
     color: #1a1a1a;
 }
 
+/* Accent outline + tint at rest; solid fill on hover — blue on cream reads
+   best with white text, and --gallery-on-accent handles the dark-mode fill
+   (near-black ink on cyan). */
 body.light-mode .gallery-ledger__more {
-    border-color: rgba(0, 0, 0, 0.18);
-    color: rgba(34, 34, 34, 0.65);
+    background: transparent;
+    border-color: var(--gallery-accent);
+    color: var(--gallery-accent);
+    box-shadow: none;
 }
 
 body.light-mode .gallery-ledger__more:hover,
@@ -588,6 +597,7 @@ body.light-mode .gallery-ledger__more:focus-visible {
     background: var(--gallery-accent);
     border-color: var(--gallery-accent);
     box-shadow: 0 10px 24px rgba(0, 79, 210, 0.25);
+    transform: translateY(-2px);
 }
 
 body.light-mode .gallery-section__title,

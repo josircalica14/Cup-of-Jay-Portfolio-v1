@@ -573,6 +573,54 @@ body.light-mode .hero-section {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.144); /* Subtle drop shadow for depth */
 }
 
+/* ── Opposite-corner line accents (top-left + bottom-right) ──
+   Diagonal cyan/blue bar clusters riding the hero's opposite corners, themed
+   to the site palette: --ca-accent is the lead color, --ca-accent-2 the
+   partner tone. Dark mode leads cyan; light mode leads blue (#004fd2).
+   All geometry multiplies --ca-scale, which steps down responsively, so the
+   clusters stay fully visible at every screen size. The hero clips overflow,
+   so bars with negative offsets still land visually on the corners through
+   their rotation — same composition, nothing cut off. */
+:root {
+    --ca-accent: var(--brand-primary);       /* cyan */
+    --ca-accent-2: rgba(34, 205, 218, 0.45); /* cyan, softened */
+    --ca-scale: 1;
+}
+
+body.light-mode {
+    --ca-accent: var(--brand-primary-dark);      /* blue */
+    --ca-accent-2: rgba(0, 79, 210, 0.45);       /* blue, softened */
+}
+
+.corner-accent {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.ca-bar {
+    position: absolute;
+    border-radius: 100px;
+}
+
+/* +38° around the corner-adjacent end swings each bar INTO the hero;
+   the mirror of the original top-right/bottom-left composition. */
+.ca-tl { transform: rotate(38deg) scale(var(--ca-scale)); transform-origin: top left; }
+.ca-br { transform: rotate(38deg) scale(var(--ca-scale)); transform-origin: bottom right; }
+
+.ca-dot {
+    position: absolute;
+    border-radius: 50%;
+    scale: var(--ca-scale);
+}
+
+/* Responsiveness: shrink the clusters as the viewport narrows so they never
+   collide with content or crowd the rounded hero corners. */
+@media (max-width: 900px)  { :root { --ca-scale: 0.78; } }
+@media (max-width: 640px)  { :root { --ca-scale: 0.6; } }
+@media (max-width: 420px)  { :root { --ca-scale: 0.48; } }
+
 .hero-image {
     position: absolute;
     bottom: 0;
@@ -974,12 +1022,12 @@ body.light-mode .hero-subtitle {
 .section-separator {
     height: 1px;
     border: 0;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0));
-    margin: 4rem 0;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0));
+    margin: 6rem 0;
 }
 
 body.light-mode .section-separator {
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0));
 }
 
 /* ── Hero Scroll Indicator ── */
@@ -1566,10 +1614,11 @@ body.light-mode .nav__list-item a:hover {
 
 /* ===== FEATURES WORKS SECTION & CAROUSEL STYLES ===== */
 .features-projects {
-    padding: var(--spacing-xl) var(--spacing-md);
+    padding: 7rem var(--spacing-md);
     background: var(--dark-bg-primary);
     transition: background var(--transition-normal);
     --carousel-fade: #242424;
+    position: relative;
 }
 
 body.light-mode .features-projects {
@@ -1580,6 +1629,72 @@ body.light-mode .features-projects {
 .features-projects__container {
     max-width: 1400px;
     margin: 0 auto;
+    position: relative;
+}
+
+/* ── Side accents: dot columns flanking the spotlight ──
+   Vertical dot-matrix strips flanking the deck, fading at the
+   top and bottom, each anchored by one bright beacon dot. The layer spans the
+   whole section (not the 1400px container) so the strips can be pushed out
+   into the page flank, and they are positioned off the CENTER — so the gap to
+   the 1100px-wide stage stays constant at every screen size and they never
+   drift as the window grows.
+   Cyan in dark mode, blue (#004fd2) in light mode, matching the site accents. */
+.fp-dots-accent {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* The layer is the SECTION box (7rem vertical padding included), so the strips
+   are inset by that padding plus 10% of the container box to keep the exact
+   vertical span they had when they lived inside .features-projects__container. */
+.fp-dot-col {
+    position: absolute;
+    top: calc(7rem + (100% - 14rem) * 0.1);
+    bottom: calc(7rem + (100% - 14rem) * 0.1);
+    width: 28px;
+    background-image: radial-gradient(circle, rgba(34, 205, 218, 0.42) 2.2px, transparent 3.4px);
+    background-size: 14px 14px;
+    -webkit-mask-image: linear-gradient(180deg, transparent, #000 28%, #000 72%, transparent);
+    mask-image: linear-gradient(180deg, transparent, #000 28%, #000 72%, transparent);
+}
+
+/* 50% - 748px lands the strip 48px OUTSIDE the 1400px container's edge, ~146px
+   clear of the stage — the strips read as sitting in the page flank rather than
+   hugging the layout. The max(0px, ...) floor is the section's own edge, so on
+   narrower desktops they simply stop there instead of causing overflow. */
+.fp-dot-col--l { left: max(0px, calc(50% - 748px)); }
+.fp-dot-col--r { right: max(0px, calc(50% - 748px)); }
+
+.fp-dot-beacon {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--brand-primary);
+    box-shadow: 0 0 14px rgba(34, 205, 218, 0.6);
+}
+
+/* 9px = (28px column - 10px dot) / 2, so the beacon stays centered in its
+   strip whether the strips are pushed out or sitting on the floor. */
+.fp-dot-beacon--l { left: max(9px, calc(50% - 739px)); top: 32%; }
+.fp-dot-beacon--r { right: max(9px, calc(50% - 739px)); bottom: 32%; }
+
+body.light-mode .fp-dot-col {
+    background-image: radial-gradient(circle, rgba(0, 79, 210, 0.42) 2.2px, transparent 3.4px);
+}
+
+body.light-mode .fp-dot-beacon {
+    background: var(--brand-primary-dark);
+    box-shadow: 0 0 14px rgba(0, 79, 210, 0.5);
+}
+
+/* Below this width the columns would start sitting on the deck, so they step
+   aside instead of crowding it (same rule-of-thumb as the socials rails). */
+@media (max-width: 1200px) {
+    .fp-dots-accent { display: none; }
 }
 
 .features-projects__title {

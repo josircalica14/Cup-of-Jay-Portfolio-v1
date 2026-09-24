@@ -202,26 +202,60 @@
 }
 
 /* ── P1 accent: dot-matrix voids ──
-   Grids of cyan dots fill the blank space beside the deck and dissolve toward
-   the edges. Two stacked layers — a soft halo under a crisp core — so the
-   dots glow off the dark background. Sits at z-index 0, behind all content. */
+   Grids of cyan dots fill the blank space beside the deck as a ROUND bloom
+   and dissolve toward every edge. Two stacked layers — a soft halo under a
+   crisp core — so the dots glow off the dark background. Sits at z-index 0,
+   behind all content.
+
+   Geometry is derived from the SAME stage-height formula the deck uses, so
+   the fields track the prints at every viewport. The deck's outer edge sits
+   0.76 × stage + 46px from center (widest print = 0.95 × stage at 16:10,
+   nudged 46px off-center); each field's inner edge sits a fixed 16px clear of
+   that edge and grows outward, so it can never drift or crowd as the screen
+   resizes.
+
+   The mask uses explicit ellipse radii (50% × 20% of the tall box), which
+   keeps the visible dot region a near-perfect CIRCLE instead of the rounded
+   column an inscribed box-ellipse produces. */
 .edits-gallery__dots-accent {
+    --edits-stage-h: min(clamp(430px, 44vw, 700px), 60vh);
+    --edits-deck-edge: calc(0.76 * var(--edits-stage-h) + 46px);
     position: absolute;
-    top: 4%;
-    bottom: 4%;
-    width: clamp(60px, 9vw, 200px);
+    top: 0;
+    bottom: 8%;
+    width: clamp(80px, calc(0.4 * var(--edits-stage-h)), 240px);
     background-image:
         radial-gradient(circle, rgba(34, 205, 218, 0.4) 3px, transparent 4.6px),
         radial-gradient(circle, #22cdda 1.5px, transparent 2.1px);
     background-size: 16px 16px;
-    -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 60%);
-    mask-image: radial-gradient(ellipse at center, #000 20%, transparent 60%);
+    /* Round bloom: explicit radii ≈ circle, eased multi-stop falloff —
+       smooth melt, no ring, no rectangle. */
+    -webkit-mask-image: radial-gradient(50% 20% at 50% 50%,
+        #000 12%,
+        rgba(0, 0, 0, 0.8) 38%,
+        rgba(0, 0, 0, 0.45) 62%,
+        rgba(0, 0, 0, 0.15) 82%,
+        transparent 100%);
+    mask-image: radial-gradient(50% 20% at 50% 50%,
+        #000 12%,
+        rgba(0, 0, 0, 0.8) 38%,
+        rgba(0, 0, 0, 0.45) 62%,
+        rgba(0, 0, 0, 0.15) 82%,
+        transparent 100%);
     z-index: 0;
     pointer-events: none;
 }
 
-.edits-gallery__dots-accent--l { left: clamp(-20px, -1vw, 0px); }
-.edits-gallery__dots-accent--r { right: clamp(-20px, -1vw, 0px); }
+/* Inner edge held 16px clear of the deck's widest reach; the field grows
+   outward toward the screen edge. Mirrored pairs. */
+.edits-gallery__dots-accent--l {
+    left: calc(50% - var(--edits-deck-edge) - 16px);
+    transform: translate(-100%, 0);
+}
+.edits-gallery__dots-accent--r {
+    left: calc(50% + var(--edits-deck-edge) + 16px);
+    transform: translate(0, 0);
+}
 
 /* Text layers always render above the dot field */
 .edits-gallery__eyebrow,

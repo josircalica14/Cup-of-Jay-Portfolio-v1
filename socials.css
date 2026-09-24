@@ -10,13 +10,19 @@
     --socials-x: #d6d6d6;
     --socials-dc: #7289ff;
     --socials-li: #3d9bd6;
+    /* Section accent: cyan in dark mode, the light-mode blue (#004fd2) on light theme. */
+    --socials-accent: var(--brand-primary);
+    --socials-accent-soft: rgba(34, 205, 218, .55);
+    --socials-accent-faint: rgba(34, 205, 218, .25);
+    --socials-accent-glow: rgba(34, 205, 218, .6);
+    --socials-accent-node-glow: rgba(34, 205, 218, .8);
 }
 
 .socials {
     position: relative;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 5.5rem 2rem 5.5rem;
+    padding: 7rem 2rem 7rem;
     overflow: hidden;
 }
 
@@ -26,11 +32,12 @@
 }
 
 .socials__eyebrow {
+    font-family: 'NavBarFont', sans-serif;
     font-size: .68rem;
     letter-spacing: .42em;
-    color: var(--brand-primary);
+    color: var(--socials-accent);
     text-transform: uppercase;
-    text-shadow: 0 0 14px var(--accent-glow);
+    text-shadow: 0 0 14px var(--socials-accent-glow);
 }
 
 .socials__title {
@@ -92,6 +99,7 @@
 }
 
 .socials__handle {
+    font-family: 'NavBarFont', sans-serif;
     font-size: .62rem;
     letter-spacing: .22em;
     text-transform: uppercase;
@@ -172,6 +180,12 @@ body.light-mode .socials__tile:focus-visible {
 }
 /* Official brand colors read better on white */
 body.light-mode {
+    /* Light theme carries the site's blue accent (#004fd2). */
+    --socials-accent: var(--brand-primary-dark);
+    --socials-accent-soft: rgba(0, 79, 210, .55);
+    --socials-accent-faint: rgba(0, 79, 210, .25);
+    --socials-accent-glow: rgba(0, 79, 210, .45);
+    --socials-accent-node-glow: rgba(0, 79, 210, .6);
     --socials-fb: #1877f2;
     --socials-ig: #d6249f;
     --socials-th: #101010;
@@ -198,16 +212,16 @@ body.light-mode .socials__tile--x  { --bc-glow: rgba(15, 20, 25, .16); }
 
 .socials__rail--l {
     left: -58px; /* tile gap + rail width + breathing room */
-    border-left: 2px solid rgba(34, 205, 218, .55);
-    border-top: 2px solid rgba(34, 205, 218, .25);
-    border-bottom: 2px solid rgba(34, 205, 218, .25);
+    border-left: 2px solid var(--socials-accent-soft);
+    border-top: 2px solid var(--socials-accent-faint);
+    border-bottom: 2px solid var(--socials-accent-faint);
 }
 
 .socials__rail--r {
     right: -58px;
-    border-right: 2px solid rgba(34, 205, 218, .55);
-    border-top: 2px solid rgba(34, 205, 218, .25);
-    border-bottom: 2px solid rgba(34, 205, 218, .25);
+    border-right: 2px solid var(--socials-accent-soft);
+    border-top: 2px solid var(--socials-accent-faint);
+    border-bottom: 2px solid var(--socials-accent-faint);
 }
 
 /* Pulsing node riding each rail, mirrored positions */
@@ -217,9 +231,9 @@ body.light-mode .socials__tile--x  { --bc-glow: rgba(15, 20, 25, .16); }
     left: 50%;
     width: 6px;
     height: 6px;
-    background: var(--brand-primary);
+    background: var(--socials-accent);
     border-radius: 50%;
-    box-shadow: 0 0 12px rgba(34, 205, 218, .8);
+    box-shadow: 0 0 12px var(--socials-accent-node-glow);
     transform: translateX(-50%);
     animation: socialsNode 3.4s ease-in-out infinite;
 }

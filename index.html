@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cup of Jay - Creative Developer & Designer portfolio">
-    <link rel="stylesheet" href="style.css?v=6">
-    <link rel="stylesheet" href="about.css">
-    <link rel="stylesheet" href="edits.css?v=10">
-    <link rel="stylesheet" href="socials.css?v=4">
+    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="about.css?v=2">
+    <link rel="stylesheet" href="edits.css?v=16">
+    <link rel="stylesheet" href="socials.css?v=7">
     <link rel="stylesheet" href="theme-toggle.css">
     <title>Cup of Jay | Creative Developer & Designer</title>
     <script>
@@ -142,6 +142,29 @@
             <img class="hero-image" src="./hero_background/background1v2.png" alt="Hero illustration">
         </div>
 
+        <!-- Opposite-corner line accents (top-left + bottom-right) -->
+        <div class="corner-accent" aria-hidden="true">
+            <!-- top-left cluster -->
+            <span class="ca-bar ca-tl" style="width:120px;height:8px;top:-12px;left:150px;background:var(--ca-accent)"></span>
+            <span class="ca-bar ca-tl" style="width:90px;height:7px;top:6px;left:80px;background:var(--ca-accent-2)"></span>
+            <span class="ca-bar ca-tl" style="width:60px;height:6px;top:40px;left:30px;background:var(--ca-accent);opacity:.85"></span>
+            <span class="ca-bar ca-tl" style="width:34px;height:5px;top:70px;left:60px;background:var(--ca-accent-2);opacity:.6"></span>
+            <span class="ca-bar ca-tl" style="width:50px;height:6px;top:-12px;left:40px;background:var(--ca-accent-2)"></span>
+            <span class="ca-bar ca-tl" style="width:26px;height:5px;top:20px;left:170px;background:var(--ca-accent);opacity:.7"></span>
+            <span class="ca-dot" style="width:16px;height:16px;top:-6px;left:-6px;background:var(--ca-accent-2)"></span>
+            <span class="ca-dot" style="width:10px;height:10px;top:60px;left:10px;background:var(--ca-accent)"></span>
+
+            <!-- bottom-right cluster (mirrored) -->
+            <span class="ca-bar ca-br" style="width:120px;height:8px;bottom:-12px;right:150px;background:var(--ca-accent-2)"></span>
+            <span class="ca-bar ca-br" style="width:90px;height:7px;bottom:6px;right:80px;background:var(--ca-accent)"></span>
+            <span class="ca-bar ca-br" style="width:60px;height:6px;bottom:40px;right:30px;background:var(--ca-accent-2);opacity:.85"></span>
+            <span class="ca-bar ca-br" style="width:34px;height:5px;bottom:70px;right:60px;background:var(--ca-accent);opacity:.6"></span>
+            <span class="ca-bar ca-br" style="width:50px;height:6px;bottom:-12px;right:40px;background:var(--ca-accent)"></span>
+            <span class="ca-bar ca-br" style="width:26px;height:5px;bottom:20px;right:170px;background:var(--ca-accent-2);opacity:.7"></span>
+            <span class="ca-dot" style="width:16px;height:16px;bottom:-6px;right:-6px;background:var(--ca-accent)"></span>
+            <span class="ca-dot" style="width:10px;height:10px;bottom:60px;right:10px;background:var(--ca-accent-2)"></span>
+        </div>
+
         <!-- Scroll Indicator -->
         <div class="hero-scroll" aria-hidden="true">
             <span class="hero-scroll__mouse">
@@ -155,6 +178,14 @@
 
     <!-- Features Works Section -->
     <section class="features-projects">
+        <!-- Side accents: dot columns flanking the carousel. Lives on the section
+             (full-bleed) so the strips can travel out into the page flank. -->
+        <div class="fp-dots-accent" aria-hidden="true">
+            <span class="fp-dot-col fp-dot-col--l"></span>
+            <span class="fp-dot-col fp-dot-col--r"></span>
+            <span class="fp-dot-beacon fp-dot-beacon--l"></span>
+            <span class="fp-dot-beacon fp-dot-beacon--r"></span>
+        </div>
         <div class="features-projects__container">
             <h2 class="features-projects__title">Featured Projects</h2>
             <div class="spotlight">
@@ -189,6 +220,21 @@
 
     <!-- About Section — A2: photo column + neon seam + corner brackets -->
     <section class="about-section">
+        <!-- Corner step lines (C6): stepped 90° polylines at top-left +
+             bottom-right, echoing the photo frame's corner brackets at
+             section scale. aria-hidden + pointer-events none. -->
+        <div class="about-corners" aria-hidden="true">
+            <span class="ab-step ab-step--h tl-h1"></span>
+            <span class="ab-step ab-step--v tl-v1"></span>
+            <span class="ab-step ab-step--h tl-h2"></span>
+            <span class="ab-step ab-step--v tl-v2"></span>
+            <span class="ab-step ab-step--h br-h1"></span>
+            <span class="ab-step ab-step--v br-v1"></span>
+            <span class="ab-step ab-step--h br-h2"></span>
+            <span class="ab-step ab-step--v br-v2"></span>
+            <span class="ab-knot ab-knot--tl"></span>
+            <span class="ab-knot ab-knot--br"></span>
+        </div>
         <div class="about-section__container">
             <div class="about-section__image-container">
                 <div class="about-section__frame">
@@ -210,12 +256,12 @@
          Portrait edits get class="edits-gallery__slide edits-gallery__slide--portrait",
          landscape edits just class="edits-gallery__slide". -->
     <section class="edits-gallery" id="edits-gallery">
-        <span class="edits-gallery__dots-accent edits-gallery__dots-accent--l" aria-hidden="true"></span>
-        <span class="edits-gallery__dots-accent edits-gallery__dots-accent--r" aria-hidden="true"></span>
         <div class="edits-gallery__container">
             <div class="edits-gallery__eyebrow">Edits Gallery</div>
             <h2 class="edits-gallery__title">Featured Edits</h2>
             <div class="edits-gallery__carousel" data-edits-carousel>
+                <span class="edits-gallery__dots-accent edits-gallery__dots-accent--l" aria-hidden="true"></span>
+                <span class="edits-gallery__dots-accent edits-gallery__dots-accent--r" aria-hidden="true"></span>
                 <div class="edits-gallery__track">
                     <figure class="edits-gallery__slide edits-gallery__slide--portrait">
                         <img src="https://picsum.photos/seed/edit-golden/700/933" alt="Golden Hour color grade" loading="lazy">
