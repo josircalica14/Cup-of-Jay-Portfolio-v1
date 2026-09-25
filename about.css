@@ -83,16 +83,10 @@
     padding: 3rem 0 3rem 4.5rem;
 }
 
-/* Neon gradient seam with glow */
+/* Neon gradient seam with glow — retired: the corner step lines now carry
+   the section's line language, so the vertical seam is removed. */
 .about-section__content::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 18%;
-    bottom: 18%;
-    width: 2px;
-    background: linear-gradient(180deg, transparent, var(--brand-primary) 30%, var(--brand-primary-dark) 70%, transparent);
-    box-shadow: 0 0 12px rgba(34, 205, 218, 0.5);
+    display: none;
 }
 
 .about-section__eyebrow {
@@ -174,15 +168,9 @@
     }
 }
 
-/* ≤1024px: tighten the seam gap */
-@media (max-width: 1024px) and (min-width: 769px) {
-    .about-section__content {
-        padding-left: 3rem;
-    }
-}
-
-/* ≤768px: stack — photo centered on top, seam hidden, text centered */
-@media (max-width: 768px) {
+/* ≤1050px: stack — photo centered on top, text centered below.
+   Stack kicks in at 1050px so the two-column lockup keeps room to breathe. */
+@media (max-width: 1050px) {
     .about-section {
         padding: 5rem 1.5rem;
     }
@@ -206,9 +194,7 @@
         text-align: center;
     }
 
-    .about-section__content::before {
-        display: none; /* seam is meaningless in a stack */
-    }
+/* seam is retired */
 
     .about-section__text {
         margin-inline: auto;
@@ -272,10 +258,7 @@ body.light-mode .about-section__frame::after {
     box-shadow: 5px 5px 0 -3px rgba(0, 79, 210, 0.35);
 }
 
-body.light-mode .about-section__content::before {
-    background: linear-gradient(180deg, transparent, var(--brand-primary-dark) 30%, var(--brand-primary) 70%, transparent);
-    box-shadow: 0 0 10px rgba(0, 79, 210, 0.3);
-}
+/* seam retired in light mode too */
 
 body.light-mode .about-section__image {
     box-shadow: 0 14px 36px rgba(0, 0, 0, 0.18);
