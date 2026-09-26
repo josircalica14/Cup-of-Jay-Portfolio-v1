@@ -1,12 +1,16 @@
 // Hero console — typewriter cycling "Cup of Jay / Neon Terminal. / Made with Love."
 // with a color crossfade that lands while only the cursor is visible.
 // Theme palette is owned by CSS (body.light-mode rules in style.css);
-// this module only sets the per-word accent color in dark mode.
+// this module sets the per-word accent color for BOTH themes — the light-mode
+// palette lives in LIGHT_ACCENTS below, mirroring DARK_ACCENTS.
 
-import { onChange } from './theme.js';
+import { getTheme, LIGHT, onChange } from './theme.js';
 
-const WORDS = ['Cup of Jay', 'Neon Terminal.', 'Made with Love.'];
+const WORDS = ['Josir James Calica', 'Jay Jay', 'Cup of Jay'];
 const DARK_ACCENTS = ['#3d81ff', '#3ff0b8', '#ff9e9e'];
+// Light mode palette — deeper tones tuned for the cream background so each
+// word keeps its distinct hue with readable contrast (blue / teal / rose).
+const LIGHT_ACCENTS = ['#0b68fd', '#00c458', '#f14040'];
 
 export function setupHeroTyper() {
   const consoleElement = document.querySelector('.hero-console');
@@ -33,10 +37,13 @@ export function setupHeroTyper() {
     sharpRow.style.color = color;
   };
 
+  let isLight = getTheme() === LIGHT;
+
   const refreshPalette = () => {
-    // In light mode CSS forces black via body.light-mode rules, so the
-    // inline value only needs to be right for dark mode.
-    colors = [...DARK_ACCENTS];
+    // Pick the palette for the active theme; the crossfade continues from
+    // the same index so the current word just re-tints in place.
+    isLight = getTheme() === LIGHT;
+    colors = [...(isLight ? LIGHT_ACCENTS : DARK_ACCENTS)];
     colorIndex %= colors.length;
     setColor(colors[colorIndex]);
   };

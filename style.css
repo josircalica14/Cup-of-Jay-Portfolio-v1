@@ -1698,7 +1698,7 @@ body.light-mode .fp-dot-beacon {
 }
 
 .features-projects__title {
-    font-family: 'HeroFont', sans-serif;
+    font-family: 'NavBarFont', sans-serif;
     font-size: clamp(2rem, 5vw, 3rem);
     text-align: center;
     margin-bottom: var(--spacing-xl);

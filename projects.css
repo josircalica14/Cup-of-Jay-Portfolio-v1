@@ -10,7 +10,7 @@
 }
 
 .projects-header__title {
-    font-family: 'HeroFont', sans-serif;
+    font-family: 'NavBarFont', sans-serif;
     font-size: clamp(2.4rem, 5vw, 3.5rem);
     /* fit-content + auto margins: the title centers itself regardless of
        text-align inheritance quirks across breakpoints */
@@ -23,12 +23,21 @@
 }
 
 .projects-header__subtitle {
-    font-family: 'CardBodyFont', sans-serif;
-    font-size: 1.2rem;
+    /* Hero tagline treatment: NavBarFont, wide tracking, uppercase */
+    font-family: 'NavBarFont', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.34em;
+    margin-right: -0.34em; /* recenter — trailing letter-spacing gap */
+    text-transform: uppercase;
+    /* Theme-aware: light gray on the dark page, dark ink on white in light mode */
     color: var(--dark-text-primary);
     opacity: 0.7;
     width: fit-content;
     margin-inline: auto;
+}
+
+body.light-mode .projects-header__subtitle {
+    color: var(--light-text-primary);
 }
 
 /* ── Bands container: full-width, no side gutters on the image ── */
