@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Josir James Calica - the developer and photo editor behind Cup of Jay">
+    <title>About | Cup of Jay</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="about-page.css?v=37">
+    <link rel="stylesheet" href="theme-toggle.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark-mode';
+            document.documentElement.className = theme;
+            // Flag JS availability so the pin-animation can hide flyers from
+            // first paint (no flash of visible flyers before they animate).
+            // Without JS this class is absent and flyers just show normally.
+            document.documentElement.classList.add('p44-js');
+        })();
+    </script>
+</head>
+
+<body class="dark-mode">
+    <!-- Mobile Navigation (outside hero so fixed positioning works correctly) -->
+    <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav__checkbox">
+
+    <!-- Mobile nav frosted bar (shown on scroll) -->
+    <div class="mobile-nav__bar"></div>
+    
+    <!-- Mobile Logo -->
+    <div class="mobile-logo">
+        <img class="logo-light" src="./logo/logo1v2.png" alt="Cup of Jay">
+        <img class="logo-dark" src="./logo/logo1v1.png" alt="Cup of Jay">
+    </div>
+
+    <!-- Mobile Burger Menu -->
+    <label for="mobile-nav-toggle" class="mobile-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <!-- Mobile Nav Backdrop -->
+    <label for="mobile-nav-toggle" class="mobile-nav__backdrop"></label>
+
+    <!-- Full-width blur strip under the scrolled navbar -->
+    <div class="nav-blur-strip" aria-hidden="true"></div>
+
+    <!-- Mobile Nav Drawer -->
+    <nav class="mobile-nav__drawer" aria-label="Mobile navigation">
+        <div class="mobile-nav__header">
+            <img class="logo-light mobile-nav__header-logo" src="./logo/logo1v2.png" alt="Cup of Jay">
+            <img class="logo-dark mobile-nav__header-logo" src="./logo/logo1v1.png" alt="Cup of Jay">
+            <span class="mobile-nav__header-name">Cup of Jay</span>
+        </div>
+        <ul class="mobile-nav__list">
+            <!-- Rendered by js/nav.js from the single PAGES source -->
+        </ul>
+    </nav>
+
+    <!-- Desktop Navigation (outside hero so fixed positioning works correctly) -->
+    <nav class="nav" aria-label="Main navigation">
+        <!-- Logo floats above the nav, centered, out of flow -->
+        <div class="nav__logo-item">
+            <img class="nav__logo-image logo-light" src="./logo/logo1v2.png" alt="Cup of Jay">
+            <img class="nav__logo-image logo-dark" src="./logo/logo1v1.png" alt="Cup of Jay">
+        </div>
+        <ul class="nav__main-list">
+            <!-- Rendered by js/nav.js from the single PAGES source -->
+        </ul>
+    </nav>
+
+    <!-- Theme toggle — standalone, always visible -->
+    <div class="nav__toggle-item">
+        <div class="theme-toggle theme-toggle--nav">
+            <label class="switch" for="theme-checkbox" aria-label="Toggle theme">
+                <input type="checkbox" id="theme-checkbox" class="theme-toggle__input">
+                <span class="slider">
+                    <span class="stars">
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                    </span>
+                    <span class="moons-hole">
+                        <span class="moon-hole"></span>
+                        <span class="moon-hole"></span>
+                        <span class="moon-hole"></span>
+                    </span>
+                    <span class="black-clouds">
+                        <span class="black-cloud"></span>
+                        <span class="black-cloud"></span>
+                        <span class="black-cloud"></span>
+                    </span>
+                    <span class="clouds">
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                    </span>
+                </span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ═══ About page — P44 "Flyer Wall": torn-edge flyers stapled at angles
+         on a bulletin board wall ═══ -->
+    <main class="about-page">
+        <div class="about-wall">
+            <!-- board decorations (behind the flyers) -->
+            <span class="wall-accent coffee-ring" aria-hidden="true"></span>
+            <span class="wall-accent wall-tape wall-tape--a" aria-hidden="true"></span>
+            <span class="wall-accent wall-tape wall-tape--b" aria-hidden="true"></span>
+            <span class="wall-accent wall-tape wall-tape--c" aria-hidden="true"></span>
+            <span class="wall-accent wall-stitch wall-stitch--a" aria-hidden="true"></span>
+            <span class="wall-accent wall-stitch wall-stitch--b" aria-hidden="true"></span>
+            <div class="p44-flyer p44-flyer--hed">
+                <span class="p44-pin p44-pin--tl" aria-hidden="true"></span>
+                <span class="p44-pin p44-pin--tr p44-pin--blue" aria-hidden="true"></span>
+                <span class="p44-staple p44-staple--l"></span><span class="p44-staple p44-staple--r"></span>
+                <div>
+                    <span class="w w1">JOSIR</span> <span class="w w2">JAMES</span> <span class="w w3">CALICA</span>
+                </div>
+                <div class="sub">Front-End Web Developer &amp; Photo Editor</div>
+            </div>
+
+            <div class="p44-flyer p44-flyer--bio">
+                <span class="p44-tape p44-tape--tl" aria-hidden="true"></span>
+                <span class="p44-pin p44-pin--tr p44-pin--yellow" aria-hidden="true"></span>
+                <h4>Bio</h4>
+                <p>I am Josir James S. Calica, a fresh graduate of BS Information Technology with a focus on front-end web development. I build responsive, user-friendly interfaces — functional, and genuinely pleasant to use.</p>
+            </div>
+
+            <figure class="p44-flyer p44-flyer--photo">
+                <span class="p44-pin p44-pin--tl" aria-hidden="true"></span>
+                <span class="p44-pin p44-pin--tr p44-pin--yellow" aria-hidden="true"></span>
+                <img src="./assets/profile_photo/profile-920.jpg" alt="Pinned portrait" loading="lazy">
+                <figcaption>Exhibit A</figcaption>
+            </figure>
+
+            <figure class="p44-flyer p44-flyer--photo p44-flyer--photo-b">
+                <span class="p44-pin p44-pin--tr p44-pin--blue" aria-hidden="true"></span>
+                <img src="https://picsum.photos/seed/exhibit-b/600/460" alt="Favorite photograph captured and edited by me" loading="lazy">
+                <figcaption>Exhibit B — Edited in Adobe Lightroom. Compressed 95% for rapid web-loading with zero quality loss.</figcaption>
+            </figure>
+
+            <div class="p44-flyer p44-flyer--edu">
+                <h4>Education</h4>
+                <p>BS Information Technology — fresh graduate, focus on front-end web development.</p>
+            </div>
+
+            <div class="p44-flyer p44-flyer--stack">
+                <span class="p44-tape p44-tape--tl" aria-hidden="true"></span>
+                <h4>Stack</h4>
+                <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span><span>PHP</span><span>MySQL</span></div>
+            </div>
+
+            <div class="p44-flyer p44-flyer--kit">
+                <span class="p44-pin p44-pin--tl p44-pin--blue" aria-hidden="true"></span>
+                <h4>Creative Toolkit — The Lens Stack</h4>
+                <div class="tags"><span>Photoshop</span><span>Lightroom</span><span>Color Grading</span><span>Asset Optimization</span><span>Figma</span></div>
+            </div>
+
+            <div class="p44-flyer p44-flyer--advantage">
+                <span class="p44-pin p44-pin--tl p44-pin--blue" aria-hidden="true"></span>
+                <span class="p44-pin p44-pin--tr" aria-hidden="true"></span>
+                <h4>The Advantage</h4>
+                <p>Photography taught me the Rule of Thirds and color balance. Frontend taught me how to translate those visuals into responsive grids. I don't just write functional code; I compose layouts.</p>
+            </div>
+
+            <div class="p44-flyer p44-flyer--dossier">
+                <span class="p44-tape p44-tape--tr" aria-hidden="true"></span>
+                <h4>Dossier — Offline Stats</h4>
+                <p class="p44-dossier__row"><b>Base:</b> San Pedro, Laguna 🇵🇭</p>
+                <p class="p44-dossier__row"><b>Fuel:</b> Lofi beats for coding, soundtracks for photo editing.</p>
+                <p class="p44-dossier__row"><b>Philosophy:</b> You don't need a million-dollar setup to build exceptional digital experiences.</p>
+            </div>
+
+            <div class="p44-flyer p44-flyer--status">
+                <span class="p44-tape p44-tape--tl" aria-hidden="true"></span>
+                <span class="p44-pin p44-pin--tr p44-pin--blue" aria-hidden="true"></span>
+                <h4>Status</h4>
+                <p>Open to Work</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Pinned-up entrance: stamp each flyer with a stagger index and start
+        // the swing-in animation shortly after load. Double-click the wall to
+        // replay. Runs after the wall markup (this tag is below it).
+        (function() {
+            var fired = false;
+            function pin() {
+                if (fired) return;
+                fired = true;
+                var wall = document.querySelector('.about-wall');
+                if (!wall) return;
+                wall.querySelectorAll('.p44-flyer').forEach(function(f, i) {
+                    f.style.setProperty('--pin-i', i);
+                });
+                wall.classList.add('pinned');
+            }
+            window.__replayPin = function() {
+                var wall = document.querySelector('.about-wall');
+                if (!wall) return;
+                wall.classList.remove('pinned');
+                fired = false;
+                void wall.offsetWidth; // force reflow so the animation restarts
+                pin();
+            };
+            window.addEventListener('dblclick', function(ev) {
+                if (ev.target.closest('.about-wall')) window.__replayPin();
+            });
+            // Small beat so the empty board reads before flyers swing in.
+            // Flyers are pre-hidden via html.p44-js, so there is no flash.
+            setTimeout(pin, 350);
+        })();
+    </script>
+
+    <script type="module" src="main.js?v=10"></script>
+    <script src="lib/libgif.js"></script>
+    <script src="lib/web-pet-engine.js"></script>
+</body>
+</html>

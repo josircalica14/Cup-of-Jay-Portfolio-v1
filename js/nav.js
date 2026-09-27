@@ -6,7 +6,7 @@ export const PAGES = [
   { label: 'Projects', href: 'projects.html' },
   { label: 'Gallery', href: 'gallery.html' },
   { label: 'Blogs', href: null },
-  { label: 'About', href: null },
+  { label: 'About', href: 'about.html' },
   { label: 'Contact', href: null },
 ];
 

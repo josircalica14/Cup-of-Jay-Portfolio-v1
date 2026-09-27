@@ -10,7 +10,7 @@ import { setupPets } from './js/pets.js';
 import { setupProjectTags } from './js/project-tags.js';
 import { setupBeforeAfter } from './js/before-after.js';
 import { setupSocials } from './js/socials.js';
-import { renderNavLinks, setupNavScroll, setupNavLoadAnimation } from './js/nav.js';
+import { renderNavLinks, setupNavScroll, setupNavLoadAnimation } from './js/nav.js?v=2';
 
 initTheme();
 renderNavLinks();

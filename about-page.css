@@ -1,0 +1,518 @@
+/* ═══ About landing page — P44 "Flyer Wall": torn-edge flyers stapled at
+       angles on a bulletin board. The dotted board texture IS the page
+       background, so flyers pin straight onto the page. ═══ */
+.about-page {
+    padding: 9rem 2rem 6rem;
+    min-height: 100vh;
+    background-color: #383d43;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1.4px);
+    background-size: 7px 7px;
+}
+
+/* ── The board area: keeps the flyer positioning grid + page-width centering,
+       but is visually one with the page background ── */
+.about-wall {
+    position: relative;
+    box-sizing: border-box;
+    /* composition width: 3em margins + 20.625em left col + 18.75em right col
+       + 15.625em center breathing room */
+    width: 62em;
+    max-width: calc(100% - 2rem);
+    min-height: 73.5em;
+    margin: 0 auto;
+    padding: 2.4em;
+    font-size: 1rem; /* scaling root: media queries bump this to grow the whole board */
+}
+
+/* ── Push pins — colored round heads with highlight + shadow, sitting on
+       the flyer's top edge. Theme-stable. ── */
+.p44-pin {
+    position: absolute;
+    top: -8px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ff9a9a, #e63946 55%, #a8263a);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35), inset -2px -3px 4px rgba(0, 0, 0, 0.25);
+    z-index: 3;
+}
+
+.p44-pin--blue  { background: radial-gradient(circle at 35% 30%, #8fb0ff, #004fd2 55%, #003a9e); }
+.p44-pin--yellow { background: radial-gradient(circle at 35% 30%, #fff0b0, #f2c94c 55%, #c99a17); }
+
+.p44-pin--tl { left: 16%; }
+.p44-pin--tr { left: auto; right: 16%; }
+
+/* ── Washi tape — translucent strips laid across a flyer's top edge ── */
+.p44-tape {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    width: 72px;
+    height: 22px;
+    margin-left: -36px;
+    transform: rotate(-4deg);
+    background: linear-gradient(rgba(255, 253, 244, 0.65), rgba(240, 234, 216, 0.6));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.18);
+    clip-path: polygon(2% 8%, 98% 0, 100% 88%, 0 100%);
+    z-index: 3;
+}
+
+.p44-tape--tl { left: -14px; margin-left: 0; transform: rotate(-42deg); }
+.p44-tape--tr { left: auto; right: -14px; margin-left: 0; transform: rotate(42deg); }
+
+/* ── Board accents — decorations pinned to the wall itself, behind flyers ── */
+.wall-accent {
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* coffee ring — a Cup of Jay leaving its mark */
+.coffee-ring {
+    width: 5.5em;
+    height: 5.5em;
+    border: 0.6em solid rgba(122, 82, 40, 0.16);
+    border-radius: 50%;
+    bottom: 9em;
+    left: 8em;
+    transform: rotate(-6deg) scaleX(1.04);
+}
+
+.coffee-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0.9em;
+    border-radius: 50%;
+    border: 2px solid rgba(122, 82, 40, 0.1);
+}
+
+/* loose tape flapping on the board */
+.wall-tape {
+    width: 5em;
+    height: 1.6em;
+    background: linear-gradient(rgba(255, 253, 244, 0.5), rgba(240, 234, 216, 0.45));
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    clip-path: polygon(2% 10%, 98% 0, 100% 86%, 0 100%);
+}
+
+.wall-tape--a { top: 2.5em; left: 4em; transform: rotate(-24deg); }
+.wall-tape--b { top: 4em; right: 5em; transform: rotate(18deg); }
+.wall-tape--c { bottom: 12em; right: 14em; transform: rotate(-8deg); }
+
+/* tiny stitch marks — crossed 'x' penciled on the board */
+.wall-stitch {
+    width: 1.6em;
+    height: 1.6em;
+    background:
+        linear-gradient(45deg, transparent 46%, rgba(200, 60, 60, 0.4) 46%, rgba(200, 60, 60, 0.4) 54%, transparent 54%),
+        linear-gradient(-45deg, transparent 46%, rgba(200, 60, 60, 0.4) 46%, rgba(200, 60, 60, 0.4) 54%, transparent 54%);
+}
+
+.wall-stitch--a { top: 13.5em; right: 8em; transform: rotate(8deg); }
+.wall-stitch--b { bottom: 22em; left: 3.5em; transform: rotate(-12deg); }
+
+body.light-mode .wall-tape {
+    background: linear-gradient(rgba(228, 222, 202, 0.55), rgba(214, 206, 184, 0.5));
+}
+
+/* ── Flyers: the torn edge lives on a ::before paper layer so the
+       drop-shadow filter (on the flyer itself) is NOT clipped by the
+       clip-path — clip-path paints after filter and would otherwise cut
+       the shadow away entirely. --tf-start/--tf-final drive the entrance
+       swing while preserving each flyer's resting tilt. ── */
+.p44-flyer {
+    position: absolute;
+    box-sizing: border-box;
+    --paper: #f4f1e6;
+    padding: 1.35em 1.5em;
+    filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.28));
+    --tf-final: rotate(0deg);
+    --tf-start: rotate(-9deg) scale(1.22) translateY(-64px);
+    transform: var(--tf-final);
+}
+
+.p44-flyer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: var(--paper);
+    clip-path: polygon(1% 2%, 18% 0, 42% 1.6%, 68% 0.4%, 97% 2%, 100% 28%, 98.8% 58%, 100% 96%, 78% 100%, 52% 98.4%, 26% 100%, 2.5% 98%, 0 66%, 1.2% 34%);
+}
+
+.p44-flyer:hover {
+    filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.55));
+}
+
+.p44-flyer h4 {
+    font-family: 'Chivo Mono Semi Bold', monospace;
+    font-size: 0.6em;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--brand-primary-dark);
+    margin-bottom: 0.55em;
+}
+
+.p44-flyer p {
+    font-family: 'NavBarFont', sans-serif;
+    font-size: 0.86em;
+    line-height: 1.7;
+    color: #2c2c2c;
+}
+
+/* ── Staples ── */
+.p44-staple {
+    position: absolute;
+    width: 17px;
+    height: 5px;
+    background: #9aa0a6;
+    border-radius: 1px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+    z-index: 2;
+}
+
+.p44-staple--l { top: 9px; left: 14px; transform: rotate(-8deg); }
+.p44-staple--r { top: 7px; right: 14px; transform: rotate(6deg); }
+
+/* ── Headline flyer ── */
+.p44-flyer--hed {
+    top: 2.2em;
+    left: 50%;
+    --paper: #fffdf6;
+    --tf-final: translateX(-50%) rotate(-1.6deg);
+    --tf-start: translateX(-50%) rotate(-9deg) scale(1.22) translateY(-64px);
+    width: 26.25em;
+    max-width: calc(100% - 2em);
+    text-align: center;
+    padding: 1.7em 1.6em 1.5em;
+    z-index: 2;
+}
+
+.p44-flyer--hed .w { display: inline-block; margin: 0 0.06rem; }
+
+.p44-flyer--hed .w1 {
+    font-family: 'CardHeaderFont', sans-serif;
+    font-size: clamp(1.7rem, 6vw, 2.9rem);
+    color: #1d1d1d;
+}
+
+.p44-flyer--hed .w2 {
+    font-family: 'HeroFont', sans-serif;
+    font-size: clamp(1.7rem, 6vw, 2.9rem);
+    color: #1d1d1d;
+}
+
+.p44-flyer--hed .w3 {
+    font-family: 'Chivo Mono Semi Bold', monospace;
+    font-size: clamp(1.7rem, 6vw, 2.9rem);
+    background: var(--brand-primary-dark);
+    color: #fff;
+    padding: 0 0.12em;
+}
+
+.p44-flyer--hed .sub {
+    margin-top: 0.5em;
+    font-family: 'Chivo Mono Semi Bold', monospace;
+    font-size: 0.58em;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: #555;
+}
+
+/* ── Left column: bio → education → advantage sticky ── */
+.p44-flyer--bio {
+    top: 16.25em;
+    left: 3em;
+    width: 29em;
+    --tf-final: rotate(-2.4deg);
+    z-index: 1;
+}
+
+.p44-flyer--edu {
+    top: 30.9em;
+    left: 3em;
+    width: 21.5em;
+    --tf-final: rotate(1.8deg);
+    z-index: 1;
+}
+
+/* Neon sticky — same yellow as the status flyer */
+.p44-flyer--advantage {
+    top: 41.2em;
+    left: 3em;
+    width: 20.5em;
+    --tf-final: rotate(-1.4deg);
+    --paper: #ffe98a;
+    z-index: 1;
+}
+
+.p44-flyer--advantage p {
+    font-size: 0.84em;
+    color: #1d1d1d;
+}
+
+/* ── Right column: Exhibit A polaroid → Exhibit B tucked under its corner ── */
+.p44-flyer--photo {
+    top: 16.25em;
+    right: 3em;
+    width: 17.5em;
+    padding: 0.75em 0.75em 1em;
+    --tf-final: rotate(2.2deg);
+    --paper: #fff;
+    z-index: 1;
+}
+
+.p44-flyer--photo img,
+.p44-flyer--photo-b img {
+    display: block;
+    width: 100%;
+    height: 14.4em;
+    object-fit: cover;
+}
+
+.p44-flyer--photo figcaption,
+.p44-flyer--photo-b figcaption {
+    margin-top: 0.5em;
+    text-align: center;
+    font-family: 'Chivo Mono Semi Bold', monospace;
+    font-size: 0.54em;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.7;
+    color: #555;
+}
+
+.p44-flyer--photo-b {
+    top: 36.3em;
+    right: 3.5em;
+    width: 15.5em;
+    padding: 0.625em 0.625em 0.875em;
+    --tf-final: rotate(-3deg);
+    --paper: #fff;
+    z-index: 3;
+}
+
+.p44-flyer--photo-b img { height: 11.25em; }
+
+.p44-flyer--photo-b figcaption {
+    font-size: 0.5em;
+    letter-spacing: 0.12em;
+}
+
+/* ── Center: dev stack + creative toolkit layered under it ── */
+.p44-flyer--stack {
+    top: 34.4em;
+    left: 25.9em;
+    --tf-final: rotate(-1.2deg);
+    --tf-start: rotate(-9deg) scale(1.22) translateY(-64px);
+    width: 11.5em;
+    z-index: 2;
+}
+
+.p44-flyer--kit {
+    top: 45.5em;
+    left: 26em;
+    width: 11.5em;
+    --tf-final: rotate(2deg);
+    z-index: 1;
+}
+
+.p44-flyer--stack .tags,
+.p44-flyer--kit .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+    margin-top: 0.5em;
+}
+
+.p44-flyer--stack .tags span,
+.p44-flyer--kit .tags span {
+    font-family: 'Chivo Mono Semi Bold', monospace;
+    font-size: 0.6em;
+    letter-spacing: 0.1em;
+    border: 1.5px solid #1d1d1d;
+    color: #1d1d1d;
+    padding: 0.26em 0.55em;
+}
+
+/* ── Dossier (manila file slip) ── */
+.p44-flyer--dossier {
+    top: 55.5em;
+    right: 3em;
+    width: 17.5em;
+    --tf-final: rotate(1.6deg);
+    --paper: #efe8d2;
+    z-index: 1;
+}
+
+.p44-dossier__row {
+    margin-bottom: 0.45em;
+}
+
+.p44-dossier__row:last-child { margin-bottom: 0; }
+
+.p44-dossier__row b {
+    font-family: 'CardHeaderFont', sans-serif;
+    font-weight: normal;
+    color: #1d1d1d;
+}
+
+/* ── Status flyer ── */
+.p44-flyer--status {
+    bottom: 2.5em;
+    left: 50%;
+    --tf-final: translateX(-50%) rotate(-2.6deg);
+    --tf-start: translateX(-50%) rotate(-9deg) scale(1.22) translateY(-64px);
+    width: 15.625em;
+    --paper: #ffe98a;
+    z-index: 2;
+}
+
+.p44-flyer--status p {
+    font-family: 'CardHeaderFont', sans-serif;
+    font-size: 1.05em;
+    color: #1d1d1d;
+}
+
+/* ═══ Responsive ═══ */
+
+/* ≥1051px: scale the entire board up fluidly — the whole composition is
+   60em wide, so font-size = available-width ÷ 60 guarantees it always fits
+   without compression. Flyers, text, and offsets grow in lockstep, keeping
+   exact proportions. Clamped between the 1rem design size and a 1.42rem
+   ceiling (~1520px+) so giant monitors don't over-inflate. */
+@media (min-width: 1051px) {
+    .about-wall {
+        font-size: clamp(1rem, calc((100vw - 6rem) / 62), 1.42rem);
+    }
+}
+
+/* ≤1050px: the wall becomes a pinned-up column — flyers flow, keep slight
+   tilts for the scrapbook feel, staples and torn edges stay. */
+@media (max-width: 1050px) {
+    .about-page { padding: 7rem 1.5rem 4rem; }
+
+    .about-wall {
+        min-height: 0;
+        max-width: 640px;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+        padding: 2.2rem 1.5rem;
+    }
+
+    .about-wall .p44-flyer {
+        position: static;
+        width: auto;
+        max-width: 100%;
+        transform: var(--tf-final);
+        --tf-start: rotate(-9deg) scale(1.22) translateY(-64px);
+    }
+
+    /* Desktop centering offsets (translateX(-50%)) must not leak into the
+       stacked column — replace with plain per-flyer tilts for a pinned-up
+       scrapbook rhythm. */
+    .about-wall .p44-flyer--hed    { --tf-final: rotate(-1.2deg); }
+    .about-wall .p44-flyer--status { --tf-final: rotate(1.4deg); }
+    .about-wall .p44-flyer--bio    { --tf-final: rotate(0.8deg); }
+    .about-wall .p44-flyer--edu    { --tf-final: rotate(-1deg); }
+    .about-wall .p44-flyer--advantage { --tf-final: rotate(0.9deg); }
+    .about-wall .p44-flyer--photo  { --tf-final: rotate(-0.7deg); }
+    .about-wall .p44-flyer--photo-b { --tf-final: rotate(1.1deg); }
+    .about-wall .p44-flyer--stack  { --tf-final: rotate(-0.8deg); }
+    .about-wall .p44-flyer--kit    { --tf-final: rotate(1deg); }
+    .about-wall .p44-flyer--dossier { --tf-final: rotate(-0.9deg); }
+
+    .about-wall .p44-flyer--photo img,
+    .about-wall .p44-flyer--photo-b img { height: 230px; }
+
+    /* body text scales up slightly on the roomier column */
+    .about-wall .p44-flyer p { font-size: 0.98rem; line-height: 1.75; }
+}
+
+/* ≤480px: tighter wall, smaller paddings, slightly larger readable text */
+@media (max-width: 480px) {
+    .about-page { padding: 6rem 1rem 3rem; }
+
+    .about-wall {
+        padding: 1.6rem 1rem;
+        gap: 1.4rem;
+        max-width: 100%;
+    }
+
+    .p44-flyer { padding: 1.15rem 1.2rem; }
+
+    .p44-flyer--hed {
+        padding: 1.4rem 1rem 1.2rem;
+    }
+
+    .p44-flyer--hed .sub {
+        font-size: 0.56rem;
+        letter-spacing: 0.18em;
+    }
+
+    /* clamp() headline already adapts; tags wrap cleanly via flex-wrap */
+    .about-wall .p44-flyer p { font-size: 0.92rem; line-height: 1.7; }
+
+    .p44-flyer--photo img,
+    .p44-flyer--photo-b img { height: 190px; }
+
+    .p44-flyer--photo figcaption,
+    .p44-flyer--photo-b figcaption { font-size: 0.52rem; }
+}
+
+/* ═══ Light mode — gallery-white board with darker dots, and stronger
+       directional drop shadows so the paper flyers pop off the page.
+       Paper flyers and their ink colors stay exactly as they are. ═══ */
+body.light-mode .about-page {
+    background-color: #FAFAFA;
+    background-image: radial-gradient(rgba(0, 0, 0, 0.09) 1px, transparent 1.4px);
+}
+
+body.light-mode .p44-flyer {
+    filter:
+        drop-shadow(0 10px 14px rgba(15, 23, 32, 0.22))
+        drop-shadow(0 3px 5px rgba(15, 23, 32, 0.14));
+}
+
+body.light-mode .p44-flyer:hover {
+    filter:
+        drop-shadow(0 14px 18px rgba(15, 23, 32, 0.26))
+        drop-shadow(0 4px 6px rgba(15, 23, 32, 0.16));
+}
+
+/* ═══ Pinned-up entrance animation — "Soft Settle": each flyer glides down
+       from above and eases to rest in its own tilt, no overshoot. Opacity
+       resolves early so nothing flashes. Flyers play one after another
+       (90ms stagger) shortly after load. transform composes with each
+       flyer's resting tilt via --tf-final. Double-click the wall to replay.
+       Flyers stay hidden from first paint (html.p44-js) until the animation
+       runs — that's what kills the reload flash. JS-off never hides them. ═══ */
+html.p44-js .about-wall:not(.pinned) .p44-flyer {
+    opacity: 0;
+}
+
+.about-wall.pinned .p44-flyer {
+    animation: p44-pin 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--pin-i, 0) * 90ms);
+}
+
+@keyframes p44-pin {
+    0%   { opacity: 0; transform: var(--tf-final) translateY(-26px) scale(1.04); }
+    30%  { opacity: 1; }
+    100% { opacity: 1; transform: var(--tf-final); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.p44-js .about-wall:not(.pinned) .p44-flyer {
+        opacity: 1; /* never hide content when motion is off */
+    }
+    .about-wall.pinned .p44-flyer {
+        animation: none;
+    }
+}
+
+/* ═══ No-JS fallback: without the pin trigger, flyers must not stay hidden.
+       The pinned class is only added by JS before animating, so this is
+       inherently safe — flyers are visible by default. ═══ */
