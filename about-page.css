@@ -14,11 +14,11 @@
 .about-wall {
     position: relative;
     box-sizing: border-box;
-    /* composition width: 3em margins + 20.625em left col + 18.75em right col
-       + 15.625em center breathing room */
-    width: 62em;
+    /* composition width: 2.4em margins + 24em left col + 15em center col
+       + 17.5em right col + gutters */
+    width: 66em;
     max-width: calc(100% - 2rem);
-    min-height: 73.5em;
+    min-height: 85em;
     margin: 0 auto;
     padding: 2.4em;
     font-size: 1rem; /* scaling root: media queries bump this to grow the whole board */
@@ -220,28 +220,86 @@ body.light-mode .wall-tape {
     color: #555;
 }
 
-/* ── Left column: bio → education → advantage sticky ── */
+/* ── Top corners: stack + toolkit flank the headline like small notes ── */
+.p44-flyer--stack {
+    top: 2.6em;
+    left: 2.4em;
+    width: 14.5em;
+    --tf-final: rotate(-1.2deg);
+    --tf-start: rotate(-9deg) scale(1.22) translateY(-64px);
+    z-index: 2;
+}
+
+.p44-flyer--kit {
+    top: 2.6em;
+    right: 2.6em;
+    width: 15.5em;
+    --tf-final: rotate(2deg);
+    z-index: 1;
+}
+
+/* ── Left column: bio → front-end dev → photo editor ── */
 .p44-flyer--bio {
-    top: 16.25em;
-    left: 3em;
-    width: 29em;
+    top: 15em;
+    left: 2.4em;
+    width: 24em;
     --tf-final: rotate(-2.4deg);
     z-index: 1;
 }
 
-.p44-flyer--edu {
-    top: 30.9em;
-    left: 3em;
-    width: 21.5em;
-    --tf-final: rotate(1.8deg);
+.p44-flyer--frontend {
+    top: 30.7em;
+    left: 2.4em;
+    width: 24em;
+    --tf-final: rotate(1.6deg);
+    z-index: 1;
+}
+
+.p44-flyer--photoedit {
+    top: 50em;
+    left: 2.4em;
+    width: 24em;
+    --tf-final: rotate(-1.8deg);
+    z-index: 1;
+}
+
+/* ── Center column: Exhibit A centerpiece → process → projects ── */
+.p44-flyer--photo {
+    top: 14.8em;
+    left: 26em;
+    width: 15em;
+    padding: 0.75em 0.75em 1em;
+    --tf-final: rotate(2.2deg);
+    --paper: #fff;
+    z-index: 1;
+}
+
+.p44-flyer--photo img,
+.p44-flyer--photo-b img {
+    height: 12.5em;
+}
+
+.p44-flyer--process {
+    top: 32.4em;
+    left: 27.8em;
+    width: 14.2em;
+    --tf-final: rotate(-1.6deg);
+    z-index: 1;
+}
+
+.p44-flyer--projects {
+    top: 52.5em;
+    left: 27.8em;
+    width: 14.2em;
+    --tf-final: rotate(1.2deg);
     z-index: 1;
 }
 
 /* Neon sticky — same yellow as the status flyer */
 .p44-flyer--advantage {
-    top: 41.2em;
-    left: 3em;
-    width: 20.5em;
+    top: 65.6em;
+    left: 2.4em;
+    width: 17em;
     --tf-final: rotate(-1.4deg);
     --paper: #ffe98a;
     z-index: 1;
@@ -252,22 +310,12 @@ body.light-mode .wall-tape {
     color: #1d1d1d;
 }
 
-/* ── Right column: Exhibit A polaroid → Exhibit B tucked under its corner ── */
-.p44-flyer--photo {
-    top: 16.25em;
-    right: 3em;
-    width: 17.5em;
-    padding: 0.75em 0.75em 1em;
-    --tf-final: rotate(2.2deg);
-    --paper: #fff;
-    z-index: 1;
-}
+/* ── Right column: Exhibit B polaroid → dossier slip → education ── */
 
 .p44-flyer--photo img,
 .p44-flyer--photo-b img {
     display: block;
     width: 100%;
-    height: 14.4em;
     object-fit: cover;
 }
 
@@ -284,8 +332,9 @@ body.light-mode .wall-tape {
 }
 
 .p44-flyer--photo-b {
-    top: 36.3em;
-    right: 3.5em;
+    top: 14.8em;
+    right: 3em;
+    left: auto; /* escape the --photo rule's left offset */
     width: 15.5em;
     padding: 0.625em 0.625em 0.875em;
     --tf-final: rotate(-3deg);
@@ -300,49 +349,85 @@ body.light-mode .wall-tape {
     letter-spacing: 0.12em;
 }
 
-/* ── Center: dev stack + creative toolkit layered under it ── */
-.p44-flyer--stack {
-    top: 34.4em;
-    left: 25.9em;
-    --tf-final: rotate(-1.2deg);
-    --tf-start: rotate(-9deg) scale(1.22) translateY(-64px);
-    width: 11.5em;
-    z-index: 2;
-}
-
-.p44-flyer--kit {
-    top: 45.5em;
-    left: 26em;
-    width: 11.5em;
-    --tf-final: rotate(2deg);
-    z-index: 1;
-}
-
-.p44-flyer--stack .tags,
-.p44-flyer--kit .tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4em;
-    margin-top: 0.5em;
-}
-
-.p44-flyer--stack .tags span,
-.p44-flyer--kit .tags span {
+/* Dot-separated one-liner lists (Stack, Creative Toolkit) */
+.p44-dots {
     font-family: 'Chivo Mono Semi Bold', monospace;
-    font-size: 0.6em;
-    letter-spacing: 0.1em;
-    border: 1.5px solid #1d1d1d;
+    font-size: 0.72em;
+    letter-spacing: 0.06em;
+    line-height: 2.1;
     color: #1d1d1d;
-    padding: 0.26em 0.55em;
+    margin-top: 0.4em;
 }
+
+/* Bulleted / numbered skill lists (new skill flyers) */
+.p44-list {
+    margin: 0.4em 0 0;
+    padding-left: 1.1em;
+}
+
+.p44-list li {
+    font-family: 'NavBarFont', sans-serif;
+    font-size: 0.86em;
+    line-height: 1.6;
+    color: #2c2c2c;
+    margin-bottom: 0.35em;
+}
+
+.p44-list li:last-child { margin-bottom: 0; }
+
+/* numbered steps — small round badges */
+.p44-list--steps {
+    list-style: none;
+    padding-left: 0;
+    counter-reset: p44step;
+}
+
+.p44-list--steps li {
+    counter-increment: p44step;
+    position: relative;
+    padding-left: 1.9em;
+}
+
+.p44-list--steps li::before {
+    content: counter(p44step);
+    position: absolute;
+    left: 0;
+    top: 0.18em;
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+    border-radius: 50%;
+    border: 1.5px solid var(--brand-primary-dark);
+    color: var(--brand-primary-dark);
+    font-family: 'Chivo Mono Semi Bold', monospace;
+    font-size: 0.62em;
+}
+
+/* intro line on the skill flyers */
+.p44-lede {
+    color: #1d1d1d;
+    margin: 0;
+}
+
+/* ── Center column continued + bottom row ── */
 
 /* ── Dossier (manila file slip) ── */
 .p44-flyer--dossier {
-    top: 55.5em;
-    right: 3em;
+    top: 31.8em;
+    right: 2.4em;
     width: 17.5em;
     --tf-final: rotate(1.6deg);
     --paper: #efe8d2;
+    z-index: 1;
+}
+
+/* Education joins the right column below the dossier */
+.p44-flyer--edu {
+    top: 54.1em;
+    right: 2.4em;
+    width: 14.2em;
+    --tf-final: rotate(1.8deg);
     z-index: 1;
 }
 
@@ -360,37 +445,55 @@ body.light-mode .wall-tape {
 
 /* ── Status flyer ── */
 .p44-flyer--status {
-    bottom: 2.5em;
+    bottom: 2.4em;
     left: 50%;
     --tf-final: translateX(-50%) rotate(-2.6deg);
     --tf-start: translateX(-50%) rotate(-9deg) scale(1.22) translateY(-64px);
-    width: 15.625em;
+    width: 19em;
     --paper: #ffe98a;
+    text-align: center;
     z-index: 2;
 }
 
-.p44-flyer--status p {
+.p44-flyer--status .p44-status__big {
     font-family: 'CardHeaderFont', sans-serif;
-    font-size: 1.05em;
+    font-size: 1.15em;
     color: #1d1d1d;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3em;
 }
+
+.p44-flyer--status .p44-status__line {
+    font-family: 'NavBarFont', sans-serif;
+    font-size: 0.78em;
+    line-height: 1.6;
+    color: #2c2c2c;
+    margin-top: 0.35em;
+}
+
+/* bracketed [placeholders] the owner fills in later */
+.p44-muted { color: #8a8577; }
 
 /* ═══ Responsive ═══ */
 
-/* ≥1051px: scale the entire board up fluidly — the whole composition is
-   60em wide, so font-size = available-width ÷ 60 guarantees it always fits
+/* ≥1181px: scale the entire board up fluidly — the whole composition is
+   66em wide, so font-size = available-width ÷ 66 guarantees it always fits
    without compression. Flyers, text, and offsets grow in lockstep, keeping
    exact proportions. Clamped between the 1rem design size and a 1.42rem
-   ceiling (~1520px+) so giant monitors don't over-inflate. */
-@media (min-width: 1051px) {
+   ceiling (~1520px+) so giant monitors don't over-inflate.
+   The breakpoint must stay above the fluid-scale floor (1rem × 66em board
+   + page padding ≈ 1180px) — below that the desktop composition physically
+   can't fit and flyers would overlap before the stacked layout kicks in. */
+@media (min-width: 1181px) {
     .about-wall {
-        font-size: clamp(1rem, calc((100vw - 6rem) / 62), 1.42rem);
+        font-size: clamp(1rem, calc((100vw - 6rem) / 66), 1.42rem);
     }
 }
 
-/* ≤1050px: the wall becomes a pinned-up column — flyers flow, keep slight
-   tilts for the scrapbook feel, staples and torn edges stay. */
-@media (max-width: 1050px) {
+/* ≤1180px: the wall becomes a pinned-up column — flyers flow, keep slight
+   tilts for the scrapbook feel, staples and torn edges stay. Matches the
+   desktop breakpoint above. */
+@media (max-width: 1180px) {
     .about-page { padding: 7rem 1.5rem 4rem; }
 
     .about-wall {
@@ -423,6 +526,10 @@ body.light-mode .wall-tape {
     .about-wall .p44-flyer--stack  { --tf-final: rotate(-0.8deg); }
     .about-wall .p44-flyer--kit    { --tf-final: rotate(1deg); }
     .about-wall .p44-flyer--dossier { --tf-final: rotate(-0.9deg); }
+    .about-wall .p44-flyer--frontend { --tf-final: rotate(0.7deg); }
+    .about-wall .p44-flyer--photoedit { --tf-final: rotate(-0.9deg); }
+    .about-wall .p44-flyer--process { --tf-final: rotate(0.8deg); }
+    .about-wall .p44-flyer--projects { --tf-final: rotate(-0.7deg); }
 
     .about-wall .p44-flyer--photo img,
     .about-wall .p44-flyer--photo-b img { height: 230px; }
