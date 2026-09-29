@@ -6,15 +6,15 @@
     <meta name="description" content="About Josir James Calica - the developer and photo editor behind Cup of Jay">
     <title>About | Cup of Jay</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="about-page.css?v=44">
+    <link rel="stylesheet" href="about-page.css?v=60">
     <link rel="stylesheet" href="theme-toggle.css">
     <script>
         (function() {
             const theme = localStorage.getItem('theme') || 'dark-mode';
             document.documentElement.className = theme;
-            // Flag JS availability so the pin-animation can hide flyers from
-            // first paint (no flash of visible flyers before they animate).
-            // Without JS this class is absent and flyers just show normally.
+            // Flag JS availability so the entrance animation can hide cards
+            // from first paint (no flash of visible cards before they animate).
+            // Without JS this class is absent and cards just show normally.
             document.documentElement.classList.add('p44-js');
         })();
     </script>
@@ -107,177 +107,113 @@
         </div>
     </div>
 
-    <!-- ═══ About page — P44 "Flyer Wall": torn-edge flyers stapled at angles
-         on a bulletin board wall ═══ -->
+    <!-- ═══ About page — Split Story: photo-left hero, intro-right, with
+         cyan Build / blue Edit columns below. T2 cascade ribbons on the edges. ═══ -->
     <main class="about-page">
+        <!-- side accents — desktop only: cascade ribbons (T2),
+             cyan stepping down from top-left, blue up from bottom-right -->
+        <div class="ap-rib ap-rib--l" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+        <div class="ap-rib ap-rib--r" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
+
         <div class="about-wall">
-            <!-- board decorations (behind the flyers) -->
-            <span class="wall-accent coffee-ring" aria-hidden="true"></span>
-            <span class="wall-accent wall-tape wall-tape--a" aria-hidden="true"></span>
-            <span class="wall-accent wall-tape wall-tape--b" aria-hidden="true"></span>
-            <span class="wall-accent wall-tape wall-tape--c" aria-hidden="true"></span>
-            <span class="wall-accent wall-stitch wall-stitch--a" aria-hidden="true"></span>
-            <span class="wall-accent wall-stitch wall-stitch--b" aria-hidden="true"></span>
-            <div class="p44-flyer p44-flyer--hed">
-                <span class="p44-pin p44-pin--tl" aria-hidden="true"></span>
-                <span class="p44-pin p44-pin--tr p44-pin--blue" aria-hidden="true"></span>
-                <span class="p44-staple p44-staple--l"></span><span class="p44-staple p44-staple--r"></span>
-                <div>
-                    <span class="w w1">JOSIR</span> <span class="w w2">JAMES</span> <span class="w w3">CALICA</span>
+            <div class="ap-hero">
+                <figure class="ap-hero__photo">
+                    <img src="./assets/profile_photo/profile-920.jpg" alt="Portrait of Josir">
+                </figure>
+                <div class="ap-hero__txt">
+                    <div class="k">Cup of Jay — About</div>
+                    <h1>Josir James Calica</h1>
+                    <p class="ap-lead">I'm a front-end developer and a photo editor. I build the parts of a website people see and click — and I edit the photos that make it look good. Just finished my BS in Information Technology, ready for my first role.</p>
+                    <div class="ap-meta">
+                        <div><div class="k">Base</div><p>San Pedro, Laguna PH</p></div>
+                        <div><div class="k">Focus</div><p>Front-end · Photo editing</p></div>
+                        <div><div class="k">Status</div><p class="ap-open">Open to work</p></div>
+                    </div>
                 </div>
-                <div class="sub">Front-End Developer &amp; Photo Editor</div>
             </div>
 
-            <div class="p44-flyer p44-flyer--bio">
-                <span class="p44-tape p44-tape--tl" aria-hidden="true"></span>
-                <span class="p44-pin p44-pin--tr p44-pin--yellow" aria-hidden="true"></span>
-                <h4>Bio</h4>
-                <p>Hi, I'm Josir. I'm a front-end developer and a photo editor. I build the parts of a website people see and click, and I edit the photos that make it look good. I just finished my BS in Information Technology, and I'm ready for my first role.</p>
+            <div class="ap-cols">
+                <!-- Column 1 -->
+                <div class="ap-col">
+                    <div class="ap-card" data-c="build">
+                        <div class="k">Build — Front-End Developer</div>
+                        <ul>
+                            <li>Responsive layouts for phones, tablets, and computers</li>
+                            <li>Clean HTML and CSS</li>
+                            <li>JavaScript for menus, sliders, forms, and theme toggles</li>
+                            <li>Fast pages that are easy to use</li>
+                            <li>PHP and MySQL when a page needs a database</li>
+                        </ul>
+                    </div>
+
+                    <div class="ap-card" data-c="study">
+                        <div class="k">Study — Education</div>
+                        <ul>
+                            <li>BS Information Technology — <span class="ap-muted">[School name], [Year]</span></li>
+                            <li>Focus: front-end web development</li>
+                            <li>Best project: <span class="ap-muted">[Project name], [what it does]</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Column 2 -->
+                <div class="ap-col">
+                    <div class="ap-card" data-c="edit">
+                        <div class="k k--blue">Edit — Photo Editor</div>
+                        <ul>
+                            <li>Color correction and color grading</li>
+                            <li>Retouching and cleanup</li>
+                            <li>Exposure, contrast, and crop fixes</li>
+                            <li>Sizing and compressing images for the web</li>
+                        </ul>
+                    </div>
+
+                    <div class="ap-card" data-c="stack">
+                        <div class="k k--blue">Toolkit</div>
+                        <ul>
+                            <li>Photoshop · Lightroom · Figma</li>
+                            <li>Color grading · Image optimization</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
-            <figure class="p44-flyer p44-flyer--photo">
-                <span class="p44-pin p44-pin--tl" aria-hidden="true"></span>
-                <span class="p44-pin p44-pin--tr p44-pin--yellow" aria-hidden="true"></span>
-                <img src="./assets/profile_photo/profile-920.jpg" alt="Pinned portrait" loading="lazy">
-                <figcaption>Exhibit A: Me</figcaption>
-            </figure>
-
-            <figure class="p44-flyer p44-flyer--photo p44-flyer--photo-b">
-                <span class="p44-pin p44-pin--tr p44-pin--blue" aria-hidden="true"></span>
-                <img src="https://picsum.photos/seed/exhibit-b/600/460" alt="A photograph I captured and edited by me" loading="lazy">
-                <figcaption>Exhibit B: A photo I shot and edited in Lightroom, resized for fast loading</figcaption>
-            </figure>
-
-            <div class="p44-flyer p44-flyer--frontend">
-                <span class="p44-pin p44-pin--tl" aria-hidden="true"></span>
-                <span class="p44-tape p44-tape--tr" aria-hidden="true"></span>
-                <h4>Front-End Developer</h4>
-                <p class="p44-lede">I turn designs into real web pages.</p>
-                <ul class="p44-list">
-                    <li>Responsive layouts for phones, tablets, and computers</li>
-                    <li>Clean HTML and CSS</li>
-                    <li>JavaScript for menus, sliders, forms, and theme toggles</li>
-                    <li>Fast pages that are easy to use</li>
-                    <li>PHP and MySQL when a page needs a database</li>
-                </ul>
-            </div>
-
-            <div class="p44-flyer p44-flyer--photoedit">
-                <span class="p44-pin p44-pin--tl p44-pin--blue" aria-hidden="true"></span>
-                <span class="p44-pin p44-pin--tr p44-pin--yellow" aria-hidden="true"></span>
-                <h4>Photo Editor</h4>
-                <p class="p44-lede">I make photos look clean and natural.</p>
-                <ul class="p44-list">
-                    <li>Color correction and color grading</li>
-                    <li>Retouching and cleanup</li>
-                    <li>Exposure, contrast, and crop fixes</li>
-                    <li>Sizing and compressing images for the web</li>
-                </ul>
-            </div>
-
-            <div class="p44-flyer p44-flyer--edu">
-                <h4>Education</h4>
-                <p>BS Information Technology<br>
-                <span class="p44-muted">[School name], [Year]</span><br>
-                Focus: front-end web development<br>
-                Best project: <span class="p44-muted">[Project name], [what it does]</span></p>
-            </div>
-
-            <div class="p44-flyer p44-flyer--stack">
-                <span class="p44-tape p44-tape--tl" aria-hidden="true"></span>
-                <h4>Stack</h4>
-                <p class="p44-dots">HTML · CSS · JavaScript · PHP · MySQL · [Git]</p>
-            </div>
-
-            <div class="p44-flyer p44-flyer--kit">
-                <span class="p44-pin p44-pin--tl p44-pin--blue" aria-hidden="true"></span>
-                <h4>Creative Toolkit</h4>
-                <p class="p44-dots">Photoshop · Lightroom · Figma · Color Grading · Image Optimization</p>
-            </div>
-
-            <div class="p44-flyer p44-flyer--advantage">
-                <span class="p44-pin p44-pin--tl p44-pin--blue" aria-hidden="true"></span>
-                <span class="p44-pin p44-pin--tr" aria-hidden="true"></span>
-                <h4>The Advantage</h4>
-                <p>Most developers don't edit photos, and most editors don't code. I do both. I can build a page and make the images for it, so the whole thing looks like it belongs together.</p>
-            </div>
-
-            <div class="p44-flyer p44-flyer--process">
-                <span class="p44-pin p44-pin--tl p44-pin--blue" aria-hidden="true"></span>
-                <span class="p44-staple p44-staple--l"></span><span class="p44-staple p44-staple--r"></span>
-                <h4>How I Build a Page</h4>
-                <ol class="p44-list p44-list--steps">
-                    <li>Plan what the visitor needs</li>
-                    <li>Sketch the layout in Figma</li>
-                    <li>Write the code</li>
-                    <li>Test on phone and desktop</li>
-                    <li>Edit and compress the photos so it loads fast</li>
-                </ol>
-            </div>
-
-            <div class="p44-flyer p44-flyer--projects">
-                <span class="p44-tape p44-tape--tl" aria-hidden="true"></span>
-                <span class="p44-pin p44-pin--tr" aria-hidden="true"></span>
-                <h4>Projects</h4>
-                <ul class="p44-list p44-list--links">
-                    <li><span class="p44-muted">[Website 1]:</span> <span class="p44-muted">[what it is, one line]</span> · <span class="p44-muted">[link]</span></li>
-                    <li><span class="p44-muted">[Website 2]:</span> <span class="p44-muted">[what it is, one line]</span> · <span class="p44-muted">[link]</span></li>
-                    <li><span class="p44-muted">[Photo edit or before/after]:</span> <span class="p44-muted">[one line]</span> · <span class="p44-muted">[link]</span></li>
-                </ul>
-            </div>
-
-            <div class="p44-flyer p44-flyer--dossier">
-                <span class="p44-tape p44-tape--tr" aria-hidden="true"></span>
-                <h4>Dossier — Offline Stats</h4>
-                <p class="p44-dossier__row"><b>Base:</b> San Pedro, Laguna 🇵🇭</p>
-                <p class="p44-dossier__row"><b>Fuel:</b> Lofi for coding. Soundtracks for editing.</p>
-                <p class="p44-dossier__row"><b>Belief:</b> You don't need fancy gear to make great work.</p>
-                <p class="p44-dossier__row"><b>Learning now:</b> <span class="p44-muted">[skill, e.g., React or accessibility]</span></p>
-                <p class="p44-dossier__row"><b>For fun:</b> <span class="p44-muted">[hobby]</span></p>
-            </div>
-
-            <div class="p44-flyer p44-flyer--status">
-                <span class="p44-tape p44-tape--tl" aria-hidden="true"></span>
-                <span class="p44-pin p44-pin--tr p44-pin--blue" aria-hidden="true"></span>
-                <h4>Status</h4>
-                <p class="p44-status__big">OPEN TO WORK</p>
-                <p class="p44-status__line">Front-end developer · Photo editor</p>
-                <p class="p44-status__line">Full-time, freelance, or internship</p>
-                <p class="p44-status__line p44-muted">[your email] · [GitHub] · [LinkedIn]</p>
+            <div class="ap-strip">
+                <div class="ap-strip__item" data-c="process">
+                    <div class="k">Process</div>
+                    <p><b>Plan → Sketch in Figma → Code → Test on phone and desktop →</b> edit and compress the photos so it loads fast.</p>
+                </div>
+                <div class="ap-strip__item" data-c="edge">
+                    <div class="k k--blue">Advantage</div>
+                    <p>Most developers don't edit photos, and most editors don't code. I do both — so the whole thing looks like it belongs together.</p>
+                </div>
+                <div class="ap-strip__item" data-c="offline">
+                    <div class="k">Offline</div>
+                    <p><b>Fuel:</b> Lofi for coding, soundtracks for editing. <b>Belief:</b> you don't need fancy gear to make great work. <b>Learning:</b> <span class="ap-muted">[skill]</span> · <b>Fun:</b> <span class="ap-muted">[hobby]</span></p>
+                </div>
+                <div class="ap-strip__item" data-c="status">
+                    <div class="k k--blue">Status</div>
+                    <p><b class="ap-open">OPEN TO WORK</b> — full-time, freelance, or internship.<br><span class="ap-muted">[your email] · [GitHub] · [LinkedIn]</span></p>
+                </div>
             </div>
         </div>
     </main>
 
     <script>
-        // Pinned-up entrance: stamp each flyer with a stagger index and start
-        // the swing-in animation shortly after load. Double-click the wall to
-        // replay. Runs after the wall markup (this tag is below it).
+        // Entrance: stamp each block with a stagger index and fade-rise.
         (function() {
+            var wall = document.querySelector('.about-wall');
+            if (!wall) return;
             var fired = false;
             function pin() {
                 if (fired) return;
                 fired = true;
-                var wall = document.querySelector('.about-wall');
-                if (!wall) return;
-                wall.querySelectorAll('.p44-flyer').forEach(function(f, i) {
+                wall.querySelectorAll('.ap-hero, .ap-card, .ap-strip__item').forEach(function(f, i) {
                     f.style.setProperty('--pin-i', i);
                 });
                 wall.classList.add('pinned');
             }
-            window.__replayPin = function() {
-                var wall = document.querySelector('.about-wall');
-                if (!wall) return;
-                wall.classList.remove('pinned');
-                fired = false;
-                void wall.offsetWidth; // force reflow so the animation restarts
-                pin();
-            };
-            window.addEventListener('dblclick', function(ev) {
-                if (ev.target.closest('.about-wall')) window.__replayPin();
-            });
-            // Small beat so the empty board reads before flyers swing in.
-            // Flyers are pre-hidden via html.p44-js, so there is no flash.
-            setTimeout(pin, 350);
+            setTimeout(pin, 250);
         })();
     </script>
 
