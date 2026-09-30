@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cup of Jay - Creative Developer & Designer portfolio">
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
     <link rel="stylesheet" href="css/about.css?v=7">
     <link rel="stylesheet" href="css/edits.css?v=16">
     <link rel="stylesheet" href="css/socials.css?v=7">
@@ -177,7 +177,7 @@
     <hr class="section-separator">
 
     <!-- Features Works Section -->
-    <section class="features-projects">
+    <section class="features-projects" data-reveal>
         <!-- Side accents: dot columns flanking the carousel. Lives on the section
              (full-bleed) so the strips can travel out into the page flank. -->
         <div class="fp-dots-accent" aria-hidden="true">
@@ -210,7 +210,7 @@
                 </template>
                 <template class="spotlight-slide" data-title="RetroWalk" data-caption="A Browser-Based 3D Virtual Museum Inspired by Inside Out">
                     <img src="https://picsum.photos/600/800?random=2" alt="Mobile Banking App">
-                    <a href="nyerk.html">View Project</a>
+                    <a href="retrowalk.html">View Project</a>
                 </template>
             </div>
         </div>
@@ -219,7 +219,7 @@
     <hr class="section-separator">
 
     <!-- About Section — A2: photo column + neon seam + corner brackets -->
-    <section class="about-section">
+    <section class="about-section" data-reveal>
         <!-- Corner step lines (C6): stepped 90° polylines at top-left +
              bottom-right, echoing the photo frame's corner brackets at
              section scale. aria-hidden + pointer-events none. -->
@@ -255,7 +255,7 @@
     <!-- Edits Gallery — V4 "Contact Sheet": stacked photo deck of featured edits.
          Portrait edits get class="edits-gallery__slide edits-gallery__slide--portrait",
          landscape edits just class="edits-gallery__slide". -->
-    <section class="edits-gallery" id="edits-gallery">
+    <section class="edits-gallery" id="edits-gallery" data-reveal>
         <div class="edits-gallery__container">
             <div class="edits-gallery__eyebrow">Edits Gallery</div>
             <h2 class="edits-gallery__title">Featured Edits</h2>
@@ -372,8 +372,8 @@
         </div>
     </section>
 
-    <script type="module" src="main.js?v=10"></script>
+    <script type="module" src="main.js?v=11"></script>
     <script src="lib/libgif.js"></script>
-    <script src="lib/web-pet-engine.js"></script>
+    <script type="module" src="lib/web-pet-engine.js"></script>
 </body>
 </html>

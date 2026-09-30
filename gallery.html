@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Gallery of edits by Cup of Jay — color grading, retouching, and personal edits">
     <title>Gallery | Cup of Jay</title>
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=18">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/gallery.css?v=9">
     <link rel="stylesheet" href="theme-toggle.css">
@@ -108,7 +108,7 @@
          columns. Each section = one discipline. To add a print: drop a figure
          into the section's .gallery-ledger__grid, set its aspect-ratio inline
          (3/4 portrait, 4/3 landscape, 1 square) and match the img dimensions. -->
-    <header class="gallery-header">
+    <header class="gallery-header" data-reveal>
         <div class="gallery-header__text">
             <div class="gallery-header__eyebrow">The Gallery</div>
             <h1 class="gallery-header__title">Selected work,<br>kept &amp; filed.</h1>
@@ -126,7 +126,7 @@
 
     <main class="gallery-ledger">
         <!-- 01 — Color Grading -->
-        <section class="gallery-ledger__section" id="color-grading">
+        <section class="gallery-ledger__section" data-reveal id="color-grading" data-reveal>
             <aside class="gallery-ledger__label">
                 <span class="gallery-ledger__num">01 / COLOR GRADING</span>
                 <h2>Color Grading</h2>
@@ -160,7 +160,7 @@
         </section>
 
         <!-- 02 — Retouching -->
-        <section class="gallery-ledger__section" id="retouching">
+        <section class="gallery-ledger__section" data-reveal id="retouching">
             <aside class="gallery-ledger__label">
                 <span class="gallery-ledger__num">02 / RETOUCHING</span>
                 <h2>Retouching</h2>
@@ -190,7 +190,7 @@
         </section>
 
         <!-- 03 — Personal Edits -->
-        <section class="gallery-ledger__section" id="personal-edits">
+        <section class="gallery-ledger__section" data-reveal id="personal-edits">
             <aside class="gallery-ledger__label">
                 <span class="gallery-ledger__num">03 / PERSONAL EDITS</span>
                 <h2>Personal Edits</h2>
@@ -222,8 +222,8 @@
         <footer class="gallery-footer">END OF ROLL — CUP OF JAY</footer>
     </main>
 
-    <script type="module" src="main.js?v=10"></script>
+    <script type="module" src="main.js?v=11"></script>
     <script src="lib/libgif.js"></script>
-    <script src="lib/web-pet-engine.js"></script>
+    <script type="module" src="lib/web-pet-engine.js"></script>
 </body>
 </html>

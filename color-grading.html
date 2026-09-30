@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Color grading gallery by Cup of Jay — every frame shown before and after the grade">
     <title>Color Grading | Cup of Jay</title>
-    <link rel="stylesheet" href="style.css?v=6">
+    <link rel="stylesheet" href="style.css?v=18">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/gallery.css?v=7">
     <link rel="stylesheet" href="theme-toggle.css">
@@ -108,17 +108,17 @@
          To add a plate: copy a .ba-item figure, swap both img srcs (before first,
          after second) and keep the two urls' dimensions identical. -->
     <main class="gallery-section-main">
-        <div class="gallery-section__crumbs">
+        <div class="gallery-section__crumbs" data-reveal>
             <a href="gallery.html">Gallery</a>
             <span aria-hidden="true">/</span>
             <span>01 — Color Grading</span>
         </div>
-        <h1 class="gallery-section__title">Color Grading</h1>
+        <h1 class="gallery-section__title" data-reveal data-reveal-delay="1">Color Grading</h1>
         <p class="gallery-section__intro">Every grade chases a feeling — warm nostalgia, cool sci-fi, or silver silence. Drag each divider to see the raw frame against the finished grade.</p>
 
         <p class="gallery-section__hint">drag a divider — before / after</p>
 
-        <div class="ba-grid">
+        <div class="ba-grid" data-reveal data-reveal-delay="2">
             <figure class="ba-item">
                 <div class="ba" tabindex="0" role="slider" aria-label="Golden Hour — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
                     <img class="ba__before" src="https://picsum.photos/seed/g1a/900/560" alt="Golden Hour — raw ungraded frame" draggable="false">
@@ -207,8 +207,8 @@
         </div>
     </main>
 
-    <script type="module" src="main.js?v=10"></script>
+    <script type="module" src="main.js?v=11"></script>
     <script src="lib/libgif.js"></script>
-    <script src="lib/web-pet-engine.js"></script>
+    <script type="module" src="lib/web-pet-engine.js"></script>
 </body>
 </html>

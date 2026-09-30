@@ -10,7 +10,8 @@ import { setupPets } from './js/pets.js';
 import { setupProjectTags } from './js/project-tags.js';
 import { setupBeforeAfter } from './js/before-after.js';
 import { setupSocials } from './js/socials.js';
-import { renderNavLinks, setupNavScroll, setupNavLoadAnimation } from './js/nav.js?v=2';
+import { setupScrollReveal } from './js/scroll-reveal.js?v=2';
+import { renderNavLinks, setupNavScroll, setupNavLoadAnimation } from './js/nav.js?v=3';
 
 initTheme();
 renderNavLinks();
@@ -30,5 +31,6 @@ if (document.readyState === 'loading') {
 }
 setupBeforeAfter();
 setupSocials();
+setupScrollReveal();
 
 document.addEventListener('DOMContentLoaded', setupPets);

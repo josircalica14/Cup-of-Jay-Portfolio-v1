@@ -2375,3 +2375,28 @@ body.light-mode .button:hover {
     box-shadow: 0 6px 24px rgba(0,79,210,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
+
+/* ═══ Scroll-reveal — staggered entrance for [data-reveal] blocks ═══ */
+html.p44-js [data-reveal]:not(.is-revealed) {
+    opacity: 0;
+    transform: translateY(22px);
+}
+
+[data-reveal] {
+    transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+[data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html.p44-js [data-reveal]:not(.is-revealed) {
+        opacity: 1;
+        transform: none;
+    }
+    [data-reveal] { transition: none; }
+}

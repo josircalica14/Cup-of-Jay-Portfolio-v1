@@ -1,0 +1,237 @@
+/* ═══ Project landing page — ScanPasada (and future projects).
+       Split overview: intro left, fact panel right.
+       Then a bento board: screenshot tiles + problem + stack.
+       One accent color per theme: dark = cyan, light = blue. ═══ */
+
+.proj-page {
+    position: relative;
+    padding: 8rem 2.5rem 5rem;
+    min-height: 100vh;
+    background-color: var(--dark-bg-primary);
+    overflow: hidden;
+}
+
+.proj-wall {
+    position: relative;
+    z-index: 1;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+/* ── Shared bits ── */
+.proj-page .tick {
+    width: 30px;
+    height: 3px;
+    background: var(--brand-primary);
+    margin-bottom: 1rem;
+}
+.proj-page .k {
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--brand-primary);
+}
+.proj-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+.proj-tags .chip {
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand-primary);
+    border: 1px solid color-mix(in srgb, var(--brand-primary) 35%, transparent);
+    background: color-mix(in srgb, var(--brand-primary) 7%, transparent);
+    border-radius: 999px;
+    padding: 0.34rem 0.85rem;
+}
+
+/* ── Overview: split intro | facts ── */
+.proj-overview {
+    display: grid;
+    grid-template-columns: 1.15fr 1fr;
+    gap: 3.2rem;
+    align-items: start;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.proj-intro h1 {
+    font-family: 'NavBarFont', sans-serif;
+    font-size: clamp(2.2rem, 4.2vw, 3.2rem);
+    line-height: 1.08;
+    letter-spacing: 0.02em;
+    color: var(--dark-text-primary);
+    margin: 0.8rem 0 1.1rem;
+}
+.proj-lead {
+    font-family: 'ProjectCardDescriptionFont', sans-serif;
+    font-size: 1rem;
+    line-height: 1.9;
+    color: #c3c9d2;
+    max-width: 540px;
+    margin: 1.3rem 0 0;
+}
+.proj-facts {
+    display: grid;
+    gap: 14px;
+    align-content: start;
+}
+.proj-facts .fact {
+    background: var(--dark-background-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1rem 1.2rem;
+    position: relative;
+}
+.proj-facts .fact::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 24px;
+    height: 3px;
+    background: var(--brand-primary);
+}
+.proj-facts .fact__lab {
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brand-primary);
+}
+.proj-facts .fact__val {
+    font-family: 'ProjectCardDescriptionFont', sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--dark-text-primary);
+    margin-top: 0.4rem;
+}
+
+/* ── Bento board ── */
+.proj-bento {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 3.2rem;
+}
+.proj-bento .tile {
+    background: var(--dark-background-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 1.4rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+.proj-bento .tile::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 26px;
+    height: 3px;
+    background: var(--brand-primary);
+}
+.proj-bento .tile__lab {
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--brand-primary);
+}
+.proj-bento .tile__text {
+    font-family: 'ProjectCardDescriptionFont', sans-serif;
+    font-size: 0.92rem;
+    line-height: 1.85;
+    color: #a8a8a8;
+    margin-top: 0.7rem;
+}
+.proj-bento .tile--wide { grid-column: span 2; }
+.proj-bento .tile--shot {
+    height: 340px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.proj-bento .tile--shot::before { z-index: 1; }
+.proj-bento .tile--shot .shot-label {
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #55677c;
+}
+.proj-bento .tile--shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    inset: 0;
+}
+
+/* ── Back link ── */
+.proj-backwrap { margin-top: 3.2rem; }
+.proj-back {
+    font-family: 'ProjectCardTagsFont', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--dark-text-primary);
+    text-decoration: none;
+}
+.proj-back:hover { color: var(--brand-primary); }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .proj-overview { gap: 2.2rem; }
+}
+@media (max-width: 820px) {
+    .proj-page { padding: 7rem 1.6rem 4rem; }
+    .proj-overview { grid-template-columns: 1fr; gap: 2.2rem; }
+    .proj-facts { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 560px) {
+    .proj-facts { grid-template-columns: 1fr; }
+    .proj-bento { grid-template-columns: 1fr; }
+    .proj-bento .tile--wide { grid-column: span 1; }
+    .proj-bento .tile--shot { height: 240px; }
+}
+
+/* ── Light mode — single accent = blue ── */
+body.light-mode .proj-page { background-color: #fafafa; }
+body.light-mode .proj-overview { border-bottom-color: rgba(15, 23, 32, 0.15); }
+body.light-mode .proj-intro h1 { color: #171d28; }
+body.light-mode .proj-lead { color: #455062; }
+body.light-mode .proj-facts .fact {
+    background: #ffffff;
+    border-color: rgba(15, 23, 32, 0.09);
+    box-shadow: 0 14px 34px -28px rgba(15, 23, 32, 0.35);
+}
+body.light-mode .proj-facts .fact__val { color: #171d28; }
+body.light-mode .proj-bento .tile {
+    background: #ffffff;
+    border-color: rgba(15, 23, 32, 0.09);
+    box-shadow: 0 14px 34px -28px rgba(15, 23, 32, 0.35);
+}
+body.light-mode .proj-bento .tile__text { color: #455062; }
+
+/* light-mode accent remap: everything cyan becomes blue */
+body.light-mode .proj-page .tick,
+body.light-mode .proj-facts .fact::before,
+body.light-mode .proj-bento .tile::before { background: var(--brand-primary-dark); }
+body.light-mode .proj-page .k,
+body.light-mode .proj-facts .fact__lab,
+body.light-mode .proj-bento .tile__lab { color: var(--brand-primary-dark); }
+body.light-mode .proj-tags .chip {
+    color: var(--brand-primary-dark);
+    border-color: rgba(0, 79, 210, 0.35);
+    background: rgba(0, 79, 210, 0.06);
+}
+body.light-mode .proj-back { color: #171d28; }
+body.light-mode .proj-back:hover { color: var(--brand-primary-dark); }

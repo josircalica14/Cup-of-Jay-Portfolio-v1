@@ -381,38 +381,5 @@ body.light-mode .ap-now p { color: #455062; }
 body.light-mode .ap-now b { color: #2c3442; }
 body.light-mode .ap-muted { color: #a29a89; }
 
-/* ═══ Entrance — soft staggered rise ═══ */
-html.p44-js .about-wall:not(.pinned) .ap-hero,
-html.p44-js .about-wall:not(.pinned) .ap-anim {
-    opacity: 0;
-}
-
-.about-wall.pinned .ap-hero,
-.about-wall.pinned .ap-anim {
-    animation: ap-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
-    animation-delay: calc(var(--pin-i, 0) * 70ms);
-}
-
-@keyframes ap-rise {
-    0%   { opacity: 0; transform: translateY(18px); }
-    100% { opacity: 1; transform: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    html.p44-js .about-wall:not(.pinned) .ap-hero,
-    html.p44-js .about-wall:not(.pinned) .ap-anim {
-        opacity: 1;
-    }
-    .about-wall.pinned .ap-hero,
-    .about-wall.pinned .ap-anim {
-        animation: none;
-    }
-}
-
-/* Safety net: if entrance animations ever get stuck (exotic browsers,
-   headless capture), settle everything visible shortly after load. */
-.about-wall.ap-settled .ap-hero,
-.about-wall.ap-settled .ap-anim {
-    animation: none;
-    opacity: 1;
-}
+/* ═══ Entrance — the whole page uses the shared scroll-reveal system
+       (data-reveal in the markup, transition rules in style.css). ═══ */

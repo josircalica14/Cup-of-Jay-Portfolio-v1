@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="About Josir James Calica - the developer and photo editor behind Cup of Jay">
     <title>About | Cup of Jay</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/about-page.css?v=72">
+    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="css/about-page.css?v=73">
     <link rel="stylesheet" href="theme-toggle.css">
     <script>
         (function() {
@@ -117,7 +117,7 @@
         <div class="ap-rib ap-rib--r" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
 
         <div class="about-wall">
-            <div class="ap-hero">
+            <div class="ap-hero" data-reveal>
                 <figure class="ap-hero__photo">
                     <img src="./assets/profile_photo/profile-920.jpg" alt="Portrait of Josir">
                 </figure>
@@ -134,7 +134,7 @@
             </div>
 
             <!-- ══ Work — two open columns ══ -->
-            <div class="ap-work ap-anim">
+            <div class="ap-work" data-reveal>
                 <section class="ap-sec">
                     <div class="ap-tick"></div>
                     <div class="k">What I build</div>
@@ -163,7 +163,7 @@
             </div>
 
             <!-- ══ Facts — education + toolkit ══ -->
-            <div class="ap-grid ap-anim">
+            <div class="ap-grid" data-reveal>
                 <section class="ap-sec ap-edu">
                     <div class="ap-tick"></div>
                     <div class="k">Education</div>
@@ -203,7 +203,7 @@
             </div>
 
             <!-- ══ Now — status + process ══ -->
-            <div class="ap-now ap-anim">
+            <div class="ap-now" data-reveal>
                 <section class="ap-sec">
                     <div class="ap-tick"></div>
                     <div class="k">Now</div>
@@ -221,27 +221,12 @@
     </main>
 
     <script>
-        // Entrance: stamp each block with a stagger index and fade-rise.
-        (function() {
-            var wall = document.querySelector('.about-wall');
-            if (!wall) return;
-            var fired = false;
-            function pin() {
-                if (fired) return;
-                fired = true;
-                wall.querySelectorAll('.ap-hero, .ap-anim').forEach(function(f, i) {
-                    f.style.setProperty('--pin-i', i);
-                });
-                wall.classList.add('pinned');
-            }
-            setTimeout(pin, 250);
-            // Safety net: settle everything visible in case animations stall.
-            setTimeout(function() { wall.classList.add('ap-settled'); }, 2500);
-        })();
+        // Entrance: hero + body sections all reveal via js/scroll-reveal.js
+        // (data-reveal + html.p44-js guard in the inline head script).
     </script>
 
-    <script type="module" src="main.js?v=10"></script>
+    <script type="module" src="main.js?v=11"></script>
     <script src="lib/libgif.js"></script>
-    <script src="lib/web-pet-engine.js"></script>
+    <script type="module" src="lib/web-pet-engine.js"></script>
 </body>
 </html>

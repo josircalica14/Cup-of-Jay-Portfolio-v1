@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Projects by Cup of Jay">
-    <title>Projects | Cup of Jay</title>
+    <meta name="description" content="ScanPasada - jeepney terminal queuing management app by Cup of Jay">
+    <title>ScanPasada | Cup of Jay</title>
     <link rel="stylesheet" href="style.css?v=18">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/projects.css?v=23">
+    <link rel="stylesheet" href="css/project-page.css?v=1">
     <link rel="stylesheet" href="theme-toggle.css">
     <script>
         (function() {
@@ -22,7 +22,7 @@
 
     <!-- Mobile nav frosted bar (shown on scroll) -->
     <div class="mobile-nav__bar"></div>
-    
+
     <!-- Mobile Logo -->
     <div class="mobile-logo">
         <img class="logo-light" src="./logo/logo1v2.png" alt="Cup of Jay">
@@ -103,49 +103,54 @@
         </div>
     </div>
 
-    <header class="projects-header">
-        <h1 class="projects-header__title">My Work</h1>
-        <p class="projects-header__subtitle">A selection of projects that I'm proud of.</p>
-    </header>
+    <!-- ═══ Project page — ScanPasada. Split overview (intro + fact panel)
+         flowing into a bento board of screenshots and stack. ═══ -->
+    <main class="proj-page">
+        <div class="proj-wall">
 
-    <main class="project-bands">
-        <!-- Overlap Card Band: full-bleed image + frosted glass card. One band = one project. -->
-        <article class="project-band" data-reveal>
-            <div class="project-band__image">
-                <a href="scanpasada.html"><img src="https://picsum.photos/800/600?random=1" alt="ScanPasada" class="project-band__img"></a>
-            </div>
-            <div class="project-band__card">
-                <div class="project-band__tags">
-                    <span class="project-band__tag">Kotlin</span>
-                    <span class="project-band__tag">Supabase</span>
-                    <span class="project-band__tag">Jetpack Compose</span>
-                    <span class="project-band__tag">PostgreSQL</span>
-                    <span class="project-band__tag">Android</span>
+            <!-- ══ Overview: intro left, facts right ══ -->
+            <div class="proj-overview" data-reveal>
+                <div class="proj-intro">
+                    <div class="tick"></div>
+                    <div class="k">Capstone Project</div>
+                    <h1>ScanPasada</h1>
+                    <div class="proj-tags">
+                        <span class="chip">Kotlin</span>
+                        <span class="chip">Jetpack Compose</span>
+                        <span class="chip">Supabase</span>
+                        <span class="chip">PostgreSQL</span>
+                    </div>
+                    <p class="proj-lead">A mobile app that helps manage jeepney queues at terminals, making it easier for operators, drivers, and passengers to coordinate in real time.</p>
                 </div>
-                <h2 class="project-band__title">ScanPasada</h2>
-                <p class="project-band__description">A mobile app that helps manage jeepney queues at terminals, making it easier for operators, drivers, and passengers to coordinate in real-time.</p>
-                <a href="scanpasada.html" class="project-band__link">View Project <span class="project-band__arrow">→</span></a>
-            </div>
-        </article>
-        <article class="project-band project-band--alt" data-reveal>
-            <div class="project-band__image">
-                <a href="retrowalk.html"><img src="https://picsum.photos/800/600?random=2" alt="RetroWalk" class="project-band__img"></a>
-            </div>
-            <div class="project-band__card">
-                <div class="project-band__tags">
-                    <span class="project-band__tag">Three.js</span>
-                    <span class="project-band__tag">HTML5</span>
-                    <span class="project-band__tag">CSS3</span>
-                    <span class="project-band__tag">JavaScript</span>
-                    <span class="project-band__tag">Virtual Reality</span>
-                    <span class="project-band__tag">Website</span>
+                <div class="proj-facts">
+                    <div class="fact"><p class="fact__lab">Role</p><p class="fact__val">Lead developer — UI, front-end logic, database</p></div>
+                    <div class="fact"><p class="fact__lab">Year</p><p class="fact__val">2025 – 2026</p></div>
+                    <div class="fact"><p class="fact__lab">Platform</p><p class="fact__val">Android · Jetpack Compose</p></div>
+                    <div class="fact"><p class="fact__lab">Type</p><p class="fact__val">BS Information Technology capstone, Lyceum of San Pedro</p></div>
                 </div>
-                <h2 class="project-band__title">RetroWalk</h2>
-                <p class="project-band__description">Taking inspiration from Pixar's RetroWalk is a 3D browser-based virtual museum, where every past video and picture belonging to a member of my circle of friends is kept as a glowing memory orb within their own personal Memory Hall.</p>
-                <a href="retrowalk.html" class="project-band__link">View Project <span class="project-band__arrow">→</span></a>
             </div>
-        </article>
-        <!-- Add more project bands here: alternate project-band--alt for side rhythm -->
+
+            <!-- ══ Bento board: screenshots, problem, stack ══ -->
+            <div class="proj-bento" data-reveal data-reveal-delay="1">
+                <div class="tile tile--shot tile--shot-1"><span class="shot-label">screenshot — passenger queue view</span></div>
+                <div class="tile tile--shot tile--shot-2"><span class="shot-label">screenshot — driver view</span></div>
+                <div class="tile tile--wide">
+                    <p class="tile__lab">The problem it solves</p>
+                    <p class="tile__text">Jeepney terminals run on shouted guesses: drivers do not know when to move, passengers do not know which jeep boards next, and operators have no view of the queue. ScanPasada turns that into one live, ordered queue every party can check from a phone.</p>
+                </div>
+                <div class="tile tile--wide">
+                    <p class="tile__lab">Built with</p>
+                    <div class="proj-tags" style="margin-top:0.7rem">
+                        <span class="chip">Kotlin</span>
+                        <span class="chip">Jetpack Compose</span>
+                        <span class="chip">Supabase</span>
+                        <span class="chip">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+
+            <p class="proj-backwrap"><a href="projects.html" class="proj-back">Back to all projects</a></p>
+        </div>
     </main>
 
     <script type="module" src="main.js?v=11"></script>
