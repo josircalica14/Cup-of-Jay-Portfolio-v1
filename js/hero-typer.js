@@ -6,7 +6,7 @@
 
 import { getTheme, LIGHT, onChange } from './theme.js';
 
-const WORDS = ['Josir James Calica', 'Jay Jay', 'Cup of Jay'];
+const WORDS = ['Josir James S. Calica', 'Jay Jay', '@Cup of Jay'];
 const DARK_ACCENTS = ['#3d81ff', '#3ff0b8', '#ff9e9e'];
 // Light mode palette — deeper tones tuned for the cream background so each
 // word keeps its distinct hue with readable contrast (blue / teal / rose).

@@ -6,7 +6,7 @@
     <meta name="description" content="About Josir James Calica - the developer and photo editor behind Cup of Jay">
     <title>About | Cup of Jay</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="about-page.css?v=60">
+    <link rel="stylesheet" href="css/about-page.css?v=72">
     <link rel="stylesheet" href="theme-toggle.css">
     <script>
         (function() {
@@ -107,11 +107,12 @@
         </div>
     </div>
 
-    <!-- ═══ About page — Split Story: photo-left hero, intro-right, with
-         cyan Build / blue Edit columns below. T2 cascade ribbons on the edges. ═══ -->
+    <!-- ═══ About page — Split Story: photo-left hero, intro-right, Build/Edit
+         columns below. T2 cascade ribbons on the edges. Single accent color
+         per theme: dark = cyan, light = blue. ═══ -->
     <main class="about-page">
         <!-- side accents — desktop only: cascade ribbons (T2),
-             cyan stepping down from top-left, blue up from bottom-right -->
+             stepping down from top-left, up from bottom-right -->
         <div class="ap-rib ap-rib--l" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
         <div class="ap-rib ap-rib--r" aria-hidden="true"><i class="a"></i><i class="b"></i><i class="c"></i></div>
 
@@ -121,80 +122,100 @@
                     <img src="./assets/profile_photo/profile-920.jpg" alt="Portrait of Josir">
                 </figure>
                 <div class="ap-hero__txt">
-                    <div class="k">Cup of Jay — About</div>
-                    <h1>Josir James Calica</h1>
-                    <p class="ap-lead">I'm a front-end developer and a photo editor. I build the parts of a website people see and click — and I edit the photos that make it look good. Just finished my BS in Information Technology, ready for my first role.</p>
+                    <div class="k">About Me</div>
+                    <h1>Josir James S. Calica</h1>
+                    <p class="ap-lead">I am a front-end developer and photo editor. I build the parts of a website that people see and interact with, and I edit the photos that make it look good. I recently finished my BS in Information Technology and am ready for my first role.</p>
                     <div class="ap-meta">
-                        <div><div class="k">Base</div><p>San Pedro, Laguna PH</p></div>
-                        <div><div class="k">Focus</div><p>Front-end · Photo editing</p></div>
+                        <div><div class="k">Hometown</div><p>San Pedro, Laguna</p></div>
+                        <div><div class="k">Focus</div><p>Front-end Development · Photo editing</p></div>
                         <div><div class="k">Status</div><p class="ap-open">Open to work</p></div>
                     </div>
                 </div>
             </div>
 
-            <div class="ap-cols">
-                <!-- Column 1 -->
-                <div class="ap-col">
-                    <div class="ap-card" data-c="build">
-                        <div class="k">Build — Front-End Developer</div>
-                        <ul>
-                            <li>Responsive layouts for phones, tablets, and computers</li>
-                            <li>Clean HTML and CSS</li>
-                            <li>JavaScript for menus, sliders, forms, and theme toggles</li>
-                            <li>Fast pages that are easy to use</li>
-                            <li>PHP and MySQL when a page needs a database</li>
-                        </ul>
-                    </div>
-
-                    <div class="ap-card" data-c="study">
-                        <div class="k">Study — Education</div>
-                        <ul>
-                            <li>BS Information Technology — <span class="ap-muted">[School name], [Year]</span></li>
-                            <li>Focus: front-end web development</li>
-                            <li>Best project: <span class="ap-muted">[Project name], [what it does]</span></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Column 2 -->
-                <div class="ap-col">
-                    <div class="ap-card" data-c="edit">
-                        <div class="k k--blue">Edit — Photo Editor</div>
-                        <ul>
-                            <li>Color correction and color grading</li>
-                            <li>Retouching and cleanup</li>
-                            <li>Exposure, contrast, and crop fixes</li>
-                            <li>Sizing and compressing images for the web</li>
-                        </ul>
-                    </div>
-
-                    <div class="ap-card" data-c="stack">
-                        <div class="k k--blue">Toolkit</div>
-                        <ul>
-                            <li>Photoshop · Lightroom · Figma</li>
-                            <li>Color grading · Image optimization</li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- ══ Work — two open columns ══ -->
+            <div class="ap-work ap-anim">
+                <section class="ap-sec">
+                    <div class="ap-tick"></div>
+                    <div class="k">What I build</div>
+                    <h2>Front-End Development</h2>
+                    <p class="ap-sub">I build the parts of a website that people actually see and touch, keeping every page fast and easy to navigate.</p>
+                    <ul class="ap-list">
+                        <li><b>Responsive</b> layouts that hold up on phones, tablets, and desktops</li>
+                        <li><b>Clean</b> semantic HTML and well-organized CSS</li>
+                        <li><b>Interactive</b> JavaScript for menus, sliders, forms, and theme toggles</li>
+                        <li><b>Reliable</b> pages that load fast and work the same everywhere</li>
+                        <li><b>Full-stack capable</b> with PHP and MySQL when a project needs a database</li>
+                    </ul>
+                </section>
+                <section class="ap-sec">
+                    <div class="ap-tick"></div>
+                    <div class="k">What I refine</div>
+                    <h2>Photo Editing</h2>
+                    <p class="ap-sub">I treat images as part of the design rather than an afterthought, keeping them natural-looking and quick to load.</p>
+                    <ul class="ap-list">
+                        <li><b>Balanced</b> color correction and grading for a consistent, polished look</li>
+                        <li><b>Refined</b> retouching and careful cleanup of details</li>
+                        <li><b>Corrected</b> exposure, contrast, and crop adjustments that bring images together</li>
+                        <li><b>Optimized</b> sizing and compression so photos stay sharp but load quickly</li>
+                    </ul>
+                </section>
             </div>
 
-            <div class="ap-strip">
-                <div class="ap-strip__item" data-c="process">
+            <!-- ══ Facts — education + toolkit ══ -->
+            <div class="ap-grid ap-anim">
+                <section class="ap-sec ap-edu">
+                    <div class="ap-tick"></div>
+                    <div class="k">Education</div>
+                    <h2>Education</h2>
+                    <div class="ap-edu__tl">
+                        <div class="ap-edu__node">
+                            <div class="ap-edu__yr">2022 – 2026</div>
+                            <p class="ap-edu__deg">BS Information Technology</p>
+                            <p class="ap-edu__sch">Lyceum of San Pedro <span class="ap-muted">(formerly Colegio de San Pedro)</span></p>
+                            <div class="ap-edu__chips">
+                                <span>Front-end development</span>
+                                <span>Multimedia technology</span>
+                            </div>
+                        </div>
+                        <div class="ap-edu__node">
+                            <div class="ap-edu__yr">Key Projects</div>
+                            <ul class="ap-list">
+                                <li><b>RetroWalk</b> — best project, a web-based virtual reality museum</li>
+                                <li><b>ScanPasada</b> — capstone, a jeepney terminal queuing management system</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section class="ap-sec">
+                    <div class="ap-tick"></div>
+                    <div class="k">Toolkit</div>
+                    <h2>Tools I work with</h2>
+                    <div class="ap-chips">
+                        <span>Photoshop</span>
+                        <span>Lightroom</span>
+                        <span>Figma</span>
+                        <span>HTML / CSS</span>
+                        <span>JavaScript</span>
+                        <span>PHP · MySQL</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- ══ Now — status + process ══ -->
+            <div class="ap-now ap-anim">
+                <section class="ap-sec">
+                    <div class="ap-tick"></div>
+                    <div class="k">Now</div>
+                    <h2>Open to work</h2>
+                    <p><b class="ap-open">Open to work</b> for full-time, freelance, or internship roles. <span class="ap-muted">[your email] · [GitHub] · [LinkedIn]</span></p>
+                </section>
+                <section class="ap-sec">
+                    <div class="ap-tick"></div>
                     <div class="k">Process</div>
-                    <p><b>Plan → Sketch in Figma → Code → Test on phone and desktop →</b> edit and compress the photos so it loads fast.</p>
-                </div>
-                <div class="ap-strip__item" data-c="edge">
-                    <div class="k k--blue">Advantage</div>
-                    <p>Most developers don't edit photos, and most editors don't code. I do both — so the whole thing looks like it belongs together.</p>
-                </div>
-                <div class="ap-strip__item" data-c="offline">
-                    <div class="k">Offline</div>
-                    <p><b>Fuel:</b> Lofi for coding, soundtracks for editing. <b>Belief:</b> you don't need fancy gear to make great work. <b>Learning:</b> <span class="ap-muted">[skill]</span> · <b>Fun:</b> <span class="ap-muted">[hobby]</span></p>
-                </div>
-                <div class="ap-strip__item" data-c="status">
-                    <div class="k k--blue">Status</div>
-                    <p><b class="ap-open">OPEN TO WORK</b> — full-time, freelance, or internship.<br><span class="ap-muted">[your email] · [GitHub] · [LinkedIn]</span></p>
-                </div>
+                    <h2>How I work</h2>
+                    <p>I sketch the layout in Figma, build it, test it on phones and desktops, then edit and compress the photos so everything loads fast.</p>
+                </section>
             </div>
         </div>
     </main>
@@ -208,12 +229,14 @@
             function pin() {
                 if (fired) return;
                 fired = true;
-                wall.querySelectorAll('.ap-hero, .ap-card, .ap-strip__item').forEach(function(f, i) {
+                wall.querySelectorAll('.ap-hero, .ap-anim').forEach(function(f, i) {
                     f.style.setProperty('--pin-i', i);
                 });
                 wall.classList.add('pinned');
             }
             setTimeout(pin, 250);
+            // Safety net: settle everything visible in case animations stall.
+            setTimeout(function() { wall.classList.add('ap-settled'); }, 2500);
         })();
     </script>
 
