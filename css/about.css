@@ -116,7 +116,7 @@
     line-height: 2;
     color: var(--text-color);
     opacity: 0.75;
-    max-width: 70ch;
+    max-width: none;
     margin-bottom: 2.2rem;
 }
 
