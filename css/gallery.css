@@ -32,7 +32,7 @@ body.light-mode {
 }
 
 .gallery-header__eyebrow {
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 0.45em;
     color: var(--gallery-accent);
@@ -40,7 +40,7 @@ body.light-mode {
 }
 
 .gallery-header__title {
-    font-family: 'CardHeaderFont', sans-serif;
+    font-family: 'NavBarFont', sans-serif;
     font-size: clamp(2.6rem, 5.6vw, 4.4rem);
     line-height: 1.05;
     margin: 0.5rem 0 1rem;
@@ -48,6 +48,7 @@ body.light-mode {
 }
 
 .gallery-header__subtitle {
+    font-family: 'ProjectCardDescriptionFont', sans-serif;
     color: rgba(224, 224, 224, 0.55);
     line-height: 1.8;
     font-size: 0.98rem;
@@ -62,14 +63,14 @@ body.light-mode {
 
 .gallery-header__stat b {
     display: block;
-    font-family: 'CardHeaderFont', sans-serif;
+    font-family: 'NavBarFont', sans-serif;
     font-size: 1.7rem;
     color: var(--gallery-accent);
     text-shadow: 0 0 12px var(--gallery-accent-soft);
 }
 
 .gallery-header__stat span {
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
     font-size: 0.6rem;
     letter-spacing: 0.22em;
     color: rgba(224, 224, 224, 0.55);
@@ -113,20 +114,21 @@ body.light-mode {
 }
 
 .gallery-ledger__num {
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardTagsFont', sans-serif;
     font-size: 0.72rem;
     color: var(--gallery-accent);
     letter-spacing: 0.3em;
 }
 
 .gallery-ledger__label h2 {
-    font-family: 'CardHeaderFont', sans-serif;
+    font-family: 'NavBarFont', sans-serif;
     font-size: 1.9rem;
     color: #fff;
     margin: 0.4rem 0 0.7rem;
 }
 
 .gallery-ledger__label p {
+    font-family: 'ProjectCardDescriptionFont', sans-serif;
     font-size: 0.88rem;
     color: rgba(224, 224, 224, 0.55);
     line-height: 1.7;
@@ -187,7 +189,7 @@ body.light-mode {
 }
 
 .gallery-ledger__print figcaption span:first-child {
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
     font-size: 0.62rem;
     letter-spacing: 0.18em;
     color: #fff;
@@ -195,7 +197,7 @@ body.light-mode {
 }
 
 .gallery-ledger__tag {
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardTagsFont', sans-serif;
     font-size: 0.55rem;
     letter-spacing: 0.2em;
     color: var(--gallery-accent);
@@ -231,7 +233,7 @@ body.light-mode {
     background: var(--gallery-accent-soft);
     border: 1.5px solid var(--gallery-accent);
     color: var(--gallery-accent);
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardTagsFont', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -270,7 +272,7 @@ body.light-mode {
 }
 
 .gallery-section__crumbs {
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
     font-size: 0.62rem;
     letter-spacing: 0.3em;
     color: var(--gallery-accent);
@@ -292,7 +294,7 @@ body.light-mode {
 }
 
 .gallery-section__title {
-    font-family: 'CardHeaderFont', sans-serif;
+    font-family: 'NavBarFont', sans-serif;
     font-size: clamp(2.4rem, 5vw, 3.8rem);
     line-height: 1.08;
     color: #fff;
@@ -300,6 +302,7 @@ body.light-mode {
 }
 
 .gallery-section__intro {
+    font-family: 'ProjectCardDescriptionFont', sans-serif;
     color: rgba(224, 224, 224, 0.55);
     max-width: 560px;
     line-height: 1.8;
@@ -307,7 +310,7 @@ body.light-mode {
 }
 
 .gallery-section__hint {
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardDescriptionFont', sans-serif;
     font-size: 0.6rem;
     letter-spacing: 0.24em;
     color: rgba(224, 224, 224, 0.4);
@@ -411,7 +414,7 @@ body.light-mode {
     position: absolute;
     top: 0.7rem;
     padding: 0.32rem 0.65rem;
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
     font-size: 0.56rem;
     letter-spacing: 0.26em;
     text-transform: uppercase;
@@ -454,7 +457,7 @@ body.light-mode {
 }
 
 .ba-item__name {
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardTagsFont', sans-serif;
     font-size: 0.66rem;
     letter-spacing: 0.2em;
     color: #fff;
@@ -494,7 +497,7 @@ body.light-mode {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding: 2.4rem 2rem 3rem;
     text-align: center;
-    font-family: var(--gallery-mono);
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
     font-size: 0.62rem;
     letter-spacing: 0.3em;
     color: rgba(224, 224, 224, 0.35);

@@ -1867,6 +1867,7 @@ body.light-mode .features-projects__title {
     position: relative;
     overflow: hidden;
     margin-top: 1.1rem;
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
     font-size: 0.78rem;
     font-weight: 600;
     letter-spacing: 0.14em;

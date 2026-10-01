@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="RetroWalk - web-based virtual reality museum by Cup of Jay">
     <title>RetroWalk | Cup of Jay</title>
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/project-page.css?v=1">
+    <link rel="stylesheet" href="css/project-page.css?v=15">
     <link rel="stylesheet" href="theme-toggle.css">
     <script>
         (function() {
@@ -112,7 +112,7 @@
             <div class="proj-overview" data-reveal>
                 <div class="proj-intro">
                     <div class="tick"></div>
-                    <div class="k">Best Project</div>
+                    <div class="k">Finals Project</div>
                     <h1>RetroWalk</h1>
                     <div class="proj-tags">
                         <span class="chip">Three.js</span>
@@ -120,20 +120,30 @@
                         <span class="chip">CSS3</span>
                         <span class="chip">JavaScript</span>
                     </div>
-                    <p class="proj-lead">A 3D browser-based virtual museum where every past video and picture belonging to a member of my circle of friends is kept as a glowing memory orb within their own personal Memory Hall.</p>
+                    <figure class="proj-hero"><img src="./assets/retrowalk_photos/banner1.png" alt="RetroWalk banner"></figure>
+                    <p class="proj-lead">For our finals project, we built RetroWalk, inspired by Pixar's Inside Out. It is a browser-based 3D museum where each of my circle of friends has their own Memory Hall, also as a way to preserve and celebrate the memories of my circle of friend group, NYERK. Each memory hall has a glowing corridor filled with orbs that hold their photos and videos, just like the memory shelves from the movie. You walk through in first-person, step into someone's hall, and experience the moments they wanted to share.</p>
                 </div>
                 <div class="proj-facts">
-                    <div class="fact"><p class="fact__lab">Role</p><p class="fact__val">Solo developer — concept, 3D scenes, front-end</p></div>
-                    <div class="fact"><p class="fact__lab">Year</p><p class="fact__val">2024 – 2025</p></div>
-                    <div class="fact"><p class="fact__lab">Platform</p><p class="fact__val">Web · desktop and mobile browsers</p></div>
-                    <div class="fact"><p class="fact__lab">Type</p><p class="fact__val">BS Information Technology best project, Lyceum of San Pedro</p></div>
+                    <div class="fact"><p class="fact__lab">Role</p><p class="fact__val">Solo developer — front end, UI, 3D scenes, concept </p></div>
+                    <div class="fact"><p class="fact__lab">Year</p><p class="fact__val">2026</p></div>
+                    <div class="fact"><p class="fact__lab">Platform</p><p class="fact__val">Web browsers</p></div>
+                    <div class="fact"><p class="fact__lab">Type</p><p class="fact__val">Finals Project</p></div>
                 </div>
             </div>
 
-            <!-- ══ Bento board: screenshots, concept, stack ══ -->
+            <!-- ══ System screenshots: phone-frame strip + overflow modal ══ -->
+            <div class="proj-shots" data-reveal data-reveal-delay="1">
+                <p class="proj-shots__lab">System screenshots</p>
+                <div class="proj-shots__strip proj-shots__strip--wide" id="shotsStrip">
+                    <figure class="proj-shots__frame"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot1.png" alt="RetroWalk screen 1" loading="lazy"></figure>
+                    <figure class="proj-shots__frame"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot2.png" alt="RetroWalk screen 2" loading="lazy"></figure>
+                    <figure class="proj-shots__frame"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot3.png" alt="RetroWalk screen 3" loading="lazy"></figure>
+                    <figure class="proj-shots__frame proj-shots__frame--more" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View all 10 screenshots"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot4.png" alt="RetroWalk screen 4" loading="lazy"><span class="proj-shots__more"><span class="proj-shots__more-num">+6</span><span class="proj-shots__more-txt">more screenshots</span></span></figure>
+                </div>
+            </div>
+
+            <!-- ══ Bento board: concept, stack ══ -->
             <div class="proj-bento" data-reveal data-reveal-delay="1">
-                <div class="tile tile--shot tile--shot-1"><span class="shot-label">screenshot — memory hall entrance</span></div>
-                <div class="tile tile--shot tile--shot-2"><span class="shot-label">screenshot — glowing memory orbs</span></div>
                 <div class="tile tile--wide">
                     <p class="tile__lab">The idea</p>
                     <p class="tile__text">Photos and videos buried in chat threads fade away. RetroWalk gives them a place to live: a walkable 3D museum where each friend has a Memory Hall, and every memory inside glows as an orb you can open and relive.</p>
@@ -149,10 +159,99 @@
                 </div>
             </div>
 
-            <p class="proj-backwrap"><a href="projects.html" class="proj-back">Back to all projects</a></p>
+            <p class="proj-backwrap"><a href="projects.html" class="proj-back">&larr; Back to Projects</a></p>
         </div>
     </main>
 
+    <!-- ══ Screenshots modal: at body root so it escapes the .proj-wall stacking context and sits above the fixed navbar ══ -->
+    <div class="shots-modal" id="shotsModal" role="dialog" aria-modal="true" aria-label="All RetroWalk screenshots" hidden>
+        <div class="shots-modal__backdrop" data-shots-close></div>
+        <div class="shots-modal__panel">
+            <button class="shots-modal__close" type="button" data-shots-close aria-label="Close screenshots">&times;</button>
+            <p class="shots-modal__title">All screenshots</p>
+            <div class="shots-carousel">
+                <button class="shots-carousel__arrow shots-carousel__arrow--prev" type="button" data-shots-prev aria-label="Previous screenshot">&#8249;</button>
+                <div class="shots-carousel__viewport">
+                    <div class="shots-carousel__track" id="shotsTrack">
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot1.png" alt="RetroWalk screen 1"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot2.png" alt="RetroWalk screen 2"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot3.png" alt="RetroWalk screen 3"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot4.png" alt="RetroWalk screen 4"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot5.png" alt="RetroWalk screen 5"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot6.png" alt="RetroWalk screen 6"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot7.png" alt="RetroWalk screen 7"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot8.png" alt="RetroWalk screen 8"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot9.png" alt="RetroWalk screen 9"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/retrowalk_photos/system_screenshots/Screenshot10.png" alt="RetroWalk screen 10"></figure>
+                    </div>
+                </div>
+                <button class="shots-carousel__arrow shots-carousel__arrow--next" type="button" data-shots-next aria-label="Next screenshot">&#8250;</button>
+            </div>
+            <div class="shots-carousel__footer">
+                <div class="shots-carousel__dots" id="shotsDots" role="tablist" aria-label="Screenshot position"></div>
+                <p class="shots-carousel__counter" id="shotsCounter">1 / 10</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        const modal = document.getElementById('shotsModal');
+        const trigger = document.querySelector('.proj-shots__frame--more');
+        const track = document.getElementById('shotsTrack');
+        const dotsBox = document.getElementById('shotsDots');
+        const counter = document.getElementById('shotsCounter');
+
+        if (modal && trigger && track) {
+            const slides = track.children.length;
+            let index = 0;
+
+            const dots = [];
+            for (let i = 0; i < slides; i++) {
+                const b = document.createElement('button');
+                b.type = 'button';
+                b.setAttribute('role', 'tab');
+                b.setAttribute('aria-label', 'Screenshot ' + (i + 1));
+                b.addEventListener('click', () => go(i));
+                dotsBox.appendChild(b);
+                dots.push(b);
+            }
+
+            function go(i) {
+                index = (i + slides) % slides;
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                dots.forEach((d, j) => d.classList.toggle('is-active', j === index));
+                counter.textContent = (index + 1) + ' / ' + slides;
+            }
+
+            const open = () => { modal.hidden = false; document.body.style.overflow = 'hidden'; go(index); };
+            const close = () => { modal.hidden = true; document.body.style.overflow = ''; };
+
+            trigger.addEventListener('click', open);
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+            });
+            modal.querySelectorAll('[data-shots-close]').forEach((el) => el.addEventListener('click', close));
+            modal.querySelector('[data-shots-prev]').addEventListener('click', () => go(index - 1));
+            modal.querySelector('[data-shots-next]').addEventListener('click', () => go(index + 1));
+            document.addEventListener('keydown', (e) => {
+                if (modal.hidden) return;
+                if (e.key === 'Escape') close();
+                if (e.key === 'ArrowLeft') go(index - 1);
+                if (e.key === 'ArrowRight') go(index + 1);
+            });
+
+            let startX = null;
+            track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+            track.addEventListener('touchend', (e) => {
+                if (startX === null) return;
+                const dx = e.changedTouches[0].clientX - startX;
+                if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+                startX = null;
+            }, { passive: true });
+
+            go(0);
+        }
+    </script>
     <script type="module" src="main.js?v=11"></script>
     <script src="lib/libgif.js"></script>
     <script type="module" src="lib/web-pet-engine.js"></script>

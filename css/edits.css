@@ -18,7 +18,7 @@
 .edits-gallery__eyebrow {
     display: block;
     text-align: center;
-    font-family: 'NavBarFont', sans-serif;
+    font-family: 'ProjectCardEyeBrowFont', sans-serif;
     font-size: 0.82rem;
     font-weight: bold;
     letter-spacing: 0.42em;
@@ -295,13 +295,13 @@
 }
 
 .edits-gallery__name {
-    font-family: 'CardHeaderFont', sans-serif;
+    font-family: 'ProjectCardTitleFont', sans-serif;
     font-size: 1.1rem;
     color: #f2f4f7;
 }
 
 .edits-gallery__tag {
-    font-family: 'NavBarFont', sans-serif;
+    font-family: 'ProjectCardTagsFont', sans-serif;
     font-size: 0.6rem;
     letter-spacing: 0.3em;
     text-transform: uppercase;

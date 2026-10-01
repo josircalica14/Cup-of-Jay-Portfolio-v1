@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="ScanPasada - jeepney terminal queuing management app by Cup of Jay">
     <title>ScanPasada | Cup of Jay</title>
-    <link rel="stylesheet" href="style.css?v=18">
+    <link rel="stylesheet" href="style.css?v=19">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/project-page.css?v=1">
+    <link rel="stylesheet" href="css/project-page.css?v=15">
     <link rel="stylesheet" href="theme-toggle.css">
     <script>
         (function() {
@@ -108,7 +108,7 @@
     <main class="proj-page">
         <div class="proj-wall">
 
-            <!-- ══ Overview: intro left, facts right ══ -->
+            <!-- ══ Hero: title + tags, banner, overview text, facts row ══ -->
             <div class="proj-overview" data-reveal>
                 <div class="proj-intro">
                     <div class="tick"></div>
@@ -120,23 +120,33 @@
                         <span class="chip">Supabase</span>
                         <span class="chip">PostgreSQL</span>
                     </div>
-                    <p class="proj-lead">A mobile app that helps manage jeepney queues at terminals, making it easier for operators, drivers, and passengers to coordinate in real time.</p>
+                    <figure class="proj-hero"><img src="./assets/scanpasada_photos/banner1.png" alt="ScanPasada app banner"></figure>
+                    <p class="proj-lead"><b>ScanPasada</b> is an Android app that modernizes and manages the informal jeepney queueing at Philippine terminals. Operators can create and manage queues for specific routes, drivers know exactly when it is their turn in the queue, and passengers can track the jeepney location and queueing status in real time. The app uses QR code scanning for quick identification and pushes live updates so everyone stays in sync. It is built with Kotlin and uses Supabase as the backend for storing data and streaming real-time changes to all users. Features in development include scheduled queues, passenger counting, driver ratings, and a web dashboard for terminal monitoring.</p>
                 </div>
                 <div class="proj-facts">
-                    <div class="fact"><p class="fact__lab">Role</p><p class="fact__val">Lead developer — UI, front-end logic, database</p></div>
-                    <div class="fact"><p class="fact__lab">Year</p><p class="fact__val">2025 – 2026</p></div>
-                    <div class="fact"><p class="fact__lab">Platform</p><p class="fact__val">Android · Jetpack Compose</p></div>
-                    <div class="fact"><p class="fact__lab">Type</p><p class="fact__val">BS Information Technology capstone, Lyceum of San Pedro</p></div>
+                    <div class="fact"><p class="fact__lab">Role</p><p class="fact__val">Lead developer — frontend design, backend logic, database management</p></div>
+                    <div class="fact"><p class="fact__lab">Year</p><p class="fact__val">2025</p></div>
+                    <div class="fact"><p class="fact__lab">Platform</p><p class="fact__val">Android</p></div>
+                    <div class="fact"><p class="fact__lab">Project Type</p><p class="fact__val">Capstone Project</p></div>
                 </div>
             </div>
 
-            <!-- ══ Bento board: screenshots, problem, stack ══ -->
+            <!-- ══ System screenshots: phone-frame strip + overflow modal ══ -->
+            <div class="proj-shots" data-reveal data-reveal-delay="1">
+                <p class="proj-shots__lab">System screenshots</p>
+                <div class="proj-shots__strip" id="shotsStrip">
+                    <figure class="proj-shots__frame"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-14-37-02_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 1" loading="lazy"></figure>
+                    <figure class="proj-shots__frame"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-14-40-96_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 2" loading="lazy"></figure>
+                    <figure class="proj-shots__frame"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-14-47-86_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 3" loading="lazy"></figure>
+                    <figure class="proj-shots__frame proj-shots__frame--more" role="button" tabindex="0" aria-haspopup="dialog" aria-label="View all 8 screenshots"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-14-59-64_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 4" loading="lazy"><span class="proj-shots__more"><span class="proj-shots__more-num">+4</span><span class="proj-shots__more-txt">more screenshots</span></span></figure>
+                </div>
+            </div>
+
+            <!-- ══ Bento board: problem + stack ══ ══ (screenshots modal moved to body root to escape the .proj-wall stacking context) -->
             <div class="proj-bento" data-reveal data-reveal-delay="1">
-                <div class="tile tile--shot tile--shot-1"><span class="shot-label">screenshot — passenger queue view</span></div>
-                <div class="tile tile--shot tile--shot-2"><span class="shot-label">screenshot — driver view</span></div>
                 <div class="tile tile--wide">
                     <p class="tile__lab">The problem it solves</p>
-                    <p class="tile__text">Jeepney terminals run on shouted guesses: drivers do not know when to move, passengers do not know which jeep boards next, and operators have no view of the queue. ScanPasada turns that into one live, ordered queue every party can check from a phone.</p>
+                    <p class="tile__text">Jeepney terminals in the Philippines still run on an informal queue. Drivers scramble for position without knowing when their turn actually is, passengers cannot tell which jeepney leaves next or where it currently is, and operators have no way of seeing what is happening at their own terminal. The result is a daily routine that feels chaotic, wasteful, and unfair to everyone involved.<br><br>ScanPasada modernizes this by managing the queue digitally. Drivers know exactly when it is their turn, passengers can track the jeepney location and queueing status in real time, and operators can finally manage and monitor their terminal straight from their phone.</p>
                 </div>
                 <div class="tile tile--wide">
                     <p class="tile__lab">Built with</p>
@@ -149,10 +159,97 @@
                 </div>
             </div>
 
-            <p class="proj-backwrap"><a href="projects.html" class="proj-back">Back to all projects</a></p>
+            <p class="proj-backwrap"><a href="projects.html" class="proj-back">&larr; Back to Projects</a></p>
         </div>
     </main>
 
+    <!-- ══ Screenshots modal: at body root so it escapes the .proj-wall stacking context and sits above the fixed navbar ══ -->
+    <div class="shots-modal" id="shotsModal" role="dialog" aria-modal="true" aria-label="All ScanPasada screenshots" hidden>
+        <div class="shots-modal__backdrop" data-shots-close></div>
+        <div class="shots-modal__panel">
+            <button class="shots-modal__close" type="button" data-shots-close aria-label="Close screenshots">&times;</button>
+            <p class="shots-modal__title">All screenshots</p>
+            <div class="shots-carousel">
+                <button class="shots-carousel__arrow shots-carousel__arrow--prev" type="button" data-shots-prev aria-label="Previous screenshot">&#8249;</button>
+                <div class="shots-carousel__viewport">
+                    <div class="shots-carousel__track" id="shotsTrack">
+                        <figure class="shots-carousel__slide"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-14-37-02_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 1"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-14-40-96_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 2"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-14-47-86_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 3"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-14-59-64_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 4"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-15-03-38_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 5"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-15-20-15_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 6"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-15-47-60_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 7"></figure>
+                        <figure class="shots-carousel__slide"><img src="./assets/scanpasada_photos/system_screenshots/Screenshot_2025-11-15-11-16-22-36_fd68319254a55efaf7579a436c10f617.jpg" alt="ScanPasada screen 8"></figure>
+                    </div>
+                </div>
+                <button class="shots-carousel__arrow shots-carousel__arrow--next" type="button" data-shots-next aria-label="Next screenshot">&#8250;</button>
+            </div>
+            <div class="shots-carousel__footer">
+                <div class="shots-carousel__dots" id="shotsDots" role="tablist" aria-label="Screenshot position"></div>
+                <p class="shots-carousel__counter" id="shotsCounter">1 / 8</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        const modal = document.getElementById('shotsModal');
+        const trigger = document.querySelector('.proj-shots__frame--more');
+        const track = document.getElementById('shotsTrack');
+        const dotsBox = document.getElementById('shotsDots');
+        const counter = document.getElementById('shotsCounter');
+
+        if (modal && trigger && track) {
+            const slides = track.children.length;
+            let index = 0;
+
+            const dots = [];
+            for (let i = 0; i < slides; i++) {
+                const b = document.createElement('button');
+                b.type = 'button';
+                b.setAttribute('role', 'tab');
+                b.setAttribute('aria-label', 'Screenshot ' + (i + 1));
+                b.addEventListener('click', () => go(i));
+                dotsBox.appendChild(b);
+                dots.push(b);
+            }
+
+            function go(i) {
+                index = (i + slides) % slides;
+                track.style.transform = 'translateX(-' + (index * 100) + '%)';
+                dots.forEach((d, j) => d.classList.toggle('is-active', j === index));
+                counter.textContent = (index + 1) + ' / ' + slides;
+            }
+
+            const open = () => { modal.hidden = false; document.body.style.overflow = 'hidden'; go(index); };
+            const close = () => { modal.hidden = true; document.body.style.overflow = ''; };
+
+            trigger.addEventListener('click', open);
+            trigger.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }
+            });
+            modal.querySelectorAll('[data-shots-close]').forEach((el) => el.addEventListener('click', close));
+            modal.querySelector('[data-shots-prev]').addEventListener('click', () => go(index - 1));
+            modal.querySelector('[data-shots-next]').addEventListener('click', () => go(index + 1));
+            document.addEventListener('keydown', (e) => {
+                if (modal.hidden) return;
+                if (e.key === 'Escape') close();
+                if (e.key === 'ArrowLeft') go(index - 1);
+                if (e.key === 'ArrowRight') go(index + 1);
+            });
+
+            let startX = null;
+            track.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, { passive: true });
+            track.addEventListener('touchend', (e) => {
+                if (startX === null) return;
+                const dx = e.changedTouches[0].clientX - startX;
+                if (Math.abs(dx) > 40) go(index + (dx < 0 ? 1 : -1));
+                startX = null;
+            }, { passive: true });
+
+            go(0);
+        }
+    </script>
     <script type="module" src="main.js?v=11"></script>
     <script src="lib/libgif.js"></script>
     <script type="module" src="lib/web-pet-engine.js"></script>
