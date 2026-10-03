@@ -12,6 +12,21 @@ skills-lock.json
 
 # Scratch / drafts
 sample code/
+server.log
+
+# Camera raws — the graded web versions live beside them as .webp, the
+# .ARW originals stay on disk only.
+*.ARW
+*.arw
+*.DNG
+*.dng
+*.RAF
+*.raf
+
+# Temporary staging folder holding the credit-bearing raws. The filenames are
+# the source of truth for the plate credits; the served images are the .webp
+# plates in assets/gallery/. Never committed.
+assets/color grading photos with credits/
 
 # OS cruft
 Thumbs.db

@@ -8,7 +8,7 @@ import { setupSpotlight } from './js/spotlight.js';
 import { setupEditsCarousel } from './js/edits-carousel.js';
 import { setupPets } from './js/pets.js';
 import { setupProjectTags } from './js/project-tags.js';
-import { setupBeforeAfter } from './js/before-after.js';
+import { setupBeforeAfter } from './js/before-after.js?v=3';
 import { setupSocials } from './js/socials.js';
 import { setupScrollReveal } from './js/scroll-reveal.js?v=2';
 import { renderNavLinks, setupNavScroll, setupNavLoadAnimation } from './js/nav.js?v=3';

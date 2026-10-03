@@ -7,7 +7,7 @@
     <title>Color Grading | Cup of Jay</title>
     <link rel="stylesheet" href="style.css?v=19">
     <link rel="stylesheet" href="css/about.css">
-    <link rel="stylesheet" href="css/gallery.css?v=7">
+    <link rel="stylesheet" href="css/gallery.css?v=20">
     <link rel="stylesheet" href="theme-toggle.css">
     <script>
         (function() {
@@ -104,14 +104,18 @@
         </div>
     </div>
 
-    <!-- 01 — Color Grading: full roll, drag each divider to compare raw vs graded.
+    <!-- 03 — Color Grading: full roll, drag each divider to compare raw vs graded.
          To add a plate: copy a .ba-item figure, swap both img srcs (before first,
-         after second) and keep the two urls' dimensions identical. -->
+         after second) and keep the two urls' dimensions identical. Set an inline
+         aspect-ratio on the .ba to match the pair. Drop the graded frame in
+         assets/gallery/color_grading/after/, the exported raw in before/ — if
+         the before is missing the plate falls back to showing the grade alone
+         (see the .ba--solo rules in css/gallery.css). -->
     <main class="gallery-section-main">
         <div class="gallery-section__crumbs" data-reveal>
             <a href="gallery.html">Gallery</a>
             <span aria-hidden="true">/</span>
-            <span>01 — Color Grading</span>
+            <span>03 — Color Grading</span>
         </div>
         <h1 class="gallery-section__title" data-reveal data-reveal-delay="1">Color Grading</h1>
         <p class="gallery-section__intro">Every grade chases a feeling — warm nostalgia, cool sci-fi, or silver silence. Drag each divider to see the raw frame against the finished grade.</p>
@@ -120,9 +124,9 @@
 
         <div class="ba-grid" data-reveal data-reveal-delay="2">
             <figure class="ba-item">
-                <div class="ba" tabindex="0" role="slider" aria-label="Golden Hour — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-                    <img class="ba__before" src="https://picsum.photos/seed/g1a/900/560" alt="Golden Hour — raw ungraded frame" draggable="false">
-                    <img src="https://picsum.photos/seed/g1a/900/560" alt="Golden Hour — finished grade" draggable="false">
+                <div class="ba" tabindex="0" role="slider" aria-label="Grade 01 — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="aspect-ratio: 1600 / 1099">
+                    <img class="ba__before" src="./assets/gallery/color_grading/before/grade-01.webp" alt="Grade 01 — raw ungraded frame" draggable="false" width="1600" height="1099">
+                    <img src="./assets/gallery/color_grading/after/color-grade-01.webp" alt="Grade 01 — finished color grade" draggable="false" width="1600" height="1099">
                     <div class="ba__divider" aria-hidden="true"></div>
                     <div class="ba__handle" aria-hidden="true">
                         <svg class="ba__grip" viewBox="0 0 18 18" fill="none"><path d="M6 4 2 9l4 5M12 4l4 5-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -130,12 +134,15 @@
                     <span class="ba__label ba__label--before">Before</span>
                     <span class="ba__label ba__label--after">After</span>
                 </div>
-                <figcaption><span class="ba-item__name">Golden Hour</span><span class="gallery-ledger__tag">Grade</span></figcaption>
+                <figcaption>
+                    <span class="ba-item__name">Grade 01</span><span class="gallery-ledger__tag">Grade</span>
+                    <span class="ba-item__credit">credits: <a href="https://instagram.com/pekhenko_photo" rel="noopener noreferrer" target="_blank">@pekhenko_photo</a> via <a href="https://signatureedits.com" rel="noopener noreferrer" target="_blank">signature edits</a>, edited in lightroom.</span>
+                </figcaption>
             </figure>
             <figure class="ba-item">
-                <div class="ba" tabindex="0" role="slider" aria-label="Kodak Summer — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-                    <img class="ba__before" src="https://picsum.photos/seed/g1b/900/560" alt="Kodak Summer — raw ungraded frame" draggable="false">
-                    <img src="https://picsum.photos/seed/g1b/900/560" alt="Kodak Summer — finished grade" draggable="false">
+                <div class="ba" tabindex="0" role="slider" aria-label="Grade 02 — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="aspect-ratio: 2 / 3">
+                    <img class="ba__before" src="./assets/gallery/color_grading/before/grade-02.webp" alt="Grade 02 — raw ungraded frame" draggable="false" width="1067" height="1600">
+                    <img src="./assets/gallery/color_grading/after/color-grade-02.webp" alt="Grade 02 — finished color grade" draggable="false" width="1067" height="1600">
                     <div class="ba__divider" aria-hidden="true"></div>
                     <div class="ba__handle" aria-hidden="true">
                         <svg class="ba__grip" viewBox="0 0 18 18" fill="none"><path d="M6 4 2 9l4 5M12 4l4 5-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -143,12 +150,15 @@
                     <span class="ba__label ba__label--before">Before</span>
                     <span class="ba__label ba__label--after">After</span>
                 </div>
-                <figcaption><span class="ba-item__name">Kodak Summer</span><span class="gallery-ledger__tag">Film</span></figcaption>
+                <figcaption>
+                    <span class="ba-item__name">Grade 02</span><span class="gallery-ledger__tag">Grade</span>
+                    <span class="ba-item__credit">credits: <a href="https://instagram.com/wutkaicheung" rel="noopener noreferrer" target="_blank">@wutkaicheung</a> via <a href="https://signatureedits.com" rel="noopener noreferrer" target="_blank">signature edits</a>, edited in lightroom.</span>
+                </figcaption>
             </figure>
             <figure class="ba-item">
-                <div class="ba" tabindex="0" role="slider" aria-label="Studio Warm — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-                    <img class="ba__before" src="https://picsum.photos/seed/g1c/900/560" alt="Studio Warm — raw ungraded frame" draggable="false">
-                    <img src="https://picsum.photos/seed/g1c/900/560" alt="Studio Warm — finished grade" draggable="false">
+                <div class="ba" tabindex="0" role="slider" aria-label="Grade 03 — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="aspect-ratio: 1600 / 1067">
+                    <img class="ba__before" src="./assets/gallery/color_grading/before/grade-03.webp" alt="Grade 03 — raw ungraded frame" draggable="false" width="1600" height="1067">
+                    <img src="./assets/gallery/color_grading/after/color-grade-03.webp" alt="Grade 03 — finished color grade" draggable="false" width="1600" height="1067">
                     <div class="ba__divider" aria-hidden="true"></div>
                     <div class="ba__handle" aria-hidden="true">
                         <svg class="ba__grip" viewBox="0 0 18 18" fill="none"><path d="M6 4 2 9l4 5M12 4l4 5-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -156,12 +166,15 @@
                     <span class="ba__label ba__label--before">Before</span>
                     <span class="ba__label ba__label--after">After</span>
                 </div>
-                <figcaption><span class="ba-item__name">Studio Warm</span><span class="gallery-ledger__tag">Grade</span></figcaption>
+                <figcaption>
+                    <span class="ba-item__name">Grade 03</span><span class="gallery-ledger__tag">Cinematic</span>
+                    <span class="ba-item__credit">credits: <a href="https://instagram.com/ryanbreitkreutz" rel="noopener noreferrer" target="_blank">@ryanbreitkreutz</a> via <a href="https://signatureedits.com" rel="noopener noreferrer" target="_blank">signature edits</a>, edited in lightroom.</span>
+                </figcaption>
             </figure>
             <figure class="ba-item">
-                <div class="ba" tabindex="0" role="slider" aria-label="Dusk Patrol — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-                    <img class="ba__before" src="https://picsum.photos/seed/g1d/900/560" alt="Dusk Patrol — raw ungraded frame" draggable="false">
-                    <img src="https://picsum.photos/seed/g1d/900/560" alt="Dusk Patrol — finished grade" draggable="false">
+                <div class="ba" tabindex="0" role="slider" aria-label="Grade 04 — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="aspect-ratio: 2 / 3">
+                    <img class="ba__before" src="./assets/gallery/color_grading/before/grade-04.webp" alt="Grade 04 — raw ungraded frame" draggable="false" width="1067" height="1600">
+                    <img src="./assets/gallery/color_grading/after/color-grade-04.webp" alt="Grade 04 — finished color grade" draggable="false" width="1067" height="1600">
                     <div class="ba__divider" aria-hidden="true"></div>
                     <div class="ba__handle" aria-hidden="true">
                         <svg class="ba__grip" viewBox="0 0 18 18" fill="none"><path d="M6 4 2 9l4 5M12 4l4 5-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -169,12 +182,15 @@
                     <span class="ba__label ba__label--before">Before</span>
                     <span class="ba__label ba__label--after">After</span>
                 </div>
-                <figcaption><span class="ba-item__name">Dusk Patrol</span><span class="gallery-ledger__tag">Cinematic</span></figcaption>
+                <figcaption>
+                    <span class="ba-item__name">Grade 04</span><span class="gallery-ledger__tag">Split-Tone</span>
+                    <span class="ba-item__credit">credits: <a href="https://instagram.com/ryanbreitkreutz" rel="noopener noreferrer" target="_blank">@ryanbreitkreutz</a> via <a href="https://signatureedits.com" rel="noopener noreferrer" target="_blank">signature edits</a>, edited in lightroom.</span>
+                </figcaption>
             </figure>
             <figure class="ba-item">
-                <div class="ba" tabindex="0" role="slider" aria-label="Harbor Blue — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-                    <img class="ba__before" src="https://picsum.photos/seed/g1e/900/560" alt="Harbor Blue — raw ungraded frame" draggable="false">
-                    <img src="https://picsum.photos/seed/g1e/900/560" alt="Harbor Blue — finished grade" draggable="false">
+                <div class="ba" tabindex="0" role="slider" aria-label="Grade 05 — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="aspect-ratio: 1600 / 1067">
+                    <img class="ba__before" src="./assets/gallery/color_grading/before/grade-05.webp" alt="Grade 05 — raw ungraded frame" draggable="false" width="1600" height="1067">
+                    <img src="./assets/gallery/color_grading/after/color-grade-05.webp" alt="Grade 05 — finished color grade" draggable="false" width="1600" height="1067">
                     <div class="ba__divider" aria-hidden="true"></div>
                     <div class="ba__handle" aria-hidden="true">
                         <svg class="ba__grip" viewBox="0 0 18 18" fill="none"><path d="M6 4 2 9l4 5M12 4l4 5-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -182,12 +198,15 @@
                     <span class="ba__label ba__label--before">Before</span>
                     <span class="ba__label ba__label--after">After</span>
                 </div>
-                <figcaption><span class="ba-item__name">Harbor Blue</span><span class="gallery-ledger__tag">Split-Tone</span></figcaption>
+                <figcaption>
+                    <span class="ba-item__name">Grade 05</span><span class="gallery-ledger__tag">Grade</span>
+                    <span class="ba-item__credit">credits: <a href="https://instagram.com/ryanbreitkreutz" rel="noopener noreferrer" target="_blank">@ryanbreitkreutz</a> via <a href="https://signatureedits.com" rel="noopener noreferrer" target="_blank">signature edits</a>, edited in lightroom.</span>
+                </figcaption>
             </figure>
             <figure class="ba-item">
-                <div class="ba" tabindex="0" role="slider" aria-label="Ember Fade — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50">
-                    <img class="ba__before" src="https://picsum.photos/seed/g1f/900/560" alt="Ember Fade — raw ungraded frame" draggable="false">
-                    <img src="https://picsum.photos/seed/g1f/900/560" alt="Ember Fade — finished grade" draggable="false">
+                <div class="ba" tabindex="0" role="slider" aria-label="Grade 06 — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="aspect-ratio: 3 / 4">
+                    <img class="ba__before" src="./assets/gallery/color_grading/before/grade-06.webp" alt="Grade 06 — raw ungraded frame" draggable="false" width="1200" height="1600">
+                    <img src="./assets/gallery/color_grading/after/color-grade-06.webp" alt="Grade 06 — finished color grade" draggable="false" width="1200" height="1600">
                     <div class="ba__divider" aria-hidden="true"></div>
                     <div class="ba__handle" aria-hidden="true">
                         <svg class="ba__grip" viewBox="0 0 18 18" fill="none"><path d="M6 4 2 9l4 5M12 4l4 5-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -195,7 +214,58 @@
                     <span class="ba__label ba__label--before">Before</span>
                     <span class="ba__label ba__label--after">After</span>
                 </div>
-                <figcaption><span class="ba-item__name">Ember Fade</span><span class="gallery-ledger__tag">Warm</span></figcaption>
+                <figcaption>
+                    <span class="ba-item__name">Grade 06</span><span class="gallery-ledger__tag">Grade</span>
+                    <span class="ba-item__credit">credits: <a href="https://instagram.com/ryanbreitkreutz" rel="noopener noreferrer" target="_blank">@ryanbreitkreutz</a> via <a href="https://signatureedits.com" rel="noopener noreferrer" target="_blank">signature edits</a>, edited in lightroom.</span>
+                </figcaption>
+            </figure>
+            <figure class="ba-item">
+                <div class="ba" tabindex="0" role="slider" aria-label="Grade 07 — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="aspect-ratio: 1600 / 1067">
+                    <img class="ba__before" src="./assets/gallery/color_grading/before/grade-07.webp" alt="Grade 07 — raw ungraded frame" draggable="false" width="1600" height="1067">
+                    <img src="./assets/gallery/color_grading/after/color-grade-07.webp" alt="Grade 07 — finished color grade" draggable="false" width="1600" height="1067">
+                    <div class="ba__divider" aria-hidden="true"></div>
+                    <div class="ba__handle" aria-hidden="true">
+                        <svg class="ba__grip" viewBox="0 0 18 18" fill="none"><path d="M6 4 2 9l4 5M12 4l4 5-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="ba__label ba__label--before">Before</span>
+                    <span class="ba__label ba__label--after">After</span>
+                </div>
+                <figcaption>
+                    <span class="ba-item__name">Grade 07</span><span class="gallery-ledger__tag">Warm</span>
+                    <span class="ba-item__credit">credits: <a href="https://signatureedits.com" rel="noopener noreferrer" target="_blank">signature edits</a>, edited in lightroom.</span>
+                </figcaption>
+            </figure>
+            <figure class="ba-item">
+                <div class="ba" tabindex="0" role="slider" aria-label="Grade 08 — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="aspect-ratio: 1068 / 1600">
+                    <img class="ba__before" src="./assets/gallery/color_grading/before/grade-08.webp" alt="Grade 08 — raw ungraded frame" draggable="false" width="1068" height="1600">
+                    <img src="./assets/gallery/color_grading/after/color-grade-08.webp" alt="Grade 08 — finished color grade" draggable="false" width="1068" height="1600">
+                    <div class="ba__divider" aria-hidden="true"></div>
+                    <div class="ba__handle" aria-hidden="true">
+                        <svg class="ba__grip" viewBox="0 0 18 18" fill="none"><path d="M6 4 2 9l4 5M12 4l4 5-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="ba__label ba__label--before">Before</span>
+                    <span class="ba__label ba__label--after">After</span>
+                </div>
+                <figcaption>
+                    <span class="ba-item__name">Grade 08</span><span class="gallery-ledger__tag">Film</span>
+                    <span class="ba-item__credit">credits: <a href="https://signatureedits.com" rel="noopener noreferrer" target="_blank">signature edits</a>, edited in lightroom.</span>
+                </figcaption>
+            </figure>
+            <figure class="ba-item">
+                <div class="ba" tabindex="0" role="slider" aria-label="Grade 09 — before and after comparison" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" style="aspect-ratio: 1600 / 1069">
+                    <img class="ba__before" src="./assets/gallery/color_grading/before/grade-09.webp" alt="Grade 09 — raw ungraded frame" draggable="false" width="1600" height="1069">
+                    <img src="./assets/gallery/color_grading/after/color-grade-09.webp" alt="Grade 09 — finished color grade" draggable="false" width="1600" height="1069">
+                    <div class="ba__divider" aria-hidden="true"></div>
+                    <div class="ba__handle" aria-hidden="true">
+                        <svg class="ba__grip" viewBox="0 0 18 18" fill="none"><path d="M6 4 2 9l4 5M12 4l4 5-4 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <span class="ba__label ba__label--before">Before</span>
+                    <span class="ba__label ba__label--after">After</span>
+                </div>
+                <figcaption>
+                    <span class="ba-item__name">Grade 09</span><span class="gallery-ledger__tag">Cinematic</span>
+                    <span class="ba-item__credit">credits: <a href="https://signatureedits.com" rel="noopener noreferrer" target="_blank">signature edits</a>, edited in lightroom.</span>
+                </figcaption>
             </figure>
         </div>
 
@@ -207,7 +277,7 @@
         </div>
     </main>
 
-    <script type="module" src="main.js?v=11"></script>
+    <script type="module" src="main.js?v=14"></script>
     <script src="lib/libgif.js"></script>
     <script type="module" src="lib/web-pet-engine.js"></script>
 </body>

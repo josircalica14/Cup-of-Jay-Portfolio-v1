@@ -52,19 +52,24 @@ body.light-mode {
     color: rgba(224, 224, 224, 0.55);
     line-height: 1.8;
     font-size: 0.98rem;
-    max-width: 480px;
+    max-width: 34rem;
+    margin: 0;
 }
 
+/* Four stats now, so the row needs to wrap before it runs into the media
+   column on mid widths instead of forcing a horizontal squeeze. */
 .gallery-header__stats {
     display: flex;
-    gap: 2.6rem;
-    margin-top: 1.8rem;
+    flex-wrap: wrap;
+    gap: 1.6rem 2.2rem;
+    margin-top: 1.9rem;
 }
 
 .gallery-header__stat b {
     display: block;
     font-family: 'NavBarFont', sans-serif;
-    font-size: 1.7rem;
+    font-size: 1.6rem;
+    line-height: 1.1;
     color: var(--gallery-accent);
     text-shadow: 0 0 12px var(--gallery-accent-soft);
 }
@@ -326,11 +331,20 @@ body.light-mode {
     height: 1px;
     flex: 1;
     background: rgba(255, 255, 255, 0.1);
-}
+}/* Before/after — drag the divider to wipe between raw and edited.
+   --pos (0–100%) is set by js/before-after.js.
 
-/* Before/after — drag the divider to wipe between raw and edited.
-   --pos (0–100%) is set by js/before-after.js; the "before" frame is
-   clipped from the left so "after" shows on the right of the divider.
+   The raw frame is the clipped top layer, occupying the region from the left
+   edge to the divider, so the page reads BEFORE then AFTER left to right and
+   each .ba__label badge sits over the frame it names.
+
+   One consequence to keep in mind: because the raw occupies the growing
+   left region, pulling the handle right reveals MORE raw and covers the
+   grade. That is the mirror of the more common "drag right to reveal the
+   finish" feel. The only way to get that feel is to put the graded frame on
+   the left, which then reads AFTER then BEFORE. The divider is a single
+   boundary, so the two cannot be combined.
+
    The container needs an explicit shape because both images inside are
    absolutely positioned — override aspect-ratio inline per plate to match
    the pair (e.g. 3/4 for portrait work). */
@@ -357,8 +371,29 @@ body.light-mode {
     pointer-events: none;
 }
 
+/* Both frames are absolutely positioned, so they need an explicit paint
+   order: the raw frame on top, clipped to the left of the divider, with the
+   graded frame underneath filling whatever the clip leaves visible. */
 .ba img.ba__before {
-    clip-path: inset(0 0 0 var(--pos));
+    z-index: 2;
+    /* Visible region is the left edge through the divider, i.e. exactly
+       --pos wide. inset() takes (top right bottom left), so the amount cut
+       off the right edge must be the remainder, 100% - --pos. */
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+
+.ba img:not(.ba__before) {
+    z-index: 1;
+}
+
+/* A plate whose "before" frame is missing (the raw has not been exported yet)
+   degrades to the graded frame alone: js/before-after.js adds .ba--solo when
+   the before image fails to load, which drops the wipe affordances. */
+.ba--solo .ba__before,
+.ba--solo .ba__divider,
+.ba--solo .ba__handle,
+.ba--solo .ba__label {
+    display: none;
 }
 
 .ba__divider {
@@ -367,6 +402,7 @@ body.light-mode {
     bottom: 0;
     left: var(--pos);
     width: 2px;
+    z-index: 3;
     transform: translateX(-1px);
     background: var(--gallery-accent);
     box-shadow: 0 0 14px var(--gallery-accent-glow);
@@ -377,6 +413,7 @@ body.light-mode {
     position: absolute;
     top: 50%;
     left: var(--pos);
+    z-index: 4;
     transform: translate(-50%, -50%);
     width: 44px;
     height: 44px;
@@ -413,6 +450,7 @@ body.light-mode {
 .ba__label {
     position: absolute;
     top: 0.7rem;
+    z-index: 5;
     padding: 0.32rem 0.65rem;
     font-family: 'ProjectCardEyeBrowFont', sans-serif;
     font-size: 0.56rem;
@@ -426,6 +464,8 @@ body.light-mode {
     pointer-events: none;
 }
 
+/* Badges sit over the frame they name: the raw frame is on the left, the
+   graded frame on the right, so BEFORE pins left and AFTER pins right. */
 .ba__label--before {
     left: 0.7rem;
 }
@@ -436,24 +476,54 @@ body.light-mode {
     border-color: var(--gallery-accent-soft);
 }
 
-/* Section page grid of before/after plates */
+/* Section page masonry of before/after plates.
+   This is deliberately the same multi-column idiom as .gallery-ledger__grid.
+   A two-column CSS grid reserves every row at the height of its tallest plate,
+   so a short landscape frame beside a tall portrait one left a wide blank band
+   underneath it and pushed its caption away from its own image. Columns pack
+   each plate against the next one instead, so there is no dead space. */
 .ba-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.8rem 1.6rem;
+    column-count: 2;
+    column-gap: 1.6rem;
 }
 
 .ba-item {
     display: grid;
     gap: 0.7rem;
-    margin: 0;
+    margin: 0 0 1.8rem;
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
 }
 
 .ba-item figcaption {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: baseline;
-    gap: 0.6rem;
+    gap: 0.4rem 0.6rem;
+}
+
+/* Credit sits on its own line under the name/tag row — these frames come
+   from other photographers, so the attribution has to stay readable. */
+.ba-item__credit {
+    flex-basis: 100%;
+    font-family: 'ProjectCardDescriptionFont', sans-serif;
+    font-size: 0.68rem;
+    line-height: 1.5;
+    color: rgba(224, 224, 224, 0.45);
+}
+
+.ba-item__credit a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(224, 224, 224, 0.2);
+}
+
+.ba-item__credit a:hover,
+.ba-item__credit a:focus-visible {
+    color: var(--gallery-accent);
+    border-bottom-color: var(--gallery-accent);
 }
 
 .ba-item__name {
@@ -477,7 +547,7 @@ body.light-mode {
 /* ═══ Responsive ═══ */
 @media (max-width: 900px) {
     .ba-grid {
-        grid-template-columns: 1fr;
+        column-count: 1;
     }
 }
 
@@ -540,7 +610,7 @@ body.light-mode {
     }
 
     .gallery-header__stats {
-        gap: 1.8rem;
+        gap: 1.3rem 1.7rem;
     }
 }
 
@@ -606,6 +676,14 @@ body.light-mode .gallery-ledger__more:focus-visible {
 body.light-mode .gallery-section__title,
 body.light-mode .ba-item__name {
     color: #1a1a1a;
+}
+
+body.light-mode .ba-item__credit {
+    color: rgba(34, 34, 34, 0.5);
+}
+
+body.light-mode .ba-item__credit a {
+    border-bottom-color: rgba(34, 34, 34, 0.22);
 }
 
 body.light-mode .gallery-section__intro,
