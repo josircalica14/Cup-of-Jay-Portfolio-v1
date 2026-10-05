@@ -28,6 +28,11 @@ server.log
 # plates in assets/gallery/. Never committed.
 assets/color grading photos with credits/
 
+# Personal edits source JPEGs. The served plates are the .webp siblings in the
+# same folders, so the full resolution originals stay on disk only.
+assets/gallery/edits/before/*.jpg
+assets/gallery/edits/after/*.jpg
+
 # OS cruft
 Thumbs.db
 Desktop.ini
