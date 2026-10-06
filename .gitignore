@@ -36,3 +36,7 @@ assets/gallery/edits/after/*.jpg
 # OS cruft
 Thumbs.db
 Desktop.ini
+
+# manually added edit-09 webp (not project output; must not be committed)
+assets/gallery/edits/after/edit-09.webp
+assets/gallery/edits/before/edit-09.webp

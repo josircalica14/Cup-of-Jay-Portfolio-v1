@@ -140,6 +140,24 @@ body.light-mode {
     max-width: 220px;
 }
 
+.gallery-ledger__label p.gallery-ledger__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin: 0.8rem 0 0;
+    font-family: 'ProjectCardTagsFont', sans-serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(224, 224, 224, 0.42);
+}
+
+.gallery-ledger__label p.gallery-ledger__meta b {
+    color: rgba(224, 224, 224, 0.68);
+    font-weight: 600;
+    margin-right: 0.35rem;
+}
+
 .gallery-ledger__line {
     display: block;
     width: 44px;
@@ -312,6 +330,24 @@ body.light-mode {
     max-width: 560px;
     line-height: 1.8;
     font-size: 0.95rem;
+}
+
+.gallery-section__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.2rem;
+    margin: 1rem 0 0;
+    font-family: 'ProjectCardTagsFont', sans-serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(224, 224, 224, 0.42);
+}
+
+.gallery-section__meta b {
+    color: rgba(224, 224, 224, 0.68);
+    font-weight: 600;
+    margin-right: 0.35rem;
 }
 
 .gallery-section__hint {
@@ -689,6 +725,16 @@ body.light-mode .ba-item__credit a {
 body.light-mode .gallery-section__intro,
 body.light-mode .gallery-section__hint {
     color: rgba(34, 34, 34, 0.55);
+}
+
+body.light-mode .gallery-section__meta,
+body.light-mode .gallery-ledger__meta {
+    color: rgba(34, 34, 34, 0.5);
+}
+
+body.light-mode .gallery-section__meta b,
+body.light-mode .gallery-ledger__meta b {
+    color: rgba(34, 34, 34, 0.75);
 }
 
 body.light-mode .gallery-section__hint::after {
