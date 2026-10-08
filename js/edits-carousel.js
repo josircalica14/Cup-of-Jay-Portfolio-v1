@@ -53,6 +53,33 @@ export function setupEditsCarousel() {
     render();
   });
 
+  // ── Swipe navigation (touch) ──
+  // A horizontal drag across the prints flips the deck. Vertical intent (page
+  // scrolling) is left alone: the swipe only fires when |dx| clearly dominates.
+  const track = root.querySelector('.edits-gallery__track');
+  if (track) {
+    let startX = 0, startY = 0, tracking = false;
+    track.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      tracking = true;
+    }, { passive: true });
+
+    track.addEventListener('touchmove', (e) => {
+      if (!tracking) return;
+      const dx = e.touches[0].clientX - startX;
+      const dy = e.touches[0].clientY - startY;
+      if (Math.abs(dx) > 36 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+        index = dx < 0 ? (index + 1) % n : (index - 1 + n) % n;
+        render();
+        tracking = false; // one flip per gesture
+      }
+    }, { passive: true });
+
+    track.addEventListener('touchend', () => { tracking = false; });
+    track.addEventListener('touchcancel', () => { tracking = false; });
+  }
+
   // ── Mobile stage sync ──
   // On ≤768px the track has a fixed CSS height (sized to the tallest shape), so
   // this only needs to clear any inline height left over from a desktop render —

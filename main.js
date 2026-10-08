@@ -11,7 +11,7 @@ import { setupProjectTags } from './js/project-tags.js';
 import { setupBeforeAfter } from './js/before-after.js?v=3';
 import { setupSocials } from './js/socials.js';
 import { setupScrollReveal } from './js/scroll-reveal.js?v=2';
-import { renderNavLinks, setupNavScroll, setupNavLoadAnimation } from './js/nav.js?v=3';
+import { renderNavLinks, setupNavScroll, setupNavLoadAnimation } from './js/nav.js?v=4';
 
 initTheme();
 renderNavLinks();

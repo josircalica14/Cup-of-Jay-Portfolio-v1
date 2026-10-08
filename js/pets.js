@@ -17,8 +17,8 @@ const SPAWN = [
     section: '.hero-section',
     position: 'absolute',
     pets: [
-      { animal: 'totoro', color: 'gray', scale: 0.5, message: 'Hi there!' },
-      { animal: 'dog', color: 'akita', scale: 0.5, message: 'Arf arf!' },
+      { animal: 'totoro', color: 'gray', scale: 0.4, message: 'Hi there!' },
+      { animal: 'dog', color: 'akita', scale: 0.4, message: 'Arf arf!' },
     ],
   },
   {
@@ -28,13 +28,18 @@ const SPAWN = [
     attachTo: 'body',
     position: 'fixed',
     pets: [
-      { animal: 'rex', color: 'dino_rex', scale: 0.3, message: 'Rwar!' },
+      { animal: 'rex', color: 'dino_rex', scale: 0.24, message: 'Rwar!' },
     ],
   },
 ];
 
 export function setupPets() {
   const base = spriteBase();
+
+  // Small screens: shrink pets a bit more so they don't crowd the hero.
+  // Evaluated at spawn time (page load), matching how the site is used.
+  const smallScreen = window.matchMedia('(max-width: 500px)');
+  const screenScale = (scale) => (smallScreen.matches ? scale * 0.8 : scale);
 
   for (const { section, attachTo, position, pets } of SPAWN) {
     const gate = document.querySelector(section);
@@ -43,7 +48,7 @@ export function setupPets() {
     if (gate !== container) gate.style.position = 'relative';
 
     for (const pet of pets) {
-      new WebPet({ ...pet, container, base, position });
+      new WebPet({ ...pet, scale: screenScale(pet.scale), container, base, position });
     }
   }
 }

@@ -7,7 +7,7 @@ export const PAGES = [
   { label: 'Gallery', href: 'gallery.html' },
   { label: 'Blogs', href: null },
   { label: 'About', href: 'about.html' },
-  { label: 'Contact', href: null },
+  { label: 'Contact', href: 'contact.html' },
 ];
 
 function isActive(href) {

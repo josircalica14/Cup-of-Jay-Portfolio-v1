@@ -161,7 +161,7 @@
    with a soft glare sheen tracking the pointer across the photo. CSS handles the
    state; edits-carousel.js feeds the cursor position into --rx/--ry/--gx/--gy.
    Desktop-only (hover-capable pointers) and disabled for reduced motion. */
-@media (hover: hover) {
+@media (hover: hover) and (min-width: 768px) {
     .edits-gallery__slide.is-active {
         transform-style: preserve-3d;
         will-change: transform;
@@ -491,6 +491,37 @@
     .edits-gallery__dot {
         width: 2.2rem;
         height: 0.26rem;
+    }
+}
+
+/* ≤500px: the controls row must fit a phone — arrows shrink, dots go fluid
+   so 8 dots + 2 arrows never overflow the viewport */
+@media (max-width: 500px) {
+    .edits-gallery__controls {
+        gap: 0.6rem;
+        max-width: 100%;
+        padding: 0 0.5rem;
+        box-sizing: border-box;
+        flex-wrap: nowrap;
+    }
+
+    .edits-gallery__arrow {
+        width: 34px;
+        height: 34px;
+        font-size: 1rem;
+    }
+
+    .edits-gallery__dots {
+        gap: 0.3rem;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .edits-gallery__dot {
+        flex: 1 1 0;
+        width: auto;
+        min-width: 10px;
+        height: 0.24rem;
     }
 }
 

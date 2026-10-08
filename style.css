@@ -340,7 +340,7 @@ body.light-mode .mobile-nav__bar--scrolled {
     width: 65vw;
     max-width: 240px;
     height: 100vh;
-    background: rgba(18, 18, 24, 0.92);
+    background: rgba(20, 20, 20, 0.96); /* matches the hero section's dark-mode #141414 */
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     z-index: 9995;
@@ -354,8 +354,6 @@ body.light-mode .mobile-nav__bar--scrolled {
     display: flex;
     flex-direction: column;
     padding-top: 0;
-    /* Subtle brand accent at the top edge */
-    background-image: linear-gradient(to bottom, rgba(0,79,210,0.08) 0%, transparent 30%);
 }
 
 .mobile-nav__checkbox:checked ~ .mobile-nav__drawer {
@@ -458,17 +456,21 @@ body.light-mode .mobile-nav__header-name {
     flex-shrink: 0;
 }
 
-.mobile-nav__list a:hover {
-    color: #ffffff;
-    padding-left: 2rem;
-    background: linear-gradient(90deg, rgba(0,79,210,0.15), rgba(34,205,218,0.06));
-    text-shadow: none;
-}
+/* Hover effects only on devices that really hover — touch screens keep
+   taps animation-free (no sticky :hover after tapping a drawer link). */
+@media (hover: hover) and (pointer: fine) {
+    .mobile-nav__list a:hover {
+        color: #ffffff;
+        padding-left: 2rem;
+        background: linear-gradient(90deg, rgba(0,79,210,0.15), rgba(34,205,218,0.06));
+        text-shadow: none;
+    }
 
-.mobile-nav__list a:hover::before {
-    opacity: 1;
-    transform: translateX(0);
-    margin-right: 0.6rem;
+    .mobile-nav__list a:hover::before {
+        opacity: 1;
+        transform: translateX(0);
+        margin-right: 0.6rem;
+    }
 }
 
 /* Light mode */
@@ -479,10 +481,12 @@ body.light-mode .mobile-nav__drawer {
 body.light-mode .mobile-nav__list li { border-bottom-color: rgba(0,0,0,0.07); }
 body.light-mode .mobile-nav__list a { color: #333333; }
 body.light-mode .mobile-nav__list a::before { border-left-color: #004fd2; }
-body.light-mode .mobile-nav__list a:hover {
-    color: #111111;
-    background: rgba(0,0,0,0.06);
-    text-shadow: none;
+@media (hover: hover) and (pointer: fine) {
+    body.light-mode .mobile-nav__list a:hover {
+        color: #111111;
+        background: rgba(0,0,0,0.06);
+        text-shadow: none;
+    }
 }
 
 /* Mobile media query - only mobile-specific elements shown, burger handled in its own section */
@@ -1575,6 +1579,17 @@ body.light-mode .nav__list-item a:hover {
     }
 }
 
+/* ≤500px: shrink the hero console so the full name stays on ONE line */
+@media (max-width: 500px) {
+    .hero-console {
+        font-size: clamp(1rem, 5vw, 1.6rem);
+    }
+
+    .hero-console__text {
+        white-space: nowrap;
+    }
+}
+
 @media (max-width: 479px) {
     .hero-section {
         height: auto;
@@ -1609,6 +1624,15 @@ body.light-mode .nav__list-item a:hover {
     }
     h1 {
         font-size: 1.7rem;
+    }
+}
+
+/* ≤500px: hero image takes nearly the full width on small screens.
+   Placed AFTER the 479px/359px blocks so this override wins at ≤500px. */
+@media (max-width: 500px) {
+    .hero-image {
+        width: clamp(22rem, 98vw, 36rem);
+        max-width: 98vw;
     }
 }
 

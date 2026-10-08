@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Josir James Calica - front-end developer and photo editor behind Cup of Jay">
+    <title>Contact | Cup of Jay</title>
+    <link rel="stylesheet" href="style.css?v=24">
+    <link rel="stylesheet" href="css/contact.css?v=6">
+    <link rel="stylesheet" href="css/socials.css">
+    <link rel="stylesheet" href="theme-toggle.css">
+    <script>
+        (function() {
+            const theme = localStorage.getItem('theme') || 'dark-mode';
+            document.documentElement.className = theme;
+            document.documentElement.classList.add('p44-js');
+        })();
+    </script>
+</head>
+
+<body class="dark-mode">
+    <!-- Mobile Navigation (outside hero so fixed positioning works correctly) -->
+    <input type="checkbox" id="mobile-nav-toggle" class="mobile-nav__checkbox">
+
+    <!-- Mobile nav frosted bar (shown on scroll) -->
+    <div class="mobile-nav__bar"></div>
+
+    <!-- Mobile Logo -->
+    <div class="mobile-logo">
+        <img class="logo-light" src="./logo/logo1v2.webp" alt="Cup of Jay">
+        <img class="logo-dark" src="./logo/logo1v1.webp" alt="Cup of Jay">
+    </div>
+
+    <!-- Mobile Burger Menu -->
+    <label for="mobile-nav-toggle" class="mobile-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
+    <!-- Mobile Nav Backdrop -->
+    <label for="mobile-nav-toggle" class="mobile-nav__backdrop"></label>
+
+    <!-- Full-width blur strip under the scrolled navbar -->
+    <div class="nav-blur-strip" aria-hidden="true"></div>
+
+    <!-- Mobile Nav Drawer -->
+    <nav class="mobile-nav__drawer" aria-label="Mobile navigation">
+        <div class="mobile-nav__header">
+            <img class="logo-light mobile-nav__header-logo" src="./logo/logo1v2.webp" alt="Cup of Jay">
+            <img class="logo-dark mobile-nav__header-logo" src="./logo/logo1v1.webp" alt="Cup of Jay">
+            <span class="mobile-nav__header-name">Cup of Jay</span>
+        </div>
+        <ul class="mobile-nav__list">
+            <!-- Rendered by js/nav.js from the single PAGES source -->
+        </ul>
+    </nav>
+
+    <!-- Desktop Navigation -->
+    <nav class="nav" aria-label="Main navigation">
+        <div class="nav__logo-item">
+            <img class="nav__logo-image logo-light" src="./logo/logo1v2.webp" alt="Cup of Jay">
+            <img class="nav__logo-image logo-dark" src="./logo/logo1v1.webp" alt="Cup of Jay">
+        </div>
+        <ul class="nav__main-list">
+            <!-- Rendered by js/nav.js from the single PAGES source -->
+        </ul>
+    </nav>
+
+    <!-- Theme toggle -->
+    <div class="nav__toggle-item">
+        <div class="theme-toggle theme-toggle--nav">
+            <label class="switch" for="theme-checkbox" aria-label="Toggle theme">
+                <input type="checkbox" id="theme-checkbox" class="theme-toggle__input">
+                <span class="slider">
+                    <span class="stars">
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                        <svg class="star" viewBox="0 0 24 24"><path d="M12 0L14.59 8.41L23 11L14.59 13.59L12 22L9.41 13.59L1 11L9.41 8.41L12 0Z"/></svg>
+                    </span>
+                    <span class="moons-hole">
+                        <span class="moon-hole"></span>
+                        <span class="moon-hole"></span>
+                        <span class="moon-hole"></span>
+                    </span>
+                    <span class="black-clouds">
+                        <span class="black-cloud"></span>
+                        <span class="black-cloud"></span>
+                        <span class="black-cloud"></span>
+                    </span>
+                    <span class="clouds">
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                        <span class="cloud"></span>
+                    </span>
+                </span>
+            </label>
+        </div>
+    </div>
+
+    <!-- ═══ Contact page — Magnetic Orbit hero, single marquee divider, mail form ═══ -->
+    <main class="contact-page">
+
+        <!-- ── Hero: socials grid + magnetic CTA + spotlight info card ── -->
+        <section class="ct-hero">
+            <!-- Socials header, styled like the home-page My Socials section -->
+            <div class="ct-socials-head">
+                <span class="socials__eyebrow">Connect with me</span>
+                <h1 class="socials__title">My Socials</h1>
+            </div>
+
+            <!-- Socials: two-column underline pills (icon + name + handle) -->
+            <div class="ct-hero-socials" aria-label="Social profiles">
+                <a class="ct-tile ct-tile--fb" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span>Facebook</span><span class="ct-soc__handle">/cupofjay</span></a>
+                <a class="ct-tile ct-tile--ig" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>Instagram</span><span class="ct-soc__handle">@cupofjay</span></a>
+                <a class="ct-tile ct-tile--tt" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.64-.02-.21-.03-.42-.04-.63v-1.02c.02-.16.04-.32.06-.48.14-1.01.5-1.98 1.05-2.83 1.21-1.85 3.36-3.09 5.59-3.21.84-.05 1.68-.02 2.51.05v4.21c-.71-.21-1.48-.28-2.21-.09-.85.21-1.61.76-2.08 1.51-.48.73-.66 1.66-.5 2.51.14.85.6 1.63 1.27 2.16.61.49 1.4.76 2.19.71 1.51-.05 2.86-1.31 3.03-2.8.04-.31.05-.63.05-.95v-8.9c.04-.05.09-.03.14-.02 1.94.09 3.89.02 5.83.01.08-.01.16-.02.24-.03v-4.19c-.02-.19 0-.39-.02-.58-.03-.39-.08-.77-.15-1.15z"/></svg><span>TikTok</span><span class="ct-soc__handle">@cupofjay</span></a>
+                <a class="ct-tile ct-tile--x" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg><span>X</span><span class="ct-soc__handle">@cupofjay</span></a>
+                <a class="ct-tile ct-tile--th" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg><span>Threads</span><span class="ct-soc__handle">@cupofjay</span></a>
+                <a class="ct-tile ct-tile--dc" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg><span>Discord</span><span class="ct-soc__handle">/cupofjay</span></a>
+                <a class="ct-tile ct-tile--li" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg><span>LinkedIn</span><span class="ct-soc__handle">/in/cupofjay</span></a>
+                <a class="ct-tile ct-tile--gh" href="#"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.295-1.552 3.3-1.23 3.3-1.23.645 1.653.24 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z"/></svg><span>GitHub</span><span class="ct-soc__handle">/cupofjay</span></a>
+                <a class="ct-tile ct-tile--mail" href="mailto:hello@cupofjay.dev"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.147C21.69 2.28 24 3.434 24 5.457z"/></svg><span>Email</span><span class="ct-soc__handle">hello@cupofjay.dev</span></a>
+            </div>
+
+            <!-- All touchpoints: 9 channels (kept in DOM for reference; hidden) -->
+            <div class="ct-channels" aria-label="Contact channels" hidden>
+                <a class="ct-chan ct-chan--fb" href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                <a class="ct-chan ct-chan--ig" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
+                <a class="ct-chan ct-chan--tt" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.64-.02-.21-.03-.42-.04-.63v-1.02c.02-.16.04-.32.06-.48.14-1.01.5-1.98 1.05-2.83 1.21-1.85 3.36-3.09 5.59-3.21.84-.05 1.68-.02 2.51.05v4.21c-.71-.21-1.48-.28-2.21-.09-.85.21-1.61.76-2.08 1.51-.48.73-.66 1.66-.5 2.51.14.85.6 1.63 1.27 2.16.61.49 1.4.76 2.19.71 1.51-.05 2.86-1.31 3.03-2.8.04-.31.05-.63.05-.95v-8.9c.04-.05.09-.03.14-.02 1.94.09 3.89.02 5.83.01.08-.01.16-.02.24-.03v-4.19c-.02-.19 0-.39-.02-.58-.03-.39-.08-.77-.15-1.15z"/></svg></a>
+                <a class="ct-chan ct-chan--x" href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z"/></svg></a>
+                <a class="ct-chan ct-chan--th" href="#" aria-label="Threads"><svg viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a>
+                <a class="ct-chan ct-chan--dc" href="#" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.865-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.058a.082.082 0 0 0 .031.056 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128c.126-.094.252-.192.372-.291a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.009c.12.099.246.198.373.292a.077.077 0 0 1-.006.127 12.3 12.3 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.84 19.84 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg></a>
+                <a class="ct-chan ct-chan--li" href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+                <a class="ct-chan ct-chan--gh" href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.295-1.552 3.3-1.23 3.3-1.23.645 1.653.24 2.873.12 3.176.77.84 1.233 1.91 1.233 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12z"/></svg></a>
+                <a class="ct-chan ct-chan--mail" href="mailto:hello@cupofjay.dev" aria-label="Email"><svg viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.147C21.69 2.28 24 3.434 24 5.457z"/></svg></a>
+            </div>
+
+            <div class="ct-card" id="ct-card">
+                <div class="ct-faq">
+                    <details open>
+                        <summary>What can I help you with?</summary>
+                        <p>Front-end websites, landing pages, photo editing and retouching — small favors or full projects.</p>
+                    </details>
+                    <details>
+                        <summary>How fast do I reply?</summary>
+                        <p>Within 24 hours, usually much sooner — the fastest way in is the form below.</p>
+                    </details>
+                    <details>
+                        <summary>Working hours?</summary>
+                        <p>Manila time (GMT+8). Messages sent overnight get answered the next morning.</p>
+                    </details>
+                </div>
+            </div>
+
+            <!-- EMAIL ME — spotlight card CTA; scrolls to the form -->
+            <a class="ct-cta-card" id="ct-magnet" href="#ct-email-me" role="button" aria-label="Scroll down to the contact form">
+                <span class="ct-cta-card__icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L12 9.548l6.545-4.91C20.44 2.28 24 3.434 24 5.457z"/></svg></span>
+                <span class="ct-cta-card__txt">
+                    <span class="t">Email me instead</span>
+                    <span class="s">Fill up form below</span>
+                </span>
+                <span class="ct-cta-card__ar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5c.69 0 1.25.56 1.25 1.25v11.39l4.32-4.32a1.25 1.25 0 1 1 1.768 1.768l-6.5 6.5a1.25 1.25 0 0 1-1.768 0l-6.5-6.5a1.25 1.25 0 1 1 1.768-1.768l4.32 4.32V4.75c0-.69.56-1.25 1.25-1.25z"/></svg></span>
+            </a>
+        </section>
+
+        <!-- ── Marquee divider (single rolling line) ── -->
+        <div class="ct-marquee" aria-hidden="true">
+            <div class="ct-marquee__inner">
+                <span>LET'S TALK <em>//</em> CUP OF JAY <em>//</em> LET'S TALK <em>//</em> CUP OF JAY <em>//</em> LET'S TALK <em>//</em> CUP OF JAY <em>//</em> LET'S TALK <em>//</em> CUP OF JAY <em>//</em> </span><span>LET'S TALK <em>//</em> CUP OF JAY <em>//</em> LET'S TALK <em>//</em> CUP OF JAY <em>//</em> LET'S TALK <em>//</em> CUP OF JAY <em>//</em> LET'S TALK <em>//</em> CUP OF JAY <em>//</em> </span>
+            </div>
+        </div>
+
+        <!-- ── Form: conversational stepper, composes an email to the Gmail inbox ── -->
+        <section class="ct-form-wrap" data-scroll-target>
+            <div class="ct-form-head">
+                <div class="k">Or write it here</div>
+                <h2>One question at a time — then it opens in your mail app, ready to send.</h2>
+            </div>
+
+            <form class="ct-form ct-stepper" id="ct-form" novalidate>
+                <div class="ct-step is-on" data-step="0">
+                    <div class="ct-q">First things first — <em>what's your name?</em></div>
+                    <input class="ct-step-input" id="ct-name" name="name" type="text" placeholder="Type your name…" autocomplete="name">
+                    <div class="ct-error">Name can't be empty.</div>
+                    <div class="ct-step-row"><div class="ct-progress"><i class="on"></i><i></i><i></i><i></i></div><button type="button" class="ct-step-next">Continue →</button></div>
+                </div>
+                <div class="ct-step" data-step="1">
+                    <div class="ct-q">Nice to meet you, <em id="ct-name-echo">you</em>. Where does the reply go?</div>
+                    <input class="ct-step-input" id="ct-email" name="email" type="email" placeholder="you@domain.com" autocomplete="email">
+                    <div class="ct-error">That email doesn't look right.</div>
+                    <div class="ct-step-row"><button type="button" class="ct-step-back">← back</button><div class="ct-progress"><i></i><i class="on"></i><i></i><i></i></div><button type="button" class="ct-step-next">Continue →</button></div>
+                </div>
+                <div class="ct-step" data-step="2">
+                    <div class="ct-q">Last one — <em>what are we brewing?</em></div>
+                    <textarea class="ct-step-input" id="ct-message" name="message" rows="3" placeholder="A website, a photo edit, a collab…"></textarea>
+                    <div class="ct-error">A message helps me help you.</div>
+                    <div class="ct-step-row"><button type="button" class="ct-step-back">← back</button><div class="ct-progress"><i></i><i></i><i class="on"></i><i></i></div><button type="button" class="ct-step-next">Send it →</button></div>
+                </div>
+                <div class="ct-step" data-step="3">
+                    <div class="ct-q">Message ready. <em>Opening your mail app…</em></div>
+                    <div class="ct-step-row"><div class="ct-progress"><i></i><i></i><i></i><i class="on"></i></div><button type="button" class="ct-step-back ct-step-retry">← edit again</button></div>
+                </div>
+            </form>
+
+            <div class="ct-form-note">prefer your own mail client? <span>hello@cupofjay.dev</span> · or @cupofjay on any platform</div>
+        </section>
+
+
+    </main>
+
+    <script>
+        // ── Contact page interactions: spotlight CTA, FAQ card, mailto form ──
+        (function () {
+            // Spotlight tracking on the CTA card (cursor-following glow).
+            const cta = document.getElementById('ct-magnet');
+            if (cta && window.matchMedia('(hover: hover)').matches) {
+                cta.addEventListener('mousemove', (e) => {
+                    const r = cta.getBoundingClientRect();
+                    cta.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+                    cta.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+                });
+            }
+
+            // Spotlight tracking on the info card.
+            const card = document.getElementById('ct-card');
+            if (card) {
+                card.addEventListener('mousemove', (e) => {
+                    const r = card.getBoundingClientRect();
+                    card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100).toFixed(1) + '%');
+                    card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100).toFixed(1) + '%');
+                });
+            }
+
+            // EMAIL ME button: smooth-scroll to the form below.
+            const emailBtn = document.getElementById('ct-magnet');
+            if (emailBtn) {
+                emailBtn.addEventListener('click', (e) => {
+                    const target = document.querySelector('.ct-form-wrap');
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Move focus to the first field for keyboard users
+                        setTimeout(() => document.getElementById('ct-name')?.focus({ preventScroll: true }), 650);
+                    }
+                });
+            }
+
+            // ── Conversational stepper form → mailto compose ──
+            const form = document.getElementById('ct-form');
+            if (form) {
+                const EMAIL = 'hello@cupofjay.dev'; // swap for the real Gmail address
+                const steps = [...form.querySelectorAll('.ct-step')];
+                let step = 0;
+
+                const show = (n) => {
+                    steps[step].classList.remove('is-on');
+                    step = Math.max(0, Math.min(steps.length - 1, n));
+                    steps[step].classList.add('is-on');
+                    if (step === 1) {
+                        document.getElementById('ct-name-echo').textContent = document.getElementById('ct-name').value.trim() || 'you';
+                    }
+                };
+
+                const setError = (id, on) => document.getElementById(id).closest('.ct-step').classList.toggle('has-error', on);
+
+                const validateCurrent = () => {
+                    if (step === 0) {
+                        const name = document.getElementById('ct-name').value.trim();
+                        setError('ct-name', !name);
+                        return !!name;
+                    }
+                    if (step === 1) {
+                        const email = document.getElementById('ct-email').value.trim();
+                        const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+                        setError('ct-email', !ok);
+                        return ok;
+                    }
+                    if (step === 2) {
+                        const msg = document.getElementById('ct-message').value.trim();
+                        setError('ct-message', !msg);
+                        return !!msg;
+                    }
+                    return true;
+                };
+
+                form.querySelectorAll('.ct-step-next').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (step === 2) {
+                            // Final send: validate everything, compose the email
+                            if (!(validateCurrent() && validateStep(0) && validateStep(1))) {
+                                // jump to the first failing step
+                                if (!validateStep(0)) { show(0); return; }
+                                show(1); return;
+                            }
+                            const name = document.getElementById('ct-name').value.trim();
+                            const email = document.getElementById('ct-email').value.trim();
+                            const message = document.getElementById('ct-message').value.trim();
+                            const subject = encodeURIComponent(`Project inquiry from ${name}`);
+                            const body = encodeURIComponent(`${message}\n\n— ${name}\nReply to: ${email}`);
+                            show(3);
+                            window.location.href = `mailto:${EMAIL}?subject=${subject}&body=${body}`;
+                            return;
+                        }
+                        if (validateCurrent()) show(step + 1);
+                    });
+                });
+
+                function validateStep(n) {
+                    if (n === 0) return !!document.getElementById('ct-name').value.trim();
+                    if (n === 1) return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(document.getElementById('ct-email').value.trim());
+                    return !!document.getElementById('ct-message').value.trim();
+                }
+
+                form.querySelectorAll('.ct-step-back').forEach(btn => {
+                    btn.addEventListener('click', () => show(step - 1));
+                });
+
+                // Enter advances (except in the textarea)
+                form.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && !e.target.matches('textarea') && step < 3) {
+                        e.preventDefault();
+                        form.querySelectorAll('.ct-step-next')[step]?.click();
+                    }
+                });
+
+                // Clear error as soon as the user types
+                ['ct-name', 'ct-email', 'ct-message'].forEach(id => {
+                    document.getElementById(id).addEventListener('input', () => setError(id, false));
+                });
+            }
+        })();
+    </script>
+
+    <script type="module" src="main.js?v=15"></script>
+    <script src="lib/libgif.js" defer></script>
+    <script type="module" src="lib/web-pet-engine.js"></script>
+</body>
+</html>
