@@ -45,39 +45,39 @@ export function setupBeforeAfter() {
       settle();
     }
 
-    // Touch handling — touchstart only on the handle, move/end on the plate.
-    // The handle has touch-action: none (CSS) so the browser won't scroll
-    // when dragging it. The plate has touch-action: pan-y so vertical swipes
-    // anywhere else on the image scroll the page normally.
+    // Touch handling — simplified approach using CSS touch-action.
+    // The handle has touch-action:none in CSS, plate has touch-action:pan-y.
+    // This CSS-first approach is more reliable than JavaScript preventDefault.
     const handle = plate.querySelector('.ba__handle');
-    let touchStartX = 0;
-    let touchState = 'idle';
-
-    const onLockedTouchMove = (e) => {
-      e.preventDefault();
-      if (!e.touches.length) return;
-      const r = plate.getBoundingClientRect();
-      setPos(((e.touches[0].clientX - r.left) / r.width) * 100);
-    };
+    let isDragging = false;
+    let startX = 0;
 
     if (handle) {
+      // Touch on handle only - nowhere else
       handle.addEventListener('touchstart', (e) => {
         if (plate.classList.contains('ba--solo')) return;
-        touchStartX = e.touches[0].clientX;
-        touchState = 'dragging';
-        plate.addEventListener('touchmove', onLockedTouchMove, { passive: false });
+        
+        isDragging = true;
+        startX = e.touches[0].clientX;
+      }, { passive: true });
+
+      // Listen for movement on the plate
+      plate.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        const touch = e.touches[0];
+        const r = plate.getBoundingClientRect();
+        setPos(((touch.clientX - r.left) / r.width) * 100);
+      }, { passive: true });
+
+      plate.addEventListener('touchend', () => {
+        isDragging = false;
+      }, { passive: true });
+
+      plate.addEventListener('touchcancel', () => {
+        isDragging = false;
       }, { passive: true });
     }
-
-    plate.addEventListener('touchend', () => {
-      plate.removeEventListener('touchmove', onLockedTouchMove);
-      touchState = 'idle';
-    });
-
-    plate.addEventListener('touchcancel', () => {
-      plate.removeEventListener('touchmove', onLockedTouchMove);
-      touchState = 'idle';
-    });
 
     // Mouse-only drag — uses mousedown so touch events never trigger it.
     plate.addEventListener('mousedown', (e) => {
