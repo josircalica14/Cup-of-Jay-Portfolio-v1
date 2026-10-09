@@ -45,23 +45,52 @@ export function setupBeforeAfter() {
       settle();
     }
 
-    plate.addEventListener('pointerdown', (e) => {
+    // Touch handling — touchstart only on the handle, move/end on the plate.
+    // The handle has touch-action: none (CSS) so the browser won't scroll
+    // when dragging it. The plate has touch-action: pan-y so vertical swipes
+    // anywhere else on the image scroll the page normally.
+    const handle = plate.querySelector('.ba__handle');
+    let touchStartX = 0;
+    let touchState = 'idle';
+
+    const onLockedTouchMove = (e) => {
+      e.preventDefault();
+      if (!e.touches.length) return;
+      const r = plate.getBoundingClientRect();
+      setPos(((e.touches[0].clientX - r.left) / r.width) * 100);
+    };
+
+    if (handle) {
+      handle.addEventListener('touchstart', (e) => {
+        if (plate.classList.contains('ba--solo')) return;
+        touchStartX = e.touches[0].clientX;
+        touchState = 'dragging';
+        plate.addEventListener('touchmove', onLockedTouchMove, { passive: false });
+      }, { passive: true });
+    }
+
+    plate.addEventListener('touchend', () => {
+      plate.removeEventListener('touchmove', onLockedTouchMove);
+      touchState = 'idle';
+    });
+
+    plate.addEventListener('touchcancel', () => {
+      plate.removeEventListener('touchmove', onLockedTouchMove);
+      touchState = 'idle';
+    });
+
+    // Mouse-only drag — uses mousedown so touch events never trigger it.
+    plate.addEventListener('mousedown', (e) => {
       if (plate.classList.contains('ba--solo')) return;
       e.preventDefault();
-      // Capture keeps the drag alive when the cursor leaves the plate. Some
-      // environments hand us pointer ids that can't be captured — the drag
-      // still works without it, so never let this abort the handler.
-      try { plate.setPointerCapture(e.pointerId); } catch (_) {}
       fromEvent(e);
       const move = (ev) => fromEvent(ev);
       const up = () => {
-        plate.removeEventListener('pointermove', move);
-        plate.removeEventListener('pointerup', up);
-        plate.removeEventListener('pointercancel', up);
+        window.removeEventListener('mousemove', move);
+        window.removeEventListener('mouseup', up);
       };
-      plate.addEventListener('pointermove', move);
-      plate.addEventListener('pointerup', up);
-      plate.addEventListener('pointercancel', up);
+      window.addEventListener('mousemove', move);
+      window.addEventListener('mouseup', up);
     });
 
     // Keyboard: arrows nudge the divider 4%, Home/End jump to the edges.

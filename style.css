@@ -535,8 +535,10 @@ body {
     to   { opacity: 1; }
 }
 
-/* Prevent text cursor and selection globally */
-* {
+/* Prevent text selection on interactive/decorative elements only — NOT globally,
+   as -webkit-user-select: none on * blocks scroll on iOS Safari */
+img, svg, canvas, .nav, .mobile-logo, .mobile-burger, .hero-title,
+.carousel__slide, .card, .ba__handle, .ba__divider, .ba__label {
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
